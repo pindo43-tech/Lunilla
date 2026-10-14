@@ -1,0 +1,77 @@
+@import "tailwindcss";
+
+@theme {
+  --color-cream: #fbf6f0;
+  --color-ink: #2c2430;
+  --color-muted: #5c4e63;
+  --color-rose: #8f3d56;
+  --color-rose-soft: #f6d5de;
+  --color-lavender: #6d5a94;
+  --color-lavender-soft: #e7def6;
+  --color-sage: #2f6a50;
+  --color-sage-soft: #d5ebdf;
+  --color-paper: #fffaf6;
+  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+:root {
+  color-scheme: light;
+}
+
+body {
+  margin: 0;
+  min-height: 100dvh;
+  background: #f3e4ea;
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 2px solid #2f6a50;
+  outline-offset: 3px;
+}
+
+::selection {
+  background: #f3c2d0;
+}
+
+@keyframes marea-rise {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes marea-shake {
+  20% { transform: translateX(-3px); }
+  40% { transform: translateX(3px); }
+  60% { transform: translateX(-2px); }
+  80% { transform: translateX(2px); }
+}
+
+.rise {
+  animation: marea-rise 0.45s ease;
+}
+
+.shake {
+  animation: marea-shake 0.35s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rise,
+  .shake,
+  .animate-pulse {
+    animation: none;
+  }
+}
