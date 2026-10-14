@@ -2,9 +2,11 @@ import { isBuiltinSymptom, isMood } from './catalog.ts'
 import { isB64, b64ToBytes } from './bytes.ts'
 import { EXPORT_KIND } from './constants.ts'
 import { isISODate } from './dates.ts'
-import type { CustomSymptom, DayLog, Flow, Intensity, Locale, Settings, Tag, Vault } from '../types.ts'
+import { MAX_CYCLE_DAYS, MIN_CYCLE_DAYS } from './constants.ts'
+import type { CustomSymptom, DayLog, Flow, Intensity, Locale, Mucus, Settings, Tag, Vault } from '../types.ts'
 
 const FLOWS = new Set<Flow>(['none', 'light', 'medium', 'heavy'])
+const MUCUS = new Set<Mucus>(['dry', 'sticky', 'creamy', 'eggwhite', 'watery'])
 const LOCK_MINUTES = new Set([1, 5, 15, 30])
 
 export interface ExportDocument {
@@ -25,7 +27,18 @@ export interface ExportDocument {
 }
 
 export function emptyDay(): DayLog {
-  return { flow: 'none', symptoms: [], moods: [], note: '' }
+  return { flow: null, symptoms: [], moods: [], note: '', basalTemp: null, mucus: null }
+}
+
+export function isEmptyDay(day: DayLog): boolean {
+  return (
+    day.flow === null
+    && day.symptoms.length === 0
+    && day.moods.length === 0
+    && day.note.trim() === ''
+    && day.basalTemp === null
+    && day.mucus === null
+  )
 }
 
 export function emptyVault(locale: Locale): Vault {
@@ -36,6 +49,8 @@ export function emptyVault(locale: Locale): Vault {
       locale,
       historyLength: 6,
       remindersEnabled: false,
+      discreet: false,
+      typicalCycleLength: null,
     },
     days: {},
     customSymptoms: [],
@@ -79,11 +94,20 @@ function sanitizeSettings(value: unknown): Settings | null {
   const locale: Locale = raw.locale === 'en' ? 'en' : 'es'
   const history = typeof raw.historyLength === 'number' ? Math.round(raw.historyLength) : 6
   const historyLength = history >= 3 && history <= 12 ? history : 6
+  const typicalRaw = raw.typicalCycleLength
+  const typicalCycleLength = typeof typicalRaw === 'number'
+    && Number.isInteger(typicalRaw)
+    && typicalRaw >= MIN_CYCLE_DAYS
+    && typicalRaw <= MAX_CYCLE_DAYS
+    ? typicalRaw
+    : null
   return {
     autoLockMinutes,
     locale,
     historyLength,
     remindersEnabled: raw.remindersEnabled === true,
+    discreet: raw.discreet === true,
+    typicalCycleLength,
   }
 }
 
@@ -120,14 +144,26 @@ function sanitizeDays(value: unknown, customs: CustomSymptom[]): Record<string, 
 }
 
 function sanitizeDay(raw: Record<string, unknown>, customIds: Set<string>): DayLog | null {
-  const flow = FLOWS.has(raw.flow as Flow) ? (raw.flow as Flow) : 'none'
+  const flow = raw.flow === null || raw.flow === undefined
+    ? null
+    : FLOWS.has(raw.flow as Flow) ? (raw.flow as Flow) : null
   const note = typeof raw.note === 'string' ? raw.note.slice(0, 500) : ''
+  const mucus = MUCUS.has(raw.mucus as Mucus) ? (raw.mucus as Mucus) : null
   return {
     flow,
     symptoms: sanitizeTags(raw.symptoms, (id) => isBuiltinSymptom(id) || customIds.has(id)),
     moods: sanitizeTags(raw.moods, isMood),
     note,
+    basalTemp: sanitizeTemp(raw.basalTemp),
+    mucus,
   }
+}
+
+function sanitizeTemp(value: unknown): number | null {
+  if (typeof value !== 'number' || !Number.isFinite(value)) return null
+  const rounded = Math.round(value * 100) / 100
+  if (rounded < 35 || rounded > 42) return null
+  return rounded
 }
 
 function sanitizeTags(value: unknown, allow: (id: string) => boolean): Tag[] {

@@ -5,7 +5,7 @@ import type { MessageKey } from '../lib/i18n.tsx'
 import { useI18n } from '../lib/i18n.tsx'
 import { markContinued, markEnded, markStarted } from '../lib/logs.ts'
 import { hasDay, predict } from '../lib/predict.ts'
-import { useTitle } from '../lib/useTitle.ts'
+import { useBrandTitle } from '../lib/useTitle.ts'
 import { useSession } from '../state/session.tsx'
 import type { Confidence, PhaseName, Prediction } from '../types.ts'
 
@@ -40,11 +40,11 @@ const CONF_BODY: Record<Confidence, MessageKey> = {
 export function HomePage() {
   const { vault, update } = useSession()
   const { locale, t } = useI18n()
-  useTitle(`${t('tabs.home')} · Marea`)
+  useBrandTitle(t('tabs.home'))
   if (!vault) return null
   const today = todayISO()
   const yesterday = addDays(today, -1)
-  const prediction = predict(vault.days, vault.settings.historyLength, today)
+  const prediction = predict(vault.days, vault.settings.historyLength, today, vault.settings.typicalCycleLength)
   const bleeding = vault.days[today]?.flow && vault.days[today]?.flow !== 'none'
   const todayKnown = hasDay(vault.days, today)
 
@@ -79,14 +79,19 @@ export function HomePage() {
       <section className="space-y-2 rounded-3xl bg-white px-4 py-4 shadow-sm">
         <h2 className="text-lg font-semibold">{t('pred.title')}</h2>
         <p className="leading-relaxed">{whenLine(prediction, locale, t)}</p>
-        <p className="inline-flex rounded-full bg-lavender-soft px-3 py-1 text-sm font-medium">{t(CONF_TAG[prediction.confidence])}</p>
-        <p className="leading-relaxed text-muted">{t(CONF_BODY[prediction.confidence])}</p>
+        <p className="leading-relaxed">{t('pred.used', { n: prediction.cyclesUsed })}</p>
+        <p className="inline-flex rounded-full bg-lavender-soft px-3 py-1 text-sm font-medium text-ink">{t(CONF_TAG[prediction.confidence])}</p>
+        {prediction.predictedLength !== null && prediction.cyclesUsed < 2 ? (
+          <p className="leading-relaxed">{t('pred.underTwo')}</p>
+        ) : (
+          <p className="leading-relaxed text-muted">{t(CONF_BODY[prediction.confidence])}</p>
+        )}
+        {prediction.lengthSource === 'typical' && prediction.predictedLength !== null ? (
+          <p className="leading-relaxed text-muted">{t('pred.typical', { n: prediction.predictedLength })}</p>
+        ) : null}
         {prediction.irregular ? <p className="leading-relaxed">{t('pred.irregular')}</p> : null}
         {prediction.daysUntil !== null && prediction.daysUntil >= 0 && prediction.daysUntil <= 2 ? (
           <p role="status" className="rounded-2xl bg-rose-soft px-3 py-3 leading-relaxed">{t('home.soon')}</p>
-        ) : null}
-        {prediction.lengths.length === 1 ? (
-          <p className="text-sm leading-relaxed text-muted">{t('pred.one', { list: String(prediction.lengths[0]) })}</p>
         ) : null}
         {prediction.lengths.length >= 2 && prediction.weightedMean !== null && prediction.mean !== null && prediction.sd !== null ? (
           <details className="text-sm leading-relaxed text-muted">
@@ -132,8 +137,8 @@ export function HomePage() {
 
 function CycleCard({ prediction }: { prediction: Prediction }) {
   const { t } = useI18n()
-  const length = prediction.predictedLength ?? 28
-  const progress = prediction.cycleDay ? Math.min(1, prediction.cycleDay / length) : 0
+  const length = prediction.predictedLength
+  const progress = length && prediction.cycleDay ? Math.min(1, prediction.cycleDay / length) : 0
   const radius = 42
   const circumference = 2 * Math.PI * radius
   const dash = circumference * progress

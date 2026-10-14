@@ -2,6 +2,8 @@ export type Locale = 'es' | 'en'
 
 export type Flow = 'none' | 'light' | 'medium' | 'heavy'
 
+export type Mucus = 'dry' | 'sticky' | 'creamy' | 'eggwhite' | 'watery'
+
 export type Intensity = 1 | 2 | 3
 
 export type PhaseName = 'menstrual' | 'follicular' | 'ovulatory' | 'luteal'
@@ -14,10 +16,13 @@ export interface Tag {
 }
 
 export interface DayLog {
-  flow: Flow
+  /** null means this day has no flow mark. `none` means the person said bleeding stopped. */
+  flow: Flow | null
   symptoms: Tag[]
   moods: Tag[]
   note: string
+  basalTemp: number | null
+  mucus: Mucus | null
 }
 
 export interface CustomSymptom {
@@ -30,6 +35,10 @@ export interface Settings {
   locale: Locale
   historyLength: number
   remindersEnabled: boolean
+  /** Shown as Notas on the tab and the lock screen. Stored locally, never sent. */
+  discreet: boolean
+  /** Used only when there is no measured cycle yet. */
+  typicalCycleLength: number | null
 }
 
 export interface Vault {
@@ -46,6 +55,9 @@ export interface Prediction {
   sd: number | null
   irregular: boolean
   confidence: Confidence
+  /** Measured intervals inside the history window. Not the optional onboarding guess. */
+  cyclesUsed: number
+  lengthSource: 'none' | 'measured' | 'typical'
   predictedLength: number | null
   lastStart: string | null
   cycleDay: number | null

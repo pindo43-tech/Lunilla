@@ -2,7 +2,8 @@ import { useRef, useState } from 'react'
 import { Button, DigitField } from '../components/ui.tsx'
 import { PinError } from '../lib/crypto.ts'
 import { useI18n } from '../lib/i18n.tsx'
-import { useTitle } from '../lib/useTitle.ts'
+import { MAX_CYCLE_DAYS, MIN_CYCLE_DAYS } from '../lib/constants.ts'
+import { useBrandTitle } from '../lib/useTitle.ts'
 import { useSession } from '../state/session.tsx'
 import type { Locale } from '../types.ts'
 
@@ -26,7 +27,9 @@ export function SettingsPage() {
   const [reminderNote, setReminderNote] = useState('')
   const [eraseText, setEraseText] = useState('')
   const [eraseError, setEraseError] = useState('')
-  useTitle(`${t('tabs.settings')} · Marea`)
+  const [typicalText, setTypicalText] = useState<string | null>(null)
+  const [typicalError, setTypicalError] = useState('')
+  useBrandTitle(t('tabs.settings'))
   if (!vault) return null
 
   async function savePin() {
@@ -102,6 +105,78 @@ export function SettingsPage() {
             </button>
           ))}
         </div>
+      </section>
+
+      <section className="space-y-3">
+        <h2 className="text-lg font-semibold">{t('set.discreet')}</h2>
+        <p className="text-sm leading-relaxed text-muted">{t('set.discreetHelp')}</p>
+        <Button
+          tone={vault.settings.discreet ? 'sage' : 'quiet'}
+          className="w-full"
+          aria-pressed={vault.settings.discreet}
+          onClick={() => void update((current) => ({
+            ...current,
+            settings: { ...current.settings, discreet: !current.settings.discreet },
+          }))}
+        >
+          {vault.settings.discreet ? t('set.discreetOn') : t('set.discreetOff')}
+        </Button>
+      </section>
+
+      <section className="space-y-3">
+        <h2 className="text-lg font-semibold">{t('set.typical')}</h2>
+        <p id="typical-hint" className="text-sm leading-relaxed text-muted">{t('set.typicalHelp')}</p>
+        <label className="sr-only" htmlFor="typical-cycle">{t('set.typical')}</label>
+        <input
+          id="typical-cycle"
+          inputMode="numeric"
+          value={typicalText ?? (vault.settings.typicalCycleLength === null ? '' : String(vault.settings.typicalCycleLength))}
+          aria-describedby="typical-hint"
+          aria-invalid={typicalError ? true : undefined}
+          onChange={(event) => {
+            setTypicalText(event.target.value)
+            setTypicalError('')
+          }}
+          onBlur={() => {
+            if (typicalText === null) return
+            const raw = typicalText.trim()
+            setTypicalText(null)
+            if (!raw) {
+              void update((current) => ({
+                ...current,
+                settings: { ...current.settings, typicalCycleLength: null },
+              }))
+              return
+            }
+            const value = Number(raw)
+            if (!Number.isInteger(value) || value < MIN_CYCLE_DAYS || value > MAX_CYCLE_DAYS) {
+              setTypicalError(t('set.typicalInvalid'))
+              return
+            }
+            void update((current) => ({
+              ...current,
+              settings: { ...current.settings, typicalCycleLength: value },
+            }))
+          }}
+          className="min-h-12 w-full rounded-2xl border border-black/15 bg-white px-3"
+        />
+        {typicalError ? <p role="alert" className="text-sm text-rose">{typicalError}</p> : null}
+        {vault.settings.typicalCycleLength !== null ? (
+          <Button
+            tone="quiet"
+            className="w-full"
+            onClick={() => {
+              setTypicalText('')
+              setTypicalError('')
+              void update((current) => ({
+                ...current,
+                settings: { ...current.settings, typicalCycleLength: null },
+              }))
+            }}
+          >
+            {t('set.typicalClear')}
+          </Button>
+        ) : null}
       </section>
 
       <section className="space-y-3">

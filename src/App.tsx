@@ -4,12 +4,13 @@ import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
 import { Frame } from './components/Frame.tsx'
 import { Shell } from './components/ui.tsx'
 import { useI18n, I18nProvider } from './lib/i18n.tsx'
-import { useTitle } from './lib/useTitle.ts'
+import { useBrandTitle } from './lib/useTitle.ts'
 import { CalendarPage } from './pages/Calendar.tsx'
 import { DayPage } from './pages/Day.tsx'
 import { HomePage } from './pages/Home.tsx'
 import { LandingPage } from './pages/Landing.tsx'
 import { SettingsPage } from './pages/Settings.tsx'
+import { SummaryPage } from './pages/Summary.tsx'
 import { SetupPage } from './pages/Setup.tsx'
 import { UnlockPage } from './pages/Unlock.tsx'
 import { SessionProvider, useSession } from './state/session.tsx'
@@ -40,7 +41,7 @@ class Boundary extends Component<{ children: ReactNode }, { failed: boolean }> {
 function Gate() {
   const { status } = useSession()
   const { t } = useI18n()
-  useTitle('Marea')
+  useBrandTitle()
   if (status === 'loading') {
     return (
       <Shell>
@@ -91,6 +92,7 @@ export default function App() {
                 <Route index element={<HomePage />} />
                 <Route path="calendar" element={<CalendarPage />} />
                 <Route path="day/:iso" element={<DayPage />} />
+                <Route path="summary" element={<SummaryPage />} />
                 <Route path="settings" element={<SettingsPage />} />
               </Route>
               <Route path="*" element={<Navigate to="/" replace />} />

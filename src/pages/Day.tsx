@@ -6,13 +6,21 @@ import { cx } from '../lib/cx.ts'
 import { formatLong, isISODate } from '../lib/dates.ts'
 import type { MessageKey } from '../lib/i18n.tsx'
 import { useI18n } from '../lib/i18n.tsx'
-import { removeCustomSymptom, setTagIntensity, toggleTag, writeDay } from '../lib/logs.ts'
+import { clearFlow, removeCustomSymptom, setBasalTemp, setMucus, setTagIntensity, toggleTag, writeDay } from '../lib/logs.ts'
 import { emptyDay } from '../lib/schema.ts'
-import { useTitle } from '../lib/useTitle.ts'
+import { useBrandTitle } from '../lib/useTitle.ts'
 import { useSession } from '../state/session.tsx'
-import type { Flow, Intensity, Tag } from '../types.ts'
+import type { Flow, Intensity, Mucus, Tag } from '../types.ts'
 
 const FLOWS: Flow[] = ['none', 'light', 'medium', 'heavy']
+const MUCUS: Mucus[] = ['dry', 'sticky', 'creamy', 'eggwhite', 'watery']
+const MUCUS_KEY: Record<Mucus, MessageKey> = {
+  dry: 'mucus.dry',
+  sticky: 'mucus.sticky',
+  creamy: 'mucus.creamy',
+  eggwhite: 'mucus.eggwhite',
+  watery: 'mucus.watery',
+}
 const FLOW_KEY: Record<Flow, MessageKey> = {
   none: 'flow.none',
   light: 'flow.light',
@@ -46,7 +54,9 @@ export function DayPage() {
   const { locale, t } = useI18n()
   const [custom, setCustom] = useState('')
   const [customError, setCustomError] = useState('')
-  useTitle(isISODate(iso) ? `${formatLong(iso, locale)} · Marea` : 'Marea')
+  const [tempText, setTempText] = useState<string | null>(null)
+  const [tempError, setTempError] = useState('')
+  useBrandTitle(isISODate(iso) ? formatLong(iso, locale) : undefined)
   if (!vault) return null
   if (!isISODate(iso)) {
     return (
@@ -100,6 +110,99 @@ export function DayPage() {
                 )}
               >
                 {t(FLOW_KEY[flow])}
+              </button>
+            )
+          })}
+        </div>
+        {day.flow !== null ? (
+          <button
+            type="button"
+            className="mt-2 min-h-11 text-sm font-medium text-rose"
+            onClick={() => void update((current) => clearFlow(current, iso))}
+          >
+            {t('day.clearFlow')}
+          </button>
+        ) : null}
+      </section>
+
+      <section className="space-y-2">
+        <h2 className="text-lg font-semibold">{t('day.temp')}</h2>
+        <p id="temp-hint" className="text-sm leading-relaxed text-muted">{t('day.tempHint')}</p>
+        <div className="flex gap-2">
+          <label className="sr-only" htmlFor="basal-temp">{t('day.temp')}</label>
+          <input
+            id="basal-temp"
+            inputMode="decimal"
+            value={tempText ?? (day.basalTemp === null ? '' : String(day.basalTemp))}
+            placeholder={t('day.tempPh')}
+            aria-describedby="temp-hint"
+            aria-invalid={tempError ? true : undefined}
+            onChange={(event) => {
+              setTempText(event.target.value)
+              setTempError('')
+            }}
+            onBlur={() => {
+              if (tempText === null) return
+              const raw = tempText.trim().replace(',', '.')
+              setTempText(null)
+              if (!raw) {
+                void update((current) => setBasalTemp(current, iso, null))
+                return
+              }
+              const value = Number(raw)
+              if (!Number.isFinite(value) || value < 35 || value > 42) {
+                setTempError(t('day.tempInvalid'))
+                return
+              }
+              void update((current) => setBasalTemp(current, iso, Math.round(value * 100) / 100))
+            }}
+            className="min-h-12 flex-1 rounded-2xl border border-black/15 bg-white px-3"
+          />
+          <button
+            type="button"
+            className="min-h-12 rounded-2xl bg-white px-3 text-sm font-medium text-rose shadow-sm"
+            onClick={() => {
+              setTempText('')
+              setTempError('')
+              void update((current) => setBasalTemp(current, iso, null))
+            }}
+          >
+            {t('day.tempClear')}
+          </button>
+        </div>
+        {tempError ? <p role="alert" className="text-sm text-rose">{tempError}</p> : null}
+      </section>
+
+      <section className="space-y-2">
+        <h2 id="mucus-label" className="text-lg font-semibold">{t('day.mucus')}</h2>
+        <div role="radiogroup" aria-labelledby="mucus-label" className="grid grid-cols-2 gap-2">
+          <button
+            type="button"
+            role="radio"
+            aria-checked={day.mucus === null}
+            onClick={() => void update((current) => setMucus(current, iso, null))}
+            className={cx(
+              'min-h-12 rounded-2xl px-3 text-sm font-medium',
+              day.mucus === null ? 'bg-sage text-white' : 'bg-white text-ink shadow-sm',
+            )}
+          >
+            {t('day.mucusClear')}
+          </button>
+          {MUCUS.map((kind) => {
+            const selected = day.mucus === kind
+            return (
+              <button
+                key={kind}
+                type="button"
+                role="radio"
+                aria-checked={selected}
+                onClick={() => void update((current) => setMucus(current, iso, kind))}
+                className={cx(
+                  'min-h-12 rounded-2xl px-3 text-sm font-medium',
+                  selected ? 'bg-sage text-white' : 'bg-white text-ink shadow-sm',
+                )}
+              >
+                {t(MUCUS_KEY[kind])}
               </button>
             )
           })}

@@ -7,6 +7,7 @@ import { decryptJson, deriveKey, encryptJson, PinError } from '../lib/crypto.ts'
 import { database, eraseDatabase } from '../lib/db.ts'
 import type { InstallRecord, VaultRecord } from '../lib/db.ts'
 import { todayISO } from '../lib/dates.ts'
+import { readDiscreet, writeDiscreet } from '../lib/discreet.ts'
 import { useI18n } from '../lib/i18n.tsx'
 import { emptyVault, sanitizeVault } from '../lib/schema.ts'
 import type { Vault } from '../types.ts'
@@ -106,6 +107,7 @@ export function SessionProvider({ children }: { children: ReactNode }) {
     vaultRef.current = next
     setVault(next)
     setLocale(next.settings.locale)
+    writeDiscreet(next.settings.discreet)
     setStatus('ready')
     setSaveError(false)
   }, [setLocale])
@@ -207,6 +209,7 @@ export function SessionProvider({ children }: { children: ReactNode }) {
       vaultRef.current = next
       setVault(next)
       setSaveError(false)
+      writeDiscreet(next.settings.discreet)
       if (next.settings.locale !== localeRef.current) setLocale(next.settings.locale)
     } catch (error) {
       setSaveError(true)
@@ -256,7 +259,8 @@ export function SessionProvider({ children }: { children: ReactNode }) {
     const current = vaultRef.current
     if (!install || !key || !current) throw new Error('locked')
     const doc = await buildExport(key, b64ToBytes(install.salt), current)
-    downloadJson(`marea-cifrada-${todayISO()}.json`, doc)
+    const prefix = readDiscreet() ? 'notas-cifrada' : 'marea-cifrada'
+    downloadJson(`${prefix}-${todayISO()}.json`, doc)
   }, [])
 
   const importCopy = useCallback(async (text: string, pin: string) => {
@@ -273,6 +277,7 @@ export function SessionProvider({ children }: { children: ReactNode }) {
     vaultRef.current = imported
     setVault(imported)
     setLocale(imported.settings.locale)
+    writeDiscreet(imported.settings.discreet)
     setSaveError(false)
   }, [setLocale])
 
@@ -280,6 +285,7 @@ export function SessionProvider({ children }: { children: ReactNode }) {
     keyRef.current = null
     vaultRef.current = null
     setVault(null)
+    writeDiscreet(false)
     await eraseDatabase()
     setStatus('setup')
   }, [])

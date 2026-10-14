@@ -1,19 +1,29 @@
-import { emptyDay } from './schema.ts'
-import type { DayLog, Flow, Intensity, Tag, Vault } from '../types.ts'
+import { emptyDay, isEmptyDay } from './schema.ts'
+import type { DayLog, Flow, Intensity, Mucus, Tag, Vault } from '../types.ts'
 
 export function writeDay(vault: Vault, iso: string, recipe: (day: DayLog) => DayLog): Vault {
   const current = vault.days[iso] ?? emptyDay()
-  return {
-    ...vault,
-    days: {
-      ...vault.days,
-      [iso]: recipe(current),
-    },
-  }
+  const next = recipe(current)
+  const days = { ...vault.days }
+  if (isEmptyDay(next)) delete days[iso]
+  else days[iso] = next
+  return { ...vault, days }
 }
 
 export function setFlow(vault: Vault, iso: string, flow: Flow): Vault {
   return writeDay(vault, iso, (day) => ({ ...day, flow }))
+}
+
+export function clearFlow(vault: Vault, iso: string): Vault {
+  return writeDay(vault, iso, (day) => ({ ...day, flow: null }))
+}
+
+export function setBasalTemp(vault: Vault, iso: string, basalTemp: number | null): Vault {
+  return writeDay(vault, iso, (day) => ({ ...day, basalTemp }))
+}
+
+export function setMucus(vault: Vault, iso: string, mucus: Mucus | null): Vault {
+  return writeDay(vault, iso, (day) => ({ ...day, mucus }))
 }
 
 export function markStarted(vault: Vault, iso: string): Vault {

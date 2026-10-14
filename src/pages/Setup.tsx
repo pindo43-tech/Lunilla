@@ -1,16 +1,19 @@
 import { useRef, useState } from 'react'
 import { Button, DigitField, LangToggle, MoonMark } from '../components/ui.tsx'
 import { decryptExport } from '../lib/backup.ts'
+import { seedFirstPeriod } from '../lib/cycles.ts'
 import { PinError } from '../lib/crypto.ts'
+import { todayISO } from '../lib/dates.ts'
 import { useI18n } from '../lib/i18n.tsx'
-import { useTitle } from '../lib/useTitle.ts'
+import { emptyVault } from '../lib/schema.ts'
+import { useBrandTitle } from '../lib/useTitle.ts'
 import { useSession } from '../state/session.tsx'
 import type { Vault } from '../types.ts'
 
-type Step = 'about' | 'create' | 'confirm' | 'file'
+type Step = 'about' | 'create' | 'confirm' | 'file' | 'cycle'
 
 export function SetupPage() {
-  const { t } = useI18n()
+  const { locale, t } = useI18n()
   const { setup, suspendAutoLock } = useSession()
   const fileRef = useRef<HTMLInputElement>(null)
   const [step, setStep] = useState<Step>('about')
@@ -19,15 +22,18 @@ export function SetupPage() {
   const [filePin, setFilePin] = useState('')
   const [fileText, setFileText] = useState<string | null>(null)
   const [imported, setImported] = useState<Vault | null>(null)
+  const [startDate, setStartDate] = useState('')
+  const [periodLength, setPeriodLength] = useState('5')
+  const [cycleLength, setCycleLength] = useState('')
   const [error, setError] = useState('')
   const [busy, setBusy] = useState(false)
-  useTitle('Marea')
+  useBrandTitle()
 
-  async function finish(nextPin: string) {
+  async function finish(nextPin: string, initial?: Vault) {
     setBusy(true)
     setError('')
     try {
-      await setup(nextPin, imported ?? undefined)
+      await setup(nextPin, initial ?? imported ?? undefined)
     } catch {
       setError(t('error.body'))
       setBusy(false)
@@ -176,7 +182,8 @@ export function SetupPage() {
               setConfirm('')
               return
             }
-            void finish(pin)
+            if (imported) void finish(pin)
+            else setStep('cycle')
           }}
         >
           <h1 className="text-3xl font-semibold tracking-tight">{t('setup.confirmTitle')}</h1>
@@ -193,9 +200,104 @@ export function SetupPage() {
             autoFocus
           />
           <Button type="submit" className="w-full" disabled={busy || confirm.length < 4}>
-            {busy ? t('setup.working') : t('setup.confirmAction')}
+            {busy ? t('setup.working') : imported ? t('setup.confirmAction') : t('setup.create')}
           </Button>
           <Button tone="quiet" className="w-full" onClick={() => setStep('create')}>{t('setup.back')}</Button>
+        </form>
+      ) : null}
+
+      {step === 'cycle' ? (
+        <form
+          className="space-y-4"
+          onSubmit={(event) => {
+            event.preventDefault()
+            const days = Number(periodLength)
+            if (!Number.isInteger(days) || days < 1 || days > 14) {
+              setError(t('setup.periodInvalid'))
+              return
+            }
+            const typed = cycleLength.trim()
+            let typical: number | null = null
+            if (typed) {
+              typical = Number(typed)
+              if (!Number.isInteger(typical) || typical < 15 || typical > 90) {
+                setError(t('setup.cycleInvalid'))
+                return
+              }
+            }
+            const seeded = seedFirstPeriod(emptyVault(locale), startDate, days, typical, todayISO())
+            if (!seeded.ok) {
+              const key = seeded.error === 'future'
+                ? 'setup.dateFuture'
+                : seeded.error === 'span'
+                  ? 'setup.periodInvalid'
+                  : 'setup.dateRequired'
+              setError(t(key))
+              return
+            }
+            void finish(pin, seeded.vault)
+          }}
+        >
+          <div className="flex items-center justify-between">
+            <h1 className="text-3xl font-semibold tracking-tight">{t('setup.cycleTitle')}</h1>
+            <LangToggle />
+          </div>
+          <p className="leading-relaxed text-muted">{t('setup.cycleLead')}</p>
+          <label className="block space-y-2" htmlFor="last-start">
+            <span className="font-medium">{t('setup.startDate')}</span>
+            <input
+              id="last-start"
+              type="date"
+              required
+              max={todayISO()}
+              value={startDate}
+              onChange={(event) => {
+                setStartDate(event.target.value)
+                setError('')
+              }}
+              className="min-h-12 w-full rounded-2xl border border-black/15 bg-white px-3"
+            />
+          </label>
+          <label className="block space-y-2" htmlFor="period-length">
+            <span className="font-medium">{t('setup.periodLength')}</span>
+            <input
+              id="period-length"
+              inputMode="numeric"
+              min={1}
+              max={14}
+              required
+              value={periodLength}
+              aria-describedby="period-hint"
+              onChange={(event) => {
+                setPeriodLength(event.target.value)
+                setError('')
+              }}
+              className="min-h-12 w-full rounded-2xl border border-black/15 bg-white px-3"
+            />
+            <span id="period-hint" className="block text-sm leading-relaxed text-muted">{t('setup.periodLengthHint')}</span>
+          </label>
+          <label className="block space-y-2" htmlFor="cycle-length">
+            <span className="font-medium">{t('setup.cycleLength')}</span>
+            <input
+              id="cycle-length"
+              inputMode="numeric"
+              min={15}
+              max={90}
+              value={cycleLength}
+              aria-describedby="cycle-hint"
+              onChange={(event) => {
+                setCycleLength(event.target.value)
+                setError('')
+              }}
+              className="min-h-12 w-full rounded-2xl border border-black/15 bg-white px-3"
+            />
+            <span id="cycle-hint" className="block text-sm leading-relaxed text-muted">{t('setup.cycleLengthHint')}</span>
+          </label>
+          {error ? <p role="alert" className="text-sm text-rose">{error}</p> : null}
+          <Button type="submit" className="w-full" disabled={busy || !startDate}>
+            {busy ? t('setup.working') : t('setup.confirmAction')}
+          </Button>
+          <Button tone="quiet" className="w-full" onClick={() => setStep('confirm')}>{t('setup.back')}</Button>
         </form>
       ) : null}
       <p className="text-sm text-muted">{t('disclaimer.short')}</p>

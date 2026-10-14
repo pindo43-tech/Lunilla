@@ -4,6 +4,8 @@ Registro menstrual local para jóvenes. Los datos del ciclo se quedan en el nave
 
 No es un dispositivo médico. No diagnostica y no sirve como anticoncepción.
 
+En este corte se puede: anotar el último período al empezar, ver Hoy con el día del ciclo, marcar el calendario, abrir un resumen (que dice cuando todavía es débil), corregir o borrar un período, y registrar el día con flujo, síntomas, ánimo, temperatura basal y flujo cervical. El modo discreto cambia el título y la pantalla de bloqueo a Notas. Sigue en español, con inglés en ajustes.
+
 Live: https://menstrual-tracker-jovenes.pages.dev
 
 Repo: https://github.com/pindo43-tech/menstrual-tracker-jovenes

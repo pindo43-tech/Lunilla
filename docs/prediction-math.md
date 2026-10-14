@@ -2,7 +2,7 @@
 
 Esto es una cuenta educativa. No diagnostica, no dice si un ciclo es sano y no sirve como anticoncepción ni para buscar un embarazo.
 
-Las fechas son días de calendario `AAAA-MM-DD`, sin hora. La diferencia entre dos fechas es la cantidad de días de calendario.
+Las fechas son días de calendario `AAAA-MM-DD`, sin hora. Hoy se lee del calendario local del dispositivo. Sumar o restar días se hace sobre esa fecha, no sobre un instante UTC, para que un huso horario no corra el día. La diferencia entre dos fechas es la cantidad de días de calendario.
 
 ## Qué entra en la cuenta
 
@@ -54,8 +54,9 @@ La fecha igual se muestra. La confianza baja.
 
 ## Confianza, en palabras
 
-- Sin intervalos (`m = 0`): no hay predicción. No se inventa un ciclo de 28.
-- Baja: un solo intervalo, o la marca de variación, o `s > 6`.
+- Sin intervalos (`m = 0`) y sin un largo anotado al empezar: no hay predicción. No se inventa un ciclo de 28.
+- Con menos de 2 ciclos medidos la confianza se queda baja. Si la persona anotó un largo habitual y todavía no hay un intervalo medido, la fecha usa ese número y lo dice. No es un promedio.
+- Baja: un solo intervalo, el largo anotado a mano, la marca de variación, o `s > 6`.
 - Alta: `m ≥ 4`, `s ≤ 4` y no está la marca de variación.
 - Media: el resto de los casos con al menos dos intervalos.
 

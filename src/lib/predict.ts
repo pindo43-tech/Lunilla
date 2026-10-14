@@ -5,7 +5,7 @@ import type { Confidence, DayLog, PhaseName, Prediction } from '../types.ts'
 /** Local cycle estimate. Formulas live in docs/prediction-math.md. */
 
 export function isBleed(day: DayLog | undefined): boolean {
-  return !!day && day.flow !== 'none'
+  return day?.flow === 'light' || day?.flow === 'medium' || day?.flow === 'heavy'
 }
 
 export function hasDay(days: Record<string, DayLog>, iso: string): boolean {
@@ -29,7 +29,7 @@ export function bleedSpan(start: string, days: Record<string, DayLog>): { end: s
   let end = start
   let length = 1
   let cursor = start
-  while (length < 14) {
+  while (length < 40) {
     const next = addDays(cursor, 1)
     if (!isBleed(days[next])) break
     cursor = next
@@ -107,7 +107,12 @@ export function cycleModel(periodStart: string, length: number) {
   }
 }
 
-export function predict(days: Record<string, DayLog>, historyLength: number, today: string): Prediction {
+export function predict(
+  days: Record<string, DayLog>,
+  historyLength: number,
+  today: string,
+  typicalCycleLength?: number | null,
+): Prediction {
   const starts = periodStarts(days, today)
   const lastStart = starts.length > 0 ? (starts[starts.length - 1] ?? null) : null
   const windowSize = clamp(historyLength, 3, 12)
@@ -116,8 +121,14 @@ export function predict(days: Record<string, DayLog>, historyLength: number, tod
   const mean = arithmeticMean(lengths)
   const sd = sampleSd(lengths)
   const irregular = isIrregular(lengths, sd)
-  const confidence = confidenceFor(lengths.length, sd, irregular)
-  const predictedLength = weighted === null ? null : Math.round(weighted)
+  const typical = typeof typicalCycleLength === 'number'
+    && typicalCycleLength >= MIN_CYCLE_DAYS
+    && typicalCycleLength <= MAX_CYCLE_DAYS
+    ? Math.round(typicalCycleLength)
+    : null
+  const usingTypical = lastStart !== null && lengths.length === 0 && typical !== null
+  const confidence = usingTypical ? 'low' : confidenceFor(lengths.length, sd, irregular)
+  const predictedLength = weighted === null ? (usingTypical ? typical : null) : Math.round(weighted)
 
   const base: Prediction = {
     lengths,
@@ -126,6 +137,8 @@ export function predict(days: Record<string, DayLog>, historyLength: number, tod
     sd,
     irregular,
     confidence,
+    cyclesUsed: lengths.length,
+    lengthSource: predictedLength === null ? 'none' : usingTypical ? 'typical' : 'measured',
     predictedLength,
     lastStart,
     cycleDay: null,

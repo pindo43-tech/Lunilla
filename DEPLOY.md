@@ -10,8 +10,10 @@ Proyecto de Cloudflare Pages: `menstrual-tracker-jovenes`.
 2. El deploy se hizo con Wrangler, con el token y el account id solo en el entorno, no en el repo:
 
 ```bash
-npx wrangler pages deploy dist --project-name menstrual-tracker-jovenes --commit-dirty=true
+npx wrangler pages deploy dist --project-name menstrual-tracker-jovenes --branch main --commit-dirty=true
 ```
+
+`--branch main` publica en la URL de producción. Sin esa rama, Wrangler deja el resultado en un preview y `pages.dev` no cambia.
 
 Variables: `CLOUDFLARE_API_TOKEN` y `CLOUDFLARE_ACCOUNT_ID`. No se commitean.
 

@@ -2,14 +2,14 @@ import { Link } from 'react-router-dom'
 import { LangToggle, MoonMark, Shell } from '../components/ui.tsx'
 import type { MessageKey } from '../lib/i18n.tsx'
 import { useI18n } from '../lib/i18n.tsx'
-import { useTitle } from '../lib/useTitle.ts'
+import { useBrandTitle } from '../lib/useTitle.ts'
 
 const PRIVACY: MessageKey[] = ['land.p1', 'land.p2', 'land.p3', 'land.p4', 'land.p5', 'land.p6']
-const FEATURES: MessageKey[] = ['land.f1', 'land.f2', 'land.f3', 'land.f4', 'land.f5', 'land.f6']
+const FEATURES: MessageKey[] = ['land.f1', 'land.f2', 'land.f3', 'land.f4', 'land.f5', 'land.f6', 'land.f7']
 
 export function LandingPage() {
   const { t } = useI18n()
-  useTitle('Marea')
+  useBrandTitle()
   return (
     <Shell>
       <a href="#main" className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-10 focus:rounded-full focus:bg-white focus:px-3 focus:py-2">

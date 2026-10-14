@@ -13,7 +13,7 @@ import {
 import type { DayLog, Flow } from '../types.ts'
 
 function bleed(flow: Flow = 'medium'): DayLog {
-  return { flow, symptoms: [], moods: [], note: '' }
+  return { flow, symptoms: [], moods: [], note: '', basalTemp: null, mucus: null }
 }
 
 describe('weighted cycle math', () => {
@@ -134,5 +134,61 @@ describe('predict', () => {
     expect(result.irregular).toBe(false)
     expect(result.confidence).toBe('high')
     expect(result.predictedLength).toBe(28)
+    expect(result.cyclesUsed).toBe(4)
+    expect(result.lengthSource).toBe('measured')
+    expect(result.irregular).toBe(false)
+  })
+
+  it('keeps confidence low under two measured cycles', () => {
+    const days: Record<string, DayLog> = {
+      '2026-01-01': bleed(),
+      '2026-01-29': bleed(),
+    }
+    const one = predict(days, 6, '2026-02-01')
+    expect(one.cyclesUsed).toBe(1)
+    expect(one.confidence).toBe('low')
+    expect(one.lengthSource).toBe('measured')
+    expect(one.predictedLength).toBe(28)
+    expect(one.irregular).toBe(false)
+
+    const guess = predict({ '2026-03-01': bleed() }, 6, '2026-03-04', 30)
+    expect(guess.cyclesUsed).toBe(0)
+    expect(guess.confidence).toBe('low')
+    expect(guess.lengthSource).toBe('typical')
+    expect(guess.predictedLength).toBe(30)
+    expect(guess.nextPeriod).toBe('2026-03-31')
+
+    const bare = predict({ '2026-03-01': bleed() }, 6, '2026-03-04', null)
+    expect(bare.confidence).toBe('none')
+    expect(bare.predictedLength).toBeNull()
+    expect(bare.cyclesUsed).toBe(0)
+  })
+
+  it('flags an irregular window and does not call two matching cycles irregular', () => {
+    const irregularDays: Record<string, DayLog> = {
+      '2026-01-01': bleed(),
+      '2026-01-21': bleed(),
+      '2026-03-02': bleed(),
+      '2026-03-27': bleed(),
+    }
+    const irregular = predict(irregularDays, 6, '2026-03-27')
+    expect(irregular.lengths).toEqual([20, 40, 25])
+    expect(irregular.irregular).toBe(true)
+    expect(irregular.confidence).toBe('low')
+
+    const regular = predict(
+      {
+        '2026-01-01': bleed(),
+        '2026-01-29': bleed(),
+        '2026-02-26': bleed(),
+        '2026-03-26': bleed(),
+        '2026-04-23': bleed(),
+      },
+      6,
+      '2026-04-23',
+    )
+    expect(regular.irregular).toBe(false)
+    expect(regular.confidence).toBe('high')
+    expect(regular.sd).toBe(0)
   })
 })

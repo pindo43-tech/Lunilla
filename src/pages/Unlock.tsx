@@ -1,17 +1,19 @@
 import { useState } from 'react'
 import { Button, DigitField, LangToggle, MoonMark } from '../components/ui.tsx'
 import { PinError } from '../lib/crypto.ts'
+import { useDiscreet } from '../lib/discreet.ts'
 import { useI18n } from '../lib/i18n.tsx'
-import { useTitle } from '../lib/useTitle.ts'
+import { useBrandTitle } from '../lib/useTitle.ts'
 import { useSession } from '../state/session.tsx'
 
 export function UnlockPage() {
   const { t } = useI18n()
   const { unlock } = useSession()
+  const discreet = useDiscreet()
   const [pin, setPin] = useState('')
   const [error, setError] = useState('')
   const [busy, setBusy] = useState(false)
-  useTitle('Marea')
+  useBrandTitle()
 
   return (
     <form
@@ -30,12 +32,12 @@ export function UnlockPage() {
       }}
     >
       <div className="flex items-center justify-between">
-        <MoonMark />
+        {discreet ? <span aria-hidden="true" /> : <MoonMark />}
         <LangToggle />
       </div>
       <header className="space-y-2">
-        <h1 className="text-3xl font-semibold tracking-tight">{t('unlock.title')}</h1>
-        <p className="leading-relaxed text-muted">{t('unlock.lead')}</p>
+        <h1 className="text-3xl font-semibold tracking-tight">{discreet ? t('unlock.titleDiscreet') : t('unlock.title')}</h1>
+        <p className="leading-relaxed text-muted">{discreet ? t('unlock.leadDiscreet') : t('unlock.lead')}</p>
       </header>
       <DigitField
         label={t('pin.label')}

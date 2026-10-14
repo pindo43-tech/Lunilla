@@ -5,7 +5,7 @@ import { formatLong, formatMonth, monthMatrix, todayISO } from '../lib/dates.ts'
 import type { MessageKey } from '../lib/i18n.tsx'
 import { useI18n } from '../lib/i18n.tsx'
 import { isBleed, isFertileDay, isPredictedPeriodDay, predict } from '../lib/predict.ts'
-import { useTitle } from '../lib/useTitle.ts'
+import { useBrandTitle } from '../lib/useTitle.ts'
 import { useSession } from '../state/session.tsx'
 import type { Flow } from '../types.ts'
 
@@ -24,14 +24,15 @@ const FLOW_KEY: Record<Flow, MessageKey> = {
 export function CalendarPage() {
   const { vault } = useSession()
   const { locale, t } = useI18n()
-  useTitle(`${t('tabs.calendar')} · Marea`)
+  useBrandTitle(t('tabs.calendar'))
   const today = todayISO()
   const [cursor, setCursor] = useState(() => {
     const [year, month] = today.split('-').map(Number)
     return { year: year ?? 2026, monthIndex: (month ?? 1) - 1 }
   })
   if (!vault) return null
-  const prediction = predict(vault.days, vault.settings.historyLength, today)
+  const prediction = predict(vault.days, vault.settings.historyLength, today, vault.settings.typicalCycleLength)
+  const onThisMonth = `${cursor.year}-${String(cursor.monthIndex + 1).padStart(2, '0')}` === today.slice(0, 7)
   const cells = monthMatrix(cursor.year, cursor.monthIndex)
   const label = capitalize(formatMonth(cursor.year, cursor.monthIndex, locale))
 
@@ -47,14 +48,25 @@ export function CalendarPage() {
       <div className="flex items-center justify-between gap-2">
         <h1 className="text-2xl font-semibold tracking-tight text-ink">{label}</h1>
         <div className="flex gap-2">
-          <button type="button" aria-label={t('cal.prev')} onClick={() => shift(-1)} className="min-h-11 min-w-11 rounded-full bg-white text-lg shadow-sm">
+          <button type="button" aria-label={t('cal.prev')} onClick={() => shift(-1)} className="min-h-11 min-w-11 rounded-full bg-white text-lg text-ink shadow-sm">
             ‹
           </button>
-          <button type="button" aria-label={t('cal.next')} onClick={() => shift(1)} className="min-h-11 min-w-11 rounded-full bg-white text-lg shadow-sm">
+          <button type="button" aria-label={t('cal.next')} onClick={() => shift(1)} className="min-h-11 min-w-11 rounded-full bg-white text-lg text-ink shadow-sm">
             ›
           </button>
         </div>
       </div>
+      <button
+        type="button"
+        onClick={() => {
+          const [year, month] = today.split('-').map(Number)
+          setCursor({ year: year ?? cursor.year, monthIndex: (month ?? 1) - 1 })
+        }}
+        aria-pressed={onThisMonth}
+        className="min-h-11 rounded-full bg-white px-4 text-sm font-medium text-ink shadow-sm"
+      >
+        {t('cal.jumpToday')}
+      </button>
       <div role="grid" aria-label={label} className="grid grid-cols-7 justify-items-center gap-y-1">
         {WEEKDAYS[locale].map((day) => (
           <div key={day} role="columnheader" className="pb-1 text-xs uppercase tracking-wide text-muted">
@@ -82,10 +94,10 @@ export function CalendarPage() {
               aria-current={iso === today ? 'date' : undefined}
               className={cx(
                 'flex h-11 w-11 items-center justify-center rounded-full text-sm font-medium text-ink',
-                bleed && 'bg-rose-soft font-semibold text-rose',
-                fertile && 'ring-2 ring-sage',
-                predicted && 'border border-dashed border-lavender',
-                iso === today && 'outline outline-2 outline-offset-1 outline-ink',
+                bleed && 'mark-logged font-semibold',
+                predicted && 'mark-predicted',
+                fertile && 'mark-fertile',
+                iso === today && 'outline outline-2 outline-offset-2 outline-ink',
               )}
             >
               {Number(iso.slice(-2))}
@@ -94,9 +106,9 @@ export function CalendarPage() {
         })}
       </div>
       <ul className="space-y-2 text-sm text-muted">
-        <li className="flex items-center gap-2"><span className="h-3 w-3 rounded-full bg-rose-soft ring-1 ring-rose" />{t('cal.legendFlow')}</li>
-        <li className="flex items-center gap-2"><span className="h-3 w-3 rounded-full ring-2 ring-sage" />{t('cal.legendFertile')}</li>
-        <li className="flex items-center gap-2"><span className="h-3 w-3 rounded-full border border-dashed border-lavender" />{t('cal.legendPred')}</li>
+        <li className="flex items-center gap-2"><span className="mark-logged h-3 w-3 rounded-full" />{t('cal.legendFlow')}</li>
+        <li className="flex items-center gap-2"><span className="mark-fertile h-3 w-3 rounded-full bg-white" />{t('cal.legendFertile')}</li>
+        <li className="flex items-center gap-2"><span className="mark-predicted h-3 w-3 rounded-full" />{t('cal.legendPred')}</li>
       </ul>
       <p className="leading-relaxed text-muted">{t('cal.hint')}</p>
     </div>
