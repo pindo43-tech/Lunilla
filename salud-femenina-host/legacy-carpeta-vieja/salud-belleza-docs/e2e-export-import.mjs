@@ -1,0 +1,46 @@
+import { chromium } from 'playwright-core';
+import { spawn } from 'child_process'; import fs from 'fs';
+const B='/home/box/Desktop/plugin_tienda_nube';
+const srv=[spawn('python3',['-m','http.server','8701'],{cwd:B+'/menstrual-tracker/app'}),spawn('python3',['-m','http.server','8702'],{cwd:B+'/menopausia/app'})];
+await new Promise(r=>setTimeout(r,1000));
+const br=await chromium.launch({executablePath:'/usr/bin/google-chrome'});
+const ctx=await br.newContext({acceptDownloads:true});const pg=await ctx.newPage();const errs=[];
+pg.on('pageerror',e=>errs.push(e.message));pg.on('console',m=>m.type()==='error'&&errs.push(m.text()));
+pg.on('dialog',d=>d.accept());
+const ok=(c,m)=>{console.log(c?'PASS':'FAIL',m); if(!c) process.exitCode=1;};
+const unlock=async u=>{await pg.goto(u);await pg.fill('#pin','1234');await pg.click('#pinForm button');await pg.waitForSelector('#main:not([hidden])');};
+// LUNA
+await unlock('http://localhost:8701/app/');
+await pg.click('#todayBtn');await pg.waitForTimeout(300);
+ok((await pg.textContent('#todayBtn')).includes('✓'),'luna quick today');
+// Esc no guarda
+await pg.click('.day.t');await pg.click('[data-k=sym] .chip[data-i="0"]');await pg.keyboard.press('Escape');await pg.waitForTimeout(200);
+ok(!(await pg.evaluate(()=>0)) , 'noop');
+let [d]=await Promise.all([pg.waitForEvent('download'),pg.click('#exp')]);let j=JSON.parse(fs.readFileSync(await d.path()));
+ok(Object.keys(j.days).length===1 && j.days[Object.keys(j.days)[0]].sym.length===0,'luna export (Esc no guardó síntoma)');
+fs.writeFileSync('/tmp/pw/luna-in.json',JSON.stringify({days:{'2026-08-01':{flow:3},'2026-08-29':{flow:9,sym:['Acné','<x>']},'bad':{flow:1},'2026-09-02':{note:'<img src=x onerror=alert(1)>'}}}));
+await pg.setInputFiles('#imp','/tmp/pw/luna-in.json');await pg.waitForTimeout(500);
+[d]=await Promise.all([pg.waitForEvent('download'),pg.click('#exp')]);j=JSON.parse(fs.readFileSync(await d.path()));
+ok(Object.keys(j.days).length===3 && j.days['2026-08-29'].flow===4 && j.days['2026-08-29'].sym.join()==='Acné','luna import sanitiza');
+ok((await pg.$$('#hist li')).length===2,'luna historial');
+fs.writeFileSync('/tmp/pw/bad.json','{"x":1}');await pg.setInputFiles('#imp','/tmp/pw/bad.json');await pg.waitForTimeout(300);
+await unlock('http://localhost:8701/app/');ok((await pg.$$('#hist li')).length===2,'luna persiste tras recarga + inválido rechazado');
+await pg.click('#wipe');await pg.waitForLoadState();await pg.waitForTimeout(500);
+ok(await pg.evaluate(()=>!localStorage.getItem('ciclo.vault.v1')),'luna borrado');
+await pg.screenshot({path:'/tmp/pw/t2.png',fullPage:true});
+// BRISA
+await unlock('http://localhost:8702/app/');
+await pg.fill('#hf','5');await pg.click('#trig .chip[data-i="0"]');await pg.click('#saveDay');await pg.waitForTimeout(300);
+await pg.click('[data-t=med]');
+[d]=await Promise.all([pg.waitForEvent('download'),pg.click('#json')]);j=JSON.parse(fs.readFileSync(await d.path()));
+ok(Object.values(j.days)[0].trig[0]==='Cafeína','brisa export con disparador');
+const days={};for(let i=1;i<=8;i++)days[`2026-09-0${i<10?i:''}`.slice(0,10)]={hf:i%2?8:1,trig:i%2?['Alcohol']:[],sleep:'7'};
+fs.writeFileSync('/tmp/pw/b-in.json',JSON.stringify({days:{...days,'nope':{}},mrs:[{date:'2026-09-01',som:4,psi:4,uro:2,total:10,severity:2},{date:'x'}]}));
+await pg.setInputFiles('#imp','/tmp/pw/b-in.json');await pg.waitForTimeout(500);
+ok((await pg.textContent('#report')).includes('8 días'),'brisa import sanitiza');
+await pg.click('[data-t=graf]');ok((await pg.textContent('#chTrig')).includes('Alcohol'),'brisa disparadores');
+await pg.screenshot({path:'/tmp/pw/m2.png',fullPage:true});
+await pg.click('[data-t=med]');await pg.click('#wipe');await pg.waitForLoadState();await pg.waitForTimeout(500);
+ok(await pg.evaluate(()=>!localStorage.getItem('meno.vault.v1')),'brisa borrado');
+ok(!errs.length,'sin errores consola '+JSON.stringify(errs));
+await br.close();srv.forEach(s=>s.kill());

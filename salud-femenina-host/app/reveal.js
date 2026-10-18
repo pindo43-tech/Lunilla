@@ -1,0 +1,1 @@
+const io=new IntersectionObserver(es=>es.forEach(e=>e.isIntersecting&&e.target.classList.add('in')));document.querySelectorAll('.f').forEach((el,i)=>{el.style.transitionDelay=i*90+'ms';io.observe(el)})
