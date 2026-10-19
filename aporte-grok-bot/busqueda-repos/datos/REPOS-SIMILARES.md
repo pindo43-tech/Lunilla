@@ -2,7 +2,7 @@
 
 Fuente: API pública de búsqueda de GitHub (64 consultas, sort=stars) + repos ya evaluados en rondas previas. Licencia = metadato spdx de GitHub (no verificado leyendo LICENSE salvo los ya usados). Marca ◆ = ya evaluado/citado en docs o REUSE.md previos. Fecha = último push.
 
-## 1. Tracker menstrual (Luna) — 915 repos
+## 1. Tracker menstrual (Lunilla) — 915 repos
 
 | ★ | Repo | Licencia | Lenguaje | Último push | Descripción |
 |---|---|---|---|---|---|
