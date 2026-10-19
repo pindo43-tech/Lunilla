@@ -1,7 +1,7 @@
 /* @fnando/sparkline — https://github.com/fnando/sparkline
  * commit 3008997 (2020-09-09), MIT © 2018 Nando Vieira
- * Vendorizado en Luna para el gráfico de longitudes de ciclo.
- * Cambios LUNA: (1) guardia max≥1 para no dividir por 0.
+ * Vendorizado en Lunilla para el gráfico de longitudes de ciclo.
+ * Cambios LUNILLA: (1) guardia max≥1 para no dividir por 0.
  * Licencia: LICENSE-sparkline.txt
  */
 function getY(max, height, diff, value) {
@@ -86,7 +86,7 @@ export function sparkline(svg, entries, options) {
 
   // The maximum value. This is used to calculate the Y coord of
   // each sparkline datapoint.
-  // LUNA: evita división por 0 si todos los valores son 0 (upstream: Math.max(...values))
+  // LUNILLA: evita división por 0 si todos los valores son 0 (upstream: Math.max(...values))
   const max = Math.max(1, ...values);
 
   // Some arbitrary value to remove the cursor and spot out of

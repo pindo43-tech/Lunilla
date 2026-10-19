@@ -6,10 +6,10 @@
  *   (clase DatePickerDialog: handleDayKeyDown, moveFocusTo*, changeMonth, setFocusDay), commit 0f765e4dc33e966026114ac12a8380db1de3b787.
  *   Aviso completo: third_party/LICENSE-W3C-APG.txt
  *
- *   LUNA: cambios respecto del original
+ *   LUNILLA: cambios respecto del original
  *   1. Solo la navegación por teclado de la grilla de días (sin diálogo, textbox ni botones de mes/año).
  *   2. Funciones puras sobre Date en vez de métodos de clase (para poder testearlas en Node): `keyTarget(day, key, shift, lastDate)`.
- *   3. Semana de lunes a domingo (el calendario de Luna empieza el lunes): Home/End van a lunes/domingo
+ *   3. Semana de lunes a domingo (el calendario de Lunilla empieza el lunes): Home/End van a lunes/domingo
  *      (el original usa domingo-sábado con `getDay()`).
  *   4. `rovingFocus(cells, iso)` reemplaza a `setFocusDay` y trabaja con botones `data-d="AAAA-MM-DD"`.
  *   5. Esc/Enter/Espacio/Tab no se interceptan: los días son <button> y Enter/Espacio ya abren el registro del día.
@@ -41,8 +41,8 @@ export function keyTarget(day, key, shift = false, lastDate = null) {
     case 'Up': case 'ArrowUp': d.setDate(d.getDate() - 7); return d;
     case 'PageUp': return changeMonth(day, shift ? -12 : -1, lastDate);
     case 'PageDown': return changeMonth(day, shift ? 12 : 1, lastDate);
-    case 'Home': d.setDate(d.getDate() - ((d.getDay() + 6) % 7)); return d; // LUNA: lunes
-    case 'End': d.setDate(d.getDate() + (6 - (d.getDay() + 6) % 7)); return d; // LUNA: domingo
+    case 'Home': d.setDate(d.getDate() - ((d.getDay() + 6) % 7)); return d; // LUNILLA: lunes
+    case 'End': d.setDate(d.getDate() + (6 - (d.getDay() + 6) % 7)); return d; // LUNILLA: domingo
   }
   return null;
 }

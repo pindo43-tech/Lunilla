@@ -9,24 +9,24 @@ pg.on('pageerror',e=>errs.push(e.message));pg.on('console',m=>m.type()==='error'
 pg.on('dialog',d=>d.accept());
 const ok=(c,m)=>{console.log(c?'PASS':'FAIL',m); if(!c) process.exitCode=1;};
 const unlock=async u=>{await pg.goto(u);await pg.fill('#pin','1234');await pg.click('#pinForm button');await pg.waitForSelector('#main:not([hidden])');};
-// LUNA
+// LUNILLA
 await unlock('http://localhost:8701/app/');
 await pg.click('#todayBtn');await pg.waitForTimeout(300);
-ok((await pg.textContent('#todayBtn')).includes('✓'),'luna quick today');
+ok((await pg.textContent('#todayBtn')).includes('✓'),'lunilla quick today');
 // Esc no guarda
 await pg.click('.day.t');await pg.click('[data-k=sym] .chip[data-i="0"]');await pg.keyboard.press('Escape');await pg.waitForTimeout(200);
 ok(!(await pg.evaluate(()=>0)) , 'noop');
 let [d]=await Promise.all([pg.waitForEvent('download'),pg.click('#exp')]);let j=JSON.parse(fs.readFileSync(await d.path()));
-ok(Object.keys(j.days).length===1 && j.days[Object.keys(j.days)[0]].sym.length===0,'luna export (Esc no guardó síntoma)');
-fs.writeFileSync('/tmp/pw/luna-in.json',JSON.stringify({days:{'2026-08-01':{flow:3},'2026-08-29':{flow:9,sym:['Acné','<x>']},'bad':{flow:1},'2026-09-02':{note:'<img src=x onerror=alert(1)>'}}}));
-await pg.setInputFiles('#imp','/tmp/pw/luna-in.json');await pg.waitForTimeout(500);
+ok(Object.keys(j.days).length===1 && j.days[Object.keys(j.days)[0]].sym.length===0,'lunilla export (Esc no guardó síntoma)');
+fs.writeFileSync('/tmp/pw/lunilla-in.json',JSON.stringify({days:{'2026-08-01':{flow:3},'2026-08-29':{flow:9,sym:['Acné','<x>']},'bad':{flow:1},'2026-09-02':{note:'<img src=x onerror=alert(1)>'}}}));
+await pg.setInputFiles('#imp','/tmp/pw/lunilla-in.json');await pg.waitForTimeout(500);
 [d]=await Promise.all([pg.waitForEvent('download'),pg.click('#exp')]);j=JSON.parse(fs.readFileSync(await d.path()));
-ok(Object.keys(j.days).length===3 && j.days['2026-08-29'].flow===4 && j.days['2026-08-29'].sym.join()==='Acné','luna import sanitiza');
-ok((await pg.$$('#hist li')).length===2,'luna historial');
+ok(Object.keys(j.days).length===3 && j.days['2026-08-29'].flow===4 && j.days['2026-08-29'].sym.join()==='Acné','lunilla import sanitiza');
+ok((await pg.$$('#hist li')).length===2,'lunilla historial');
 fs.writeFileSync('/tmp/pw/bad.json','{"x":1}');await pg.setInputFiles('#imp','/tmp/pw/bad.json');await pg.waitForTimeout(300);
-await unlock('http://localhost:8701/app/');ok((await pg.$$('#hist li')).length===2,'luna persiste tras recarga + inválido rechazado');
+await unlock('http://localhost:8701/app/');ok((await pg.$$('#hist li')).length===2,'lunilla persiste tras recarga + inválido rechazado');
 await pg.click('#wipe');await pg.waitForLoadState();await pg.waitForTimeout(500);
-ok(await pg.evaluate(()=>!localStorage.getItem('ciclo.vault.v1')),'luna borrado');
+ok(await pg.evaluate(()=>!localStorage.getItem('ciclo.vault.v1')),'lunilla borrado');
 await pg.screenshot({path:'/tmp/pw/t2.png',fullPage:true});
 // BRISA
 await unlock('http://localhost:8702/app/');

@@ -1,4 +1,4 @@
-// E2E ronda 4 (Luna + Brisa) servido con serve-pages.mjs (aplica _headers/CSP y .assetsignore como Cloudflare Pages).
+// E2E ronda 4 (Lunilla + Brisa) servido con serve-pages.mjs (aplica _headers/CSP y .assetsignore como Cloudflare Pages).
 // Uso: node e2e-ronda4.mjs   (requiere playwright-core y /usr/bin/google-chrome)
 import { chromium } from 'playwright-core';
 import { spawn } from 'child_process'; import fs from 'fs'; import path from 'path'; import { fileURLToPath } from 'url';
@@ -17,20 +17,20 @@ const unlock = async (pg, u) => { await pg.goto(u); await pg.fill('#pin', '1234'
 const download = async (pg, sel) => { const [d] = await Promise.all([pg.waitForEvent('download'), pg.click(sel)]); return fs.readFileSync(await d.path(), 'utf8'); };
 const csp = async (pg, tag) => { for (const u of ['/', '/app/']) { await pg.goto(new URL(u, pg.url()).href); await pg.waitForTimeout(400); const v = await pg.evaluate(() => window.__csp); ok(!v.length, `${tag} ${u}: sin violaciones CSP ${v.length ? JSON.stringify(v) : ''}`); } };
 
-// ---------- LUNA ----------
+// ---------- LUNILLA ----------
 { const { ctx, pg, errs } = await page(), U = 'http://localhost:8731/app/';
   await unlock(pg, U); await pg.click('#todayBtn'); await pg.waitForTimeout(300);
-  ok(/fase menstrual/i.test(await pg.textContent('#summary .phase summary')) && /Síntomas frecuentes/.test(await pg.textContent('#summary .phase')), 'luna: info de la fase actual (textos de peri)');
+  ok(/fase menstrual/i.test(await pg.textContent('#summary .phase summary')) && /Síntomas frecuentes/.test(await pg.textContent('#summary .phase')), 'lunilla: info de la fase actual (textos de peri)');
   const ics = await download(pg, '#ics');
-  ok(/^BEGIN:VCALENDAR\r\n/.test(ics) && (ics.match(/BEGIN:VEVENT/g) || []).length === 3 && /DTSTART;VALUE=DATE:\d{8}\r\n/.test(ics), 'luna: .ics con 3 periodos previstos (ics.js)');
+  ok(/^BEGIN:VCALENDAR\r\n/.test(ics) && (ics.match(/BEGIN:VEVENT/g) || []).length === 3 && /DTSTART;VALUE=DATE:\d{8}\r\n/.test(ics), 'lunilla: .ics con 3 periodos previstos (ics.js)');
   fs.writeFileSync(TMP + '/l.json', JSON.stringify({ days: { '2026-08-01': { flow: 3 }, '2026-13-01': { flow: 3 }, '2026-02-31': { flow: 2 }, '2026-08-29': { flow: 2 } } }));
   await pg.setInputFiles('#imp', TMP + '/l.json'); await pg.waitForTimeout(500);
-  let j = JSON.parse(await download(pg, '#exp')); ok(Object.keys(j.days).sort().join() === '2026-08-01,2026-08-29', 'luna: import descarta fechas imposibles (2026-13-01, 2026-02-31)');
+  let j = JSON.parse(await download(pg, '#exp')); ok(Object.keys(j.days).sort().join() === '2026-08-01,2026-08-29', 'lunilla: import descarta fechas imposibles (2026-13-01, 2026-02-31)');
   // Bóveda guardada por una versión anterior con una fecha imposible: antes quedaba "PIN incorrecto" para siempre
   await pg.evaluate(async () => { const { Vault } = await import('/app/store.js'); await Vault.open('1234'); await Vault.save({ days: { '2026-13-01': { flow: 3, sym: [], mood: 0, note: '' }, '2026-08-01': { flow: 3, sym: [], mood: 0, note: '' } } }); });
-  await unlock(pg, U).then(() => ok(true, 'luna: bóveda con fecha imposible abre igual (antes: "PIN incorrecto")'), () => ok(false, 'luna: bóveda con fecha imposible abre igual'));
-  ok(!(await pg.textContent('#pinErr')), 'luna: sin mensaje de PIN incorrecto');
-  await csp(pg, 'luna'); ok(!errs.length, 'luna: sin errores de consola ' + JSON.stringify(errs)); await ctx.close(); }
+  await unlock(pg, U).then(() => ok(true, 'lunilla: bóveda con fecha imposible abre igual (antes: "PIN incorrecto")'), () => ok(false, 'lunilla: bóveda con fecha imposible abre igual'));
+  ok(!(await pg.textContent('#pinErr')), 'lunilla: sin mensaje de PIN incorrecto');
+  await csp(pg, 'lunilla'); ok(!errs.length, 'lunilla: sin errores de consola ' + JSON.stringify(errs)); await ctx.close(); }
 
 // ---------- BRISA ----------
 { const { ctx, pg, errs } = await page(), U = 'http://localhost:8732/app/';

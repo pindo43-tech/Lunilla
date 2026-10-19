@@ -1,4 +1,4 @@
-# Búsqueda de repos similares — salud-femenina (Luna, Brisa, Glow, Mechas)
+# Búsqueda de repos similares — salud-femenina (Lunilla, Brisa, Glow, Mechas)
 
 **Fecha:** 18/10/2026, alrededor de las 00:50 (hora de Argentina).
 **Autor:** SaludFemeninaHost (Grok Bot). Copia idéntica en los 4 repos: `Lunilla`, `menopausia-local-first`, `maquillaje-ar-mvp` y `hair-look-preview`.
@@ -28,7 +28,7 @@
 - Entre los repos con pocas estrellas puede quedar algo de ruido.
 
 ## Top 5 recomendado por app (licencia permisiva y útil)
-**Luna (tracker menstrual):**
+**Lunilla (tracker menstrual):**
 1. IraSoro/peri (MIT): predicción, fases y textos en español.
 2. getify/youperiod.app (MIT): PWA con cifrado local.
 3. adulbrich/ephira (MIT): modelo de datos local-first y cifrado.
@@ -61,7 +61,7 @@ mona-hrt/mona y Blueturboguy07/lunara son AGPL, así que sirven solo como ideas.
 ## Qué se usó de verdad y qué se descartó (según REUSE.md y UPSTREAM.md)
 El detalle por archivo y con el commit exacto está en el `REUSE.md` de cada app. Las URL y los commits de cada clon están en `UPSTREAM.md`.
 
-**Luna (menstrual-tracker)**
+**Lunilla (menstrual-tracker)**
 - **Usados:**
   - HYPERSAHIL/periodtracker (MIT): mediana ponderada, ventana ± y aviso de sangrado de más de 7 días, en `app/predict.js` y `app/main.js`.
   - getify/youperiod.app (MIT): el patrón de bóveda AES-GCM/PBKDF2, con código propio.

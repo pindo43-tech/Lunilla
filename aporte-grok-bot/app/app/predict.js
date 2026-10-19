@@ -38,7 +38,7 @@ export function predict(flowDays, { window = 6, luteal = 14, defaultCycle = 28, 
   const ps = periods(flowDays);
   if (!ps.length) return null;
   const cycles = [];
-  for (let i = 1; i < ps.length; i++) { const c = diff(ps[i - 1].start, ps[i].start); if (c >= 15 && c <= 60) cycles.push(c); } // outliers fuera (Luna: 60 d; upstream usa 90 para perimenopausia)
+  for (let i = 1; i < ps.length; i++) { const c = diff(ps[i - 1].start, ps[i].start); if (c >= 15 && c <= 60) cycles.push(c); } // outliers fuera (Lunilla: 60 d; upstream usa 90 para perimenopausia)
   const recent = cycles.slice(-window), n = recent.length;
   const avg = n ? recent.reduce((a, b) => a + b, 0) / n : defaultCycle;
   const wm = n ? weightedMedian(recent, recent.map((_, i) => 0.75 ** (n - 1 - i))) : defaultCycle;
@@ -88,7 +88,7 @@ export function phase(p, day, bleeding = false) {
 // Probabilidad relativa de fertilidad (campana gaussiana alrededor de la ovulación) —
 // adaptado de alwin-m/ROS-Cycle-Project index.html getDayDetails (MIT © 2025 Alwin Madhu, commit 7722a77).
 // Upstream: pov = exp(-(dayInCycle - ovulationCenter)² / (2·(sigma+1.5)²)); umbrales high>0.6 / medium>0.25.
-// Aquí sigma se deriva de la incertidumbre de Luna (días ±) acotada; dayInCycle es 0-index desde el inicio del ciclo.
+// Aquí sigma se deriva de la incertidumbre de Lunilla (días ±) acotada; dayInCycle es 0-index desde el inicio del ciclo.
 export function fertilityPov(dayInCycle, cycleLen, sigma = 2) {
   if (!Number.isFinite(dayInCycle) || !Number.isFinite(cycleLen) || cycleLen < 15) return 0;
   const ovulationCenter = cycleLen - 14;

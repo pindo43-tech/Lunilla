@@ -95,8 +95,8 @@ export function sanitize(d) {
   return { days };
 }
 $('#exp').onclick = () => {
-  const url = URL.createObjectURL(new Blob([JSON.stringify({ app: 'luna', version: 1, exported: new Date().toISOString(), ...data }, null, 1)], { type: 'application/json' }));
-  const a = Object.assign(document.createElement('a'), { href: url, download: `luna-${today}.json` }); document.body.append(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(url), 1000);
+  const url = URL.createObjectURL(new Blob([JSON.stringify({ app: 'lunilla', version: 1, exported: new Date().toISOString(), ...data }, null, 1)], { type: 'application/json' }));
+  const a = Object.assign(document.createElement('a'), { href: url, download: `lunilla-${today}.json` }); document.body.append(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(url), 1000);
   toast('Backup descargado (sin cifrar: guardalo en un lugar seguro)');
 };
 $('#imp').onchange = async e => {
@@ -105,7 +105,7 @@ $('#imp').onchange = async e => {
     const d = sanitize(JSON.parse(await f.text())), n = Object.keys(d.days).length;
     if (!confirm(`Importar ${n} día(s)? Reemplaza los datos actuales.`)) return;
     data = d; await Vault.save(data); render(); toast(`Importados ${n} días`);
-  } catch { alert('Archivo inválido: no es un backup de Luna.'); }
+  } catch { alert('Archivo inválido: no es un backup de Lunilla.'); }
 };
 $('#wipe').onclick = async () => {
   if (!confirm('¿Borrar todos tus datos? No se puede deshacer.')) return;

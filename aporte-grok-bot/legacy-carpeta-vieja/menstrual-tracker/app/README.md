@@ -1,4 +1,4 @@
-# Luna — Tracker menstrual (PWA local-first)
+# Lunilla — Tracker menstrual (PWA local-first)
 Landing en `/`, app en `/app`. HTML/CSS/JS vanilla sin dependencias ni build; datos cifrados (AES-GCM 256 + PBKDF2) en localStorage con PIN; funciona offline (service worker).
 
 - Tests: `npm test` (node --test)

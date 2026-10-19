@@ -56,11 +56,11 @@ test('sparkline: dibuja path con ≥2 puntos y no revienta con ceros', () => {
   assert.ok(kids.some(e => e.tagName === 'path'));
 });
 
-test('sparkline vendorizado incluye aviso LUNA y licencia MIT en cabecera/archivo', () => {
+test('sparkline vendorizado incluye aviso LUNILLA y licencia MIT en cabecera/archivo', () => {
   const dir = dirname(fileURLToPath(import.meta.url));
   const src = readFileSync(join(dir, '../third_party/sparkline.js'), 'utf8');
   assert.match(src, /@fnando\/sparkline/);
-  assert.match(src, /LUNA/);
+  assert.match(src, /LUNILLA/);
   const lic = readFileSync(join(dir, '../third_party/LICENSE-sparkline.txt'), 'utf8');
   assert.match(lic, /MIT License/);
   assert.match(lic, /Nando Vieira/);

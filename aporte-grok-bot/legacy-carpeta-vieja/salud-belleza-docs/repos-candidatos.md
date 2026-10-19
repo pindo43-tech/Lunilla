@@ -1,7 +1,7 @@
 # Repos candidatos — vertical Salud femenina y Belleza
 Fecha: 2026-10-14. Regla de licencias: MIT/Apache se pueden reutilizar con aviso; GPL/AGPL y "sin licencia" = solo referencia de ideas (no se copia código).
 
-## 1. Menstrual tracker (Luna) — `menstrual-tracker/upstream/`
+## 1. Menstrual tracker (Lunilla) — `menstrual-tracker/upstream/`
 | Repo | Licencia | Stack | Valor | Decisión |
 |---|---|---|---|---|
 | getify/youperiod.app | MIT | JS PWA, cifrado local | Patrón de vault cifrado + SW | **Base** (patrón AES-GCM/PBKDF2 reimplementado) |
@@ -46,4 +46,4 @@ Conclusión: no hay base open source utilizable → código propio (MRS de Heine
 | **Extra:** MiguelHigueraDev/coloraizer, lagrandecode/myhair-ai, EmmanuelEzenwere/MagicMirror | Sin licencia | UX recolor | Solo referencia |
 
 ## REA / community
-Búsqueda de recursos educativos abiertos (REA) adaptables: no se encontraron repos con licencia abierta y contenido en español sobre ciclo/menopausia listos para reutilizar. El contenido educativo de Luna/Brisa es redacción propia. Pendiente: evaluar textos CC-BY de organismos públicos de salud.
+Búsqueda de recursos educativos abiertos (REA) adaptables: no se encontraron repos con licencia abierta y contenido en español sobre ciclo/menopausia listos para reutilizar. El contenido educativo de Lunilla/Brisa es redacción propia. Pendiente: evaluar textos CC-BY de organismos públicos de salud.

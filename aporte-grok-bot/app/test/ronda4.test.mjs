@@ -29,7 +29,7 @@ test('ICS escapa comas y punto y coma (RFC 5545)', async () => {
   const c = ics('x', 'y'); c.addEvent('a,b;c', 'línea1\nlínea2', 'l', new Date(2026, 0, 1), new Date(2026, 0, 2));
   assert.match(c.build(), /SUMMARY;LANGUAGE=es:a\\,b\\;c/); assert.match(c.build(), /DESCRIPTION:línea1\\nlínea2/);
 });
-test('fases: cada fase de Luna tiene info de peri', () => {
+test('fases: cada fase de Lunilla tiene info de peri', () => {
   const p = predict(mk(['2026-01-01', '2026-01-29']));
   for (const d of [1, 8, 14, 20]) assert.ok(phaseInfo(phase(p, d)), 'día ' + d);
   assert.equal(phaseInfo('Atrasada'), null); assert.equal(Object.keys(PHASE_INFO).length, 4);

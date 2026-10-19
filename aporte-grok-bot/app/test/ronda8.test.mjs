@@ -11,7 +11,7 @@ test('flechas: ±1 día y ±7 días, cruzando meses y años', () => {
   assert.equal(S(keyTarget(D('2026-10-28'), 'ArrowDown')), '2026-11-04');
   assert.equal(S(keyTarget(D('2026-03-03'), 'ArrowUp')), '2026-02-24');
 });
-test('Inicio/Fin: lunes y domingo de la semana (calendario de Luna empieza el lunes)', () => {
+test('Inicio/Fin: lunes y domingo de la semana (calendario de Lunilla empieza el lunes)', () => {
   // 2026-10-14 es miércoles
   assert.equal(S(keyTarget(D('2026-10-14'), 'Home')), '2026-10-12');
   assert.equal(S(keyTarget(D('2026-10-14'), 'End')), '2026-10-18');
@@ -32,10 +32,10 @@ test('rovingFocus: un único día con tabIndex 0', () => {
   rovingFocus(cells, '2026-10-02');
   assert.deepEqual(cells.map(c => c.tabIndex), [-1, 0, -1]); assert.ok(cells[1].focused && !cells[0].focused);
 });
-test('integración: main.js usa el módulo, SW luna-v6 lo cachea y el aviso W3C está publicado', () => {
+test('integración: main.js usa el módulo, SW lunilla-v6 lo cachea y el aviso W3C está publicado', () => {
   const main = fs.readFileSync(new URL('../app/main.js', import.meta.url), 'utf8'), sw = fs.readFileSync(new URL('../app/sw.js', import.meta.url), 'utf8');
   assert.match(main, /from '\.\.\/third_party\/apg-calendar-keys\.js'/); assert.match(main, /\$\('#cal'\)\.onkeydown/);
-  assert.match(sw, /'luna-v6'/); assert.match(sw, /apg-calendar-keys\.js/);
+  assert.match(sw, /'lunilla-v6'/); assert.match(sw, /apg-calendar-keys\.js/);
   const lic = fs.readFileSync(new URL('../third_party/LICENSE-W3C-APG.txt', import.meta.url), 'utf8');
   assert.match(lic, /W3C Software and Document License/); assert.match(lic, /datepicker-dialog\.js/);
 });

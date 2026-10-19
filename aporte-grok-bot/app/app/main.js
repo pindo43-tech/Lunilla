@@ -148,15 +148,15 @@ export function sanitize(d) {
   return { days };
 }
 $('#exp').onclick = () => {
-  const url = URL.createObjectURL(new Blob([JSON.stringify({ app: 'luna', version: 1, exported: new Date().toISOString(), ...data }, null, 1)], { type: 'application/json' }));
-  const a = Object.assign(document.createElement('a'), { href: url, download: `luna-${today}.json` }); document.body.append(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(url), 1000);
+  const url = URL.createObjectURL(new Blob([JSON.stringify({ app: 'lunilla', version: 1, exported: new Date().toISOString(), ...data }, null, 1)], { type: 'application/json' }));
+  const a = Object.assign(document.createElement('a'), { href: url, download: `lunilla-${today}.json` }); document.body.append(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(url), 1000);
   toast('Backup descargado (sin cifrar: guardalo en un lugar seguro)');
 };
 $('#ics').onclick = () => {
   const p = predict(Object.entries(data.days).filter(([, v]) => v.flow > 0).map(([k]) => k)), txt = predictionICS(p, today);
   if (!txt) return toast('Registrá al menos un periodo para exportar previsiones');
   const url = URL.createObjectURL(new Blob([txt], { type: 'text/calendar' }));
-  const a = Object.assign(document.createElement('a'), { href: url, download: `luna-previsiones-${today}.ics` }); document.body.append(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(url), 1000);
+  const a = Object.assign(document.createElement('a'), { href: url, download: `lunilla-previsiones-${today}.ics` }); document.body.append(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(url), 1000);
   toast('Calendario descargado: al importarlo, tu app de calendario verá estas fechas');
 };
 $('#imp').onchange = async e => {
@@ -165,7 +165,7 @@ $('#imp').onchange = async e => {
     const d = sanitize(JSON.parse(await f.text())), n = Object.keys(d.days).length;
     if (!confirm(`Importar ${n} día(s)? Reemplaza los datos actuales.`)) return;
     data = d; await Vault.save(data); render(); toast(`Importados ${n} días`);
-  } catch { alert('Archivo inválido: no es un backup de Luna.'); }
+  } catch { alert('Archivo inválido: no es un backup de Lunilla.'); }
 };
 $('#wipe').onclick = async () => {
   if (!confirm('¿Borrar todos tus datos? No se puede deshacer.')) return;

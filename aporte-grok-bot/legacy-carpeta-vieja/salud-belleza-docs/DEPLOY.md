@@ -6,7 +6,7 @@ Las 4 apps son estáticas (sin build): se publica la carpeta `app/` de cada una.
 
 | App | Carpeta | Repo GitHub | Proyecto Cloudflare Pages | URL esperada |
 |---|---|---|---|---|
-| Luna (tracker) | menstrual-tracker/app | luna-ciclo | luna-ciclo | https://luna-ciclo.pages.dev |
+| Lunilla (tracker) | menstrual-tracker/app | lunilla | lunilla | https://lunilla.pages.dev |
 | Brisa (menopausia) | menopausia/app | brisa-menopausia | brisa-menopausia | https://brisa-menopausia.pages.dev |
 | Glow Try-On (makeup) | makeup/app | glow-tryon | glow-tryon | https://glow-tryon.pages.dev |
 | Mechas (pelo) | hair-look/app | mechas-hair | mechas-hair | https://mechas-hair.pages.dev |
@@ -24,7 +24,7 @@ deploy() { # $1 carpeta  $2 nombre
   npx wrangler pages project create "$2" --production-branch main || true
   npx wrangler pages deploy . --project-name "$2" --branch main --commit-dirty=true
 }
-deploy menstrual-tracker luna-ciclo
+deploy menstrual-tracker lunilla
 deploy menopausia brisa-menopausia
 deploy makeup glow-tryon
 deploy hair-look mechas-hair

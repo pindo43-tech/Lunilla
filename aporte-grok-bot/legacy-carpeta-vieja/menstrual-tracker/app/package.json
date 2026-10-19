@@ -1,1 +1,1 @@
-{"name":"luna-tracker","type":"module","private":true,"scripts":{"test":"node --test test/"}}
+{"name":"lunilla-tracker","type":"module","private":true,"scripts":{"test":"node --test test/"}}

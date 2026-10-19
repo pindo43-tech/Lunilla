@@ -1,6 +1,6 @@
 /*! ics.js — https://github.com/nwcell/ics.js (commit dfec67f, 2018-11-12)
  *  MIT License, Copyright (c) 2018 Travis Krause — ver third_party/LICENSE-ics.js.txt
- *  Copia vendorizada para Luna con estos cambios (marcados "LUNA:"):
+ *  Copia vendorizada para Lunilla con estos cambios (marcados "LUNILLA:"):
  *   1) módulo ES (export al final); 2) separador CRLF siempre (RFC 5545 §3.1);
  *   3) eventos de día completo usan VALUE=DATE (antes VALUE=DATE-TIME sin hora, inválido);
  *   4) escape de texto (\ ; , salto de línea) en SUMMARY/DESCRIPTION/LOCATION (RFC 5545 §3.3.11);
@@ -20,7 +20,7 @@ var ics = function(uidDomain, prodId) {
   if (typeof uidDomain === 'undefined') { uidDomain = 'default'; }
   if (typeof prodId === 'undefined') { prodId = 'Calendar'; }
 
-  var SEPARATOR = '\r\n'; // LUNA: RFC 5545 exige CRLF
+  var SEPARATOR = '\r\n'; // LUNILLA: RFC 5545 exige CRLF
   var calendarEvents = [];
   var calendarStart = [
     'BEGIN:VCALENDAR',
@@ -181,7 +181,7 @@ var ics = function(uidDomain, prodId) {
       }
 
       var stamp = new Date().toISOString();
-      // LUNA: escape de texto y VALUE=DATE para eventos de día completo
+      // LUNILLA: escape de texto y VALUE=DATE para eventos de día completo
       var escTxt = function(t) { return String(t).replace(/\\/g, '\\\\').replace(/;/g, '\\;').replace(/,/g, '\\,').replace(/\r?\n/g, '\\n'); };
       var vtype = start_time ? 'DATE-TIME' : 'DATE';
 
@@ -250,4 +250,4 @@ var ics = function(uidDomain, prodId) {
   };
 };
 
-export { ics }; // LUNA: módulo ES
+export { ics }; // LUNILLA: módulo ES
