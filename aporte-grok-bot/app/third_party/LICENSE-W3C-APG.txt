@@ -4,7 +4,7 @@ https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document
 Applies to the files derived from the WAI-ARIA Authoring Practices Guide (APG),
 https://github.com/w3c/aria-practices (commit 0f765e4dc33e966026114ac12a8380db1de3b787):
   - content/patterns/dialog-modal/examples/js/datepicker-dialog.js
-    → Luna: third_party/apg-calendar-keys.js (solo la navegación por teclado de la grilla de días;
+    → Lunilla: third_party/apg-calendar-keys.js (solo la navegación por teclado de la grilla de días;
       cambios indicados en la cabecera del archivo, conforme a la licencia).
 El repositorio declara en LICENSE.md: "All documents in this Repository are licensed by contributors
 under the W3C Software and Document License".

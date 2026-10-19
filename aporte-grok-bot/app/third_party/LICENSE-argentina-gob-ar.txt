@@ -9,5 +9,5 @@ Licencia: "Los contenidos de Argentina.gob.ar están licenciados bajo Creative C
 (texto del pie de página del sitio). CC BY 4.0: https://creativecommons.org/licenses/by/4.0/legalcode.es
 
 Cambios: ninguno en los dos párrafos citados (se citan textualmente entre comillas). El título de la tarjeta y la
-recomendación "anotalo en el día y consultá" son redacción propia de Luna, no del Ministerio. El uso no implica
+recomendación "anotalo en el día y consultá" son redacción propia de Lunilla, no del Ministerio. El uso no implica
 respaldo del Ministerio de Salud a esta aplicación.
