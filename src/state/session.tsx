@@ -259,7 +259,7 @@ export function SessionProvider({ children }: { children: ReactNode }) {
     const current = vaultRef.current
     if (!install || !key || !current) throw new Error('locked')
     const doc = await buildExport(key, b64ToBytes(install.salt), current)
-    const prefix = readDiscreet() ? 'notas-cifrada' : 'marea-cifrada'
+    const prefix = readDiscreet() ? 'notas-cifrada' : 'lunilla-cifrada'
     downloadJson(`${prefix}-${todayISO()}.json`, doc)
   }, [])
 

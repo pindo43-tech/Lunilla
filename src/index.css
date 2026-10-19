@@ -68,7 +68,7 @@ select {
   background: #f3c2d0;
 }
 
-@keyframes marea-rise {
+@keyframes lunilla-rise {
   from {
     opacity: 0;
     transform: translateY(8px);
@@ -79,7 +79,7 @@ select {
   }
 }
 
-@keyframes marea-shake {
+@keyframes lunilla-shake {
   20% { transform: translateX(-3px); }
   40% { transform: translateX(3px); }
   60% { transform: translateX(-2px); }
@@ -87,11 +87,11 @@ select {
 }
 
 .rise {
-  animation: marea-rise 0.45s ease;
+  animation: lunilla-rise 0.45s ease;
 }
 
 .shake {
-  animation: marea-shake 0.35s ease;
+  animation: lunilla-shake 0.35s ease;
 }
 
 @media (prefers-reduced-motion: reduce) {

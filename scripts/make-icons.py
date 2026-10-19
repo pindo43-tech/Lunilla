@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Draw the Marea icon: a rose crescent on cream. No third-party image library."""
+"""Draw the Lunilla icon: a rose crescent on cream. No third-party image library."""
 
 import struct
 import zlib

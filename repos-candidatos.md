@@ -1,6 +1,6 @@
 # Repos candidatos
 
-Lista de referencia. Marea no copia código, textos ni íconos de estos proyectos. Las licencias se leyeron en las páginas de cada repo en octubre de 2026.
+Lista de referencia. Lunilla no copia código, textos ni íconos de estos proyectos. Las licencias se leyeron en las páginas de cada repo en octubre de 2026.
 
 | Proyecto | URL | Licencia |
 | --- | --- | --- |

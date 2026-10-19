@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 
-const KEY = 'marea.discreet'
+const KEY = 'lunilla.discreet'
 
 export function readDiscreet(): boolean {
   try {
@@ -16,23 +16,23 @@ export function writeDiscreet(on: boolean): void {
   } catch {
     // The toggle still applies for this visit.
   }
-  window.dispatchEvent(new Event('marea-discreet'))
+  window.dispatchEvent(new Event('lunilla-discreet'))
 }
 
 export function useDiscreet(): boolean {
   const [on, setOn] = useState(readDiscreet)
   useEffect(() => {
     const sync = () => setOn(readDiscreet())
-    window.addEventListener('marea-discreet', sync)
+    window.addEventListener('lunilla-discreet', sync)
     window.addEventListener('storage', sync)
     return () => {
-      window.removeEventListener('marea-discreet', sync)
+      window.removeEventListener('lunilla-discreet', sync)
       window.removeEventListener('storage', sync)
     }
   }, [])
   return on
 }
 
-export function brandName(discreet: boolean): 'Notas' | 'Marea' {
-  return discreet ? 'Notas' : 'Marea'
+export function brandName(discreet: boolean): 'Notas' | 'Lunilla' {
+  return discreet ? 'Notas' : 'Lunilla'
 }

@@ -1,7 +1,7 @@
 # Búsqueda de repos similares — salud-femenina (Luna, Brisa, Glow, Mechas)
 
 **Fecha:** 18/10/2026, alrededor de las 00:50 (hora de Argentina).
-**Autor:** SaludFemeninaHost (Grok Bot). Copia idéntica en los 4 repos: `menstrual-tracker-jovenes`, `menopausia-local-first`, `maquillaje-ar-mvp` y `hair-look-preview`.
+**Autor:** SaludFemeninaHost (Grok Bot). Copia idéntica en los 4 repos: `Lunilla`, `menopausia-local-first`, `maquillaje-ar-mvp` y `hair-look-preview`.
 
 ## Archivos
 - `datos/REPOS-SIMILARES.md`: el informe completo de las 4 apps (2.653 filas). La sección de cada app también está en `../REPOS-SIMILARES.md`.

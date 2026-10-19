@@ -16,12 +16,12 @@ export interface VaultRecord {
   updatedAt: string
 }
 
-class MareaDB extends Dexie {
+class LunillaDB extends Dexie {
   install!: Table<InstallRecord, string>
   vault!: Table<VaultRecord, string>
 
   constructor() {
-    super('marea')
+    super('lunilla')
     this.version(1).stores({
       install: 'id',
       vault: 'id',
@@ -29,13 +29,13 @@ class MareaDB extends Dexie {
   }
 }
 
-let current = new MareaDB()
+let current = new LunillaDB()
 
-export function database(): MareaDB {
+export function database(): LunillaDB {
   return current
 }
 
 export async function eraseDatabase(): Promise<void> {
   await current.delete()
-  current = new MareaDB()
+  current = new LunillaDB()
 }

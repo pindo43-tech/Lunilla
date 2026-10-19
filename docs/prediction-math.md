@@ -1,4 +1,4 @@
-# Cómo estima Marea
+# Cómo estima Lunilla
 
 Esto es una cuenta educativa. No diagnostica, no dice si un ciclo es sano y no sirve como anticoncepción ni para buscar un embarazo.
 
@@ -48,7 +48,7 @@ s = \sqrt{\frac{1}{m-1}\sum_{i=1}^{m}(L_i-\bar L)^2}
 
 ## Ciclos poco parecidos
 
-Si `m ≥ 3` y (`s ≥ 7` o el máximo menos el mínimo es al menos 10), Marea marca el ciclo como variable. Es una etiqueta educativa. No es un diagnóstico.
+Si `m ≥ 3` y (`s ≥ 7` o el máximo menos el mínimo es al menos 10), Lunilla marca el ciclo como variable. Es una etiqueta educativa. No es un diagnóstico.
 
 La fecha igual se muestra. La confianza baja.
 

@@ -15,8 +15,8 @@ const dictionary = messages(
     'land.kicker': 'Registro local',
     'land.title': 'Tu ciclo, en este dispositivo.',
     'land.lead':
-      'Marea es un registro del período para anotar sin cuenta, sin nube y sin publicidad. Está pensado para usarlo con calma, desde la adolescencia.',
-    'land.open': 'Abrir Marea',
+      'Lunilla es un registro del período para anotar sin cuenta, sin nube y sin publicidad. Está pensado para usarlo con calma, desde la adolescencia.',
+    'land.open': 'Abrir Lunilla',
     'land.privacyTitle': 'Privacidad',
     'land.p1': 'No hay cuenta ni servidor. Los datos del ciclo no salen del navegador.',
     'land.p2': 'Se cifran en este dispositivo con tu PIN: PBKDF2 y AES-GCM. La clave vive solo en memoria y se olvida al bloquear.',
@@ -34,12 +34,12 @@ const dictionary = messages(
     'land.f7': 'Un resumen de tus ciclos, un gráfico simple y el historial para corregir un inicio o un fin.',
     'land.disclaimerTitle': 'No es un dispositivo médico',
     'land.disclaimer':
-      'Marea no diagnostica, no trata y no sirve como anticoncepción ni como método para buscar un embarazo. Las fechas son estimaciones educativas. Si algo te preocupa, hablá con un profesional de la salud.',
+      'Lunilla no diagnostica, no trata y no sirve como anticoncepción ni como método para buscar un embarazo. Las fechas son estimaciones educativas. Si algo te preocupa, hablá con un profesional de la salud.',
     'land.install':
       'En una Mac se abre en Safari o Chrome, como una columna angosta. En el iPhone, desde Safari: el botón Compartir y después Agregar a inicio.',
     'land.footer': 'Los datos quedan en este navegador.',
     'setup.title': 'Antes de empezar',
-    'setup.lead': 'Marea guarda el ciclo solo en este navegador. No se crea una cuenta y no hay un servidor adonde mandarlo.',
+    'setup.lead': 'Lunilla guarda el ciclo solo en este navegador. No se crea una cuenta y no hay un servidor adonde mandarlo.',
     'setup.more': 'El PIN no se puede recuperar. Si lo olvidás, la única salida es borrar el registro de este dispositivo.',
     'setup.continue': 'Elegir un PIN',
     'setup.pinTitle': 'Elegí un PIN',
@@ -53,7 +53,7 @@ const dictionary = messages(
     'setup.filePinHint': 'Es el PIN con el que se exportó el archivo.',
     'setup.openFile': 'Elegir archivo',
     'setup.imported': 'Copia leída. Ahora elegí el PIN de este dispositivo. Puede ser el mismo.',
-    'setup.badFile': 'Ese archivo no es una copia de Marea o está incompleto.',
+    'setup.badFile': 'Ese archivo no es una copia de Lunilla o está incompleto.',
     'setup.badPin': 'No se pudo abrir la copia con ese PIN.',
     'setup.back': 'Volver',
     'setup.create': 'Seguir',
@@ -69,14 +69,14 @@ const dictionary = messages(
     'setup.dateFuture': 'Esa fecha todavía no llegó.',
     'setup.periodInvalid': 'El sangrado tiene que durar entre 1 y 14 días.',
     'setup.cycleInvalid': 'Si lo completás, el ciclo tiene que estar entre 15 y 90 días. Si no lo sabés, dejalo vacío.',
-    'unlock.title': 'Marea está cerrada',
+    'unlock.title': 'Lunilla está cerrada',
     'unlock.lead': 'Ingresá el PIN para descifrar el registro en este dispositivo.',
     'unlock.wrong': 'PIN incorrecto.',
     'unlock.working': 'Comprobando el PIN…',
     'unlock.damaged': 'No se pudo abrir el registro. Puede estar dañado.',
     'unlock.submit': 'Abrir',
     loading: 'Abriendo el almacenamiento local…',
-    'error.title': 'No se pudo preparar Marea',
+    'error.title': 'No se pudo preparar Lunilla',
     'error.body':
       'Hace falta IndexedDB y Web Crypto. Probá Safari o Chrome, con HTTPS o en esta computadora. Si el modo privado bloquea la base, usá una ventana normal.',
     lock: 'Bloquear',
@@ -117,7 +117,7 @@ const dictionary = messages(
     'conf.tag.medium': 'Confianza media',
     'conf.tag.high': 'Confianza alta',
     'pred.irregular':
-      'Los ciclos recientes no duraron parecido. Eso es frecuente. Marea no lo lee como un problema de salud: solo ensancha la duda de la fecha.',
+      'Los ciclos recientes no duraron parecido. Eso es frecuente. Lunilla no lo lee como un problema de salud: solo ensancha la duda de la fecha.',
     'pred.how': 'Cómo está calculado',
     'pred.howBody':
       'Promedio ponderado de {count} intervalos ({list} días): cerca de {weighted} días. Media {mean}, desvío {sd}. La ovulación estimada cae 14 días antes del próximo inicio.',
@@ -208,7 +208,7 @@ const dictionary = messages(
     'set.pinMismatch': 'La repetición no coincide.',
     'set.reminders': 'Aviso de período cercano',
     'set.remindersHelp':
-      'El navegador no puede programar un aviso confiable con la app cerrada, y Marea no usa un servidor de notificaciones. Si das permiso, el aviso del sistema solo puede salir mientras esta pestaña está abierta y desbloqueada. La fecha estimada sigue en Hoy.',
+      'El navegador no puede programar un aviso confiable con la app cerrada, y Lunilla no usa un servidor de notificaciones. Si das permiso, el aviso del sistema solo puede salir mientras esta pestaña está abierta y desbloqueada. La fecha estimada sigue en Hoy.',
     'set.remindersOn': 'Avisar con la app abierta',
     'set.remindersOff': 'Sin aviso del sistema',
     'set.remindersDenied': 'Este navegador no dio permiso. Podés cambiarlo en la configuración del sitio. La predicción igual se ve en Hoy.',
@@ -235,7 +235,7 @@ const dictionary = messages(
     'set.discreet': 'Modo discreto',
     'set.discreetHelp': 'El título de la pestaña y el nombre en la pantalla de bloqueo pasan a decir Notas. El registro no cambia y no sale de este dispositivo.',
     'set.discreetOn': 'Se muestra como Notas',
-    'set.discreetOff': 'Se muestra como Marea',
+    'set.discreetOff': 'Se muestra como Lunilla',
     'set.typical': 'Largo que anotaste al empezar',
     'set.typicalHelp': 'Solo se usa si todavía no hay un ciclo medido. Con dos o más, la cuenta usa tus fechas y esta cifra queda afuera.',
     'set.typicalClear': 'No usar ese largo',
@@ -284,8 +284,8 @@ const dictionary = messages(
     'unlock.leadDiscreet': 'Ingresá el PIN para abrir las notas en este dispositivo.',
     'notify.titleDiscreet': 'Notas',
     'notify.bodyDiscreet': 'Hay una fecha próxima en tus notas.',
-    'notify.title': 'Marea',
-    'notify.body': 'Hay una fecha próxima en tu registro. Abrí Marea para verla.',
+    'notify.title': 'Lunilla',
+    'notify.body': 'Hay una fecha próxima en tu registro. Abrí Lunilla para verla.',
     'common.saveError': 'No se pudo guardar. Probá de nuevo antes de bloquear.',
     'common.working': 'Un momento…',
     'pin.label': 'PIN',
@@ -299,8 +299,8 @@ const dictionary = messages(
     'land.kicker': 'On this device',
     'land.title': 'Your cycle, on this device.',
     'land.lead':
-      'Marea is a period log with no account, no cloud, and no ads. It is meant to be used calmly, including from the teenage years.',
-    'land.open': 'Open Marea',
+      'Lunilla is a period log with no account, no cloud, and no ads. It is meant to be used calmly, including from the teenage years.',
+    'land.open': 'Open Lunilla',
     'land.privacyTitle': 'Privacy',
     'land.p1': 'There is no account and no server. Cycle data does not leave the browser.',
     'land.p2': 'It is encrypted on this device with your PIN: PBKDF2 and AES-GCM. The key stays in memory and is dropped on lock.',
@@ -318,12 +318,12 @@ const dictionary = messages(
     'land.f7': 'A summary of your cycles, a simple chart, and history so you can correct a start or an end.',
     'land.disclaimerTitle': 'Not a medical device',
     'land.disclaimer':
-      'Marea does not diagnose, treat, or work as contraception or as a way to become pregnant. Dates are educational estimates. If something worries you, talk with a clinician.',
+      'Lunilla does not diagnose, treat, or work as contraception or as a way to become pregnant. Dates are educational estimates. If something worries you, talk with a clinician.',
     'land.install':
       'On a Mac, open it in Safari or Chrome. It stays a narrow column. On iPhone, in Safari: the Share button, then Add to Home Screen.',
     'land.footer': 'Data stays in this browser.',
     'setup.title': 'Before you start',
-    'setup.lead': 'Marea keeps the cycle only in this browser. There is no account and nowhere to send it.',
+    'setup.lead': 'Lunilla keeps the cycle only in this browser. There is no account and nowhere to send it.',
     'setup.more': 'The PIN cannot be recovered. If you forget it, the only way in is to erase the log on this device.',
     'setup.continue': 'Choose a PIN',
     'setup.pinTitle': 'Choose a PIN',
@@ -337,7 +337,7 @@ const dictionary = messages(
     'setup.filePinHint': 'This is the PIN that was used when the file was exported.',
     'setup.openFile': 'Choose file',
     'setup.imported': 'Copy read. Now choose the PIN for this device. It can be the same one.',
-    'setup.badFile': 'That file is not a Marea copy, or it is incomplete.',
+    'setup.badFile': 'That file is not a Lunilla copy, or it is incomplete.',
     'setup.badPin': 'That PIN did not open the copy.',
     'setup.back': 'Back',
     'setup.create': 'Continue',
@@ -353,14 +353,14 @@ const dictionary = messages(
     'setup.dateFuture': 'That date has not arrived yet.',
     'setup.periodInvalid': 'Bleeding has to last between 1 and 14 days.',
     'setup.cycleInvalid': 'If you fill this in, the cycle has to be between 15 and 90 days. Leave it empty if you do not know.',
-    'unlock.title': 'Marea is locked',
+    'unlock.title': 'Lunilla is locked',
     'unlock.lead': 'Enter the PIN to decrypt the log on this device.',
     'unlock.wrong': 'Wrong PIN.',
     'unlock.working': 'Checking the PIN…',
     'unlock.damaged': 'The log could not be opened. It may be damaged.',
     'unlock.submit': 'Unlock',
     loading: 'Opening local storage…',
-    'error.title': 'Marea could not start',
+    'error.title': 'Lunilla could not start',
     'error.body':
       'IndexedDB and Web Crypto are required. Try Safari or Chrome, on HTTPS or on this computer. If private mode blocks the database, use a normal window.',
     lock: 'Lock',
@@ -401,7 +401,7 @@ const dictionary = messages(
     'conf.tag.medium': 'Medium confidence',
     'conf.tag.high': 'High confidence',
     'pred.irregular':
-      'Recent cycles were not similar in length. That is common. Marea does not read it as a health problem. It only widens the doubt around the date.',
+      'Recent cycles were not similar in length. That is common. Lunilla does not read it as a health problem. It only widens the doubt around the date.',
     'pred.how': 'How this is calculated',
     'pred.howBody':
       'Weighted average of {count} intervals ({list} days): about {weighted} days. Mean {mean}, standard deviation {sd}. Estimated ovulation is 14 days before the next start.',
@@ -492,7 +492,7 @@ const dictionary = messages(
     'set.pinMismatch': 'The repeat does not match.',
     'set.reminders': 'Period-soon alert',
     'set.remindersHelp':
-      'The browser cannot reliably schedule an alert while the app is closed, and Marea has no push server. If you allow it, a system alert can only appear while this tab is open and unlocked. The estimated date stays on Today.',
+      'The browser cannot reliably schedule an alert while the app is closed, and Lunilla has no push server. If you allow it, a system alert can only appear while this tab is open and unlocked. The estimated date stays on Today.',
     'set.remindersOn': 'Alert while the app is open',
     'set.remindersOff': 'No system alert',
     'set.remindersDenied': 'This browser did not allow notifications. You can change that in the site settings. The prediction still shows on Today.',
@@ -519,7 +519,7 @@ const dictionary = messages(
     'set.discreet': 'Discreet mode',
     'set.discreetHelp': 'The tab title and the name on the lock screen change to Notas. The log stays the same and stays on this device.',
     'set.discreetOn': 'Showing as Notas',
-    'set.discreetOff': 'Showing as Marea',
+    'set.discreetOff': 'Showing as Lunilla',
     'set.typical': 'Length you entered at the start',
     'set.typicalHelp': 'Used only when there is no measured cycle yet. With two or more, the estimate uses your dates and this number stays out.',
     'set.typicalClear': 'Do not use that length',
@@ -568,8 +568,8 @@ const dictionary = messages(
     'unlock.leadDiscreet': 'Enter the PIN to open Notas on this device.',
     'notify.titleDiscreet': 'Notas',
     'notify.bodyDiscreet': 'A date in Notas is close.',
-    'notify.title': 'Marea',
-    'notify.body': 'A date in your log is close. Open Marea to see it.',
+    'notify.title': 'Lunilla',
+    'notify.body': 'A date in your log is close. Open Lunilla to see it.',
     'common.saveError': 'Could not save. Try again before locking.',
     'common.working': 'One moment…',
     'pin.label': 'PIN',
@@ -590,7 +590,7 @@ const I18nContext = createContext<I18nValue | null>(null)
 
 function readLocale(): Locale {
   try {
-    return localStorage.getItem('marea.locale') === 'en' ? 'en' : 'es'
+    return localStorage.getItem('lunilla.locale') === 'en' ? 'en' : 'es'
   } catch {
     return 'es'
   }
@@ -601,7 +601,7 @@ export function I18nProvider({ children }: { children: ReactNode }) {
 
   const setLocale = useCallback((next: Locale) => {
     try {
-      localStorage.setItem('marea.locale', next)
+      localStorage.setItem('lunilla.locale', next)
     } catch {
       // The language still changes for this visit.
     }

@@ -1,4 +1,4 @@
-# Marea
+# Lunilla
 
 Registro menstrual local para jóvenes. Los datos del ciclo se quedan en el navegador, cifrados con un PIN. No hay cuenta, ni servidor, ni analítica.
 
@@ -6,9 +6,9 @@ No es un dispositivo médico. No diagnostica y no sirve como anticoncepción.
 
 En este corte se puede: anotar el último período al empezar, ver Hoy con el día del ciclo, marcar el calendario, abrir un resumen (que dice cuando todavía es débil), corregir o borrar un período, y registrar el día con flujo, síntomas, ánimo, temperatura basal y flujo cervical. El modo discreto cambia el título y la pantalla de bloqueo a Notas. Sigue en español, con inglés en ajustes.
 
-Live: https://menstrual-tracker-jovenes.pages.dev
+Live: https://lunilla.pages.dev
 
-Repo: https://github.com/pindo43-tech/menstrual-tracker-jovenes
+Repo: https://github.com/pindo43-tech/Lunilla
 
 ## Privacidad
 
@@ -22,7 +22,7 @@ Repo: https://github.com/pindo43-tech/menstrual-tracker-jovenes
 
 ## Cómo abrirlo
 
-En una Mac: Safari o Chrome, en https://menstrual-tracker-jovenes.pages.dev
+En una Mac: Safari o Chrome, en https://lunilla.pages.dev
 
 En un iPhone: abrilo en Safari, tocá Compartir y después Agregar a inicio. Se instala como PWA. El simulador de iOS no hace falta.
 

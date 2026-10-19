@@ -33,7 +33,7 @@ describe('encryption', () => {
   it('rejects a flipped ciphertext', async () => {
     const salt = crypto.getRandomValues(new Uint8Array(16))
     const key = await deriveKey('987654', salt)
-    const sealed = await encryptJson(key, { schemaVersion: 1, hello: 'marea' })
+    const sealed = await encryptJson(key, { schemaVersion: 1, hello: 'lunilla' })
     const flipped = sealed.ciphertext.slice(0, -2) + (sealed.ciphertext.endsWith('A') ? 'B' : 'A')
     await expect(decryptJson(key, sealed.iv, flipped)).rejects.toThrow()
   })

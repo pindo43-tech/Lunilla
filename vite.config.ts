@@ -33,7 +33,7 @@ const DEV_CSP = [
 
 function cspBuildPlugin(): Plugin {
   return {
-    name: 'marea-csp',
+    name: 'lunilla-csp',
     apply: 'build',
     transformIndexHtml(html) {
       const meta = `<meta http-equiv="Content-Security-Policy" content="${PROD_CSP}" />`
@@ -44,7 +44,7 @@ function cspBuildPlugin(): Plugin {
 
 function cspDevPlugin(): Plugin {
   return {
-    name: 'marea-dev-csp',
+    name: 'lunilla-dev-csp',
     apply: 'serve',
     configureServer(server) {
       server.middlewares.use((_req, res, next) => {
@@ -65,8 +65,8 @@ export default defineConfig({
       includeAssets: ['favicon.svg', 'icons/icon-192.png', 'icons/icon-512.png', 'icons/apple-touch-icon.png'],
       manifest: {
         id: '/',
-        name: 'Marea — registro del ciclo',
-        short_name: 'Marea',
+        name: 'Lunilla — registro del ciclo',
+        short_name: 'Lunilla',
         description: 'Registro privado del ciclo menstrual. Los datos quedan en este dispositivo.',
         lang: 'es',
         start_url: '/app',

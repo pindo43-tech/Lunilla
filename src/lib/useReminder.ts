@@ -9,13 +9,13 @@ export function useReminder(enabled: boolean, nextPeriod: string | null, daysUnt
   useEffect(() => {
     if (!enabled || !nextPeriod || daysUntil === null || daysUntil < 0 || daysUntil > 2) return
     if (typeof Notification === 'undefined' || Notification.permission !== 'granted') return
-    const stamp = `marea-notice:${todayISO()}:${nextPeriod}`
+    const stamp = `lunilla-notice:${todayISO()}:${nextPeriod}`
     if (sessionStorage.getItem(stamp)) return
     const handle = window.setTimeout(() => {
       try {
         new Notification(discreet ? t('notify.titleDiscreet') : t('notify.title'), {
           body: discreet ? t('notify.bodyDiscreet') : t('notify.body'),
-          tag: 'marea-period',
+          tag: 'lunilla-period',
           icon: '/icons/icon-192.png',
         })
         sessionStorage.setItem(stamp, '1')

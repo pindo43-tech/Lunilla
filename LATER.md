@@ -4,7 +4,7 @@ Proyecto pausado. No ejecutar nada de esta lista hasta que Pindonga lo indique. 
 
 ## Hecho (no rehacer)
 
-- App pública en Pages y repo `menstrual-tracker-jovenes`.
+- App pública en Pages y repo `Lunilla`.
 - PIN, cifrado local, calendario, resumen, gráfico, temperatura, flujo cervical, modo discreto, tests. Commit `21af568`.
 
 ## Siguiente, en este orden, cuando se retome
