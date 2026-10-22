@@ -9,7 +9,7 @@
 - **Columnas (iguales en todas las tablas):** `Repo` = owner/nombre canónico según la API de GitHub · `URL` = enlace verificado · `Licencia` = SPDX de la API de GitHub · `⭐` = estrellas según la API · `Qué aporta` = para qué sirve, según la lista que aportó el usuario · `Estado` = ver abajo · `También en` = otras listas de Lunilla donde ya figura.
 - **Estados:** `integrado` = ya se usó código o una idea en Lunilla (según `aporte-grok-bot/REUSE.md`) · `candidato` = licencia permisiva, se puede tomar código con atribución · `candidato (revisar licencia)` = licencia no estándar · `solo idea (GPL/AGPL)` = copyleft (GPL, AGPL o LGPL), solo leer ideas y no copiar código en Lunilla (MIT) · `solo idea (sin licencia)` = sin licencia declarada, solo referencia · `descartado` = ya evaluado sin uso o no corresponde.
 - **Datos:** licencia, estrellas y existencia verificadas con la API de GitHub el 2026-10-22. No se inventó ningún dato. Fuente de los repos: lista aportada por el usuario el 2026-10-22.
-- **Totales:** 176 repos únicos en tablas de funciones, 3 organizaciones o usuarios válidos, 2 fuentes que no son GitHub y 27 descartados. Por estado: candidato 83, candidato (revisar licencia) 17, descartado 1, integrado 4, solo idea (GPL/AGPL) 33, solo idea (sin licencia) 38.
+- **Totales:** 183 repos únicos en tablas de funciones, 3 organizaciones o usuarios válidos, 2 fuentes que no son GitHub y 20 descartados. Por estado: candidato 87, candidato (revisar licencia) 18, descartado 1, integrado 4, solo idea (GPL/AGPL) 34, solo idea (sin licencia) 39.
 
 ## Índice
 
@@ -22,18 +22,18 @@
 | G1-05 | Datasets y análisis estadístico del ciclo | 5 |
 | G1-06 | Wearables y datos fisiológicos | 4 |
 | G2-01 | Educación, contenido y CMS | 12 |
-| G2-02 | Comunidad, foros y chat | 10 |
+| G2-02 | Comunidad, foros y chat | 12 |
 | G2-03 | Gamificación | 10 |
-| G2-04 | Recordatorios y notificaciones | 15 |
+| G2-04 | Recordatorios y notificaciones | 17 |
 | G2-05 | Ánimo, diario y síntomas emocionales | 9 |
-| G2-06 | Datos de salud y FHIR | 6 |
+| G2-06 | Datos de salud y FHIR | 7 |
 | G2-07 | Backend y bases de datos | 3 |
 | G3-01 | Componentes UI animados y design systems | 16 |
-| G3-02 | Gráficos y visualización de datos | 5 |
+| G3-02 | Gráficos y visualización de datos | 6 |
 | G3-03 | UI mobile (Flutter) | 2 |
 | G3-04 | 3D (React Three Fiber) | 2 |
 | G3-05 | Listas curadas (awesome) | 3 |
-| G3-06 | Animación y scroll (librerías base) | 7 |
+| G3-06 | Animación y scroll (librerías base) | 8 |
 
 # Grupo 1 — Funciones principales del tracker
 
@@ -180,7 +180,7 @@ Plataformas educativas y CMS para artículos, guías y tips sobre el ciclo.
 | devvspaces/EduHub | https://github.com/devvspaces/EduHub | Apache-2.0 | 8 | Plataforma educativa con cursos, quizzes y discusiones (Node + MongoDB). | candidato | — |
 | docxology/course | https://github.com/docxology/course | sin licencia | 0 | Sistema de repositorio curricular (FastAPI + PostgreSQL + MongoDB). Ideal para artículos educativos sobre ciclo, fases, síntomas. | solo idea (sin licencia) | — |
 
-## G2-02 · Comunidad, foros y chat (10)
+## G2-02 · Comunidad, foros y chat (12)
 
 Foros, Q&A, chat y redes federadas para una comunidad de usuarias.
 
@@ -188,7 +188,9 @@ Foros, Q&A, chat y redes federadas para una comunidad de usuarias.
 |---|---|---|---|---|---|---|
 | mastodon/mastodon | https://github.com/mastodon/mastodon | AGPL-3.0 | 50430 | Red social federada (útil como referencia de comunidad). | solo idea (GPL/AGPL) | — |
 | discourse/discourse | https://github.com/discourse/discourse | GPL-2.0 | 47991 | El foro open-source más serio (Ruby on Rails + PostgreSQL + Redis). Perfecto para comunidad de usuarias. | solo idea (GPL/AGPL) | — |
+| RocketChat/Rocket.Chat | https://github.com/RocketChat/Rocket.Chat | NOASSERTION (no estándar) | 46294 | Plataforma de chat open source. El adjunto lo tenía con otro dueño: rocket-chat/rocket.chat (404); se usa el nombre real verificado. | candidato (revisar licencia) | — |
 | mattermost/mattermost | https://github.com/mattermost/mattermost | NOASSERTION (no estándar) | 39407 | Slack open source. | candidato (revisar licencia) | — |
+| LemmyNet/lemmy | https://github.com/LemmyNet/lemmy | AGPL-3.0 | 14641 | Link aggregator / Reddit-like. El adjunto lo tenía con otro dueño: lemmy-org/lemmy (404); se usa el nombre real verificado. | solo idea (GPL/AGPL) | — |
 | matrix-org/synapse | https://github.com/matrix-org/synapse | Apache-2.0 | 12090 | Matrix homeserver (para comunidad/chat). Archivado. | candidato | — |
 | misskey-dev/misskey | https://github.com/misskey-dev/misskey | AGPL-3.0 | 11353 | Otra red social federada. | solo idea (GPL/AGPL) | — |
 | codedrinker/community | https://github.com/codedrinker/community | MIT | 2772 | Foro/Q&A en Spring Boot + MySQL. | candidato | — |
@@ -214,13 +216,15 @@ Puntos, badges, rachas (streaks), logros y leaderboards.
 | franverona/questlog | https://github.com/franverona/questlog | sin licencia | 0 | API de gamificación (Hono + PostgreSQL + Drizzle). Achievements, streaks, leaderboards. Archivado. | solo idea (sin licencia) | — |
 | JKoontzDev/LevelUp | https://github.com/JKoontzDev/LevelUp | MIT | 0 | Gamified motivation tracker (RPG style). | candidato | — |
 
-## G2-04 · Recordatorios y notificaciones (15)
+## G2-04 · Recordatorios y notificaciones (17)
 
 Scheduling, recordatorios recurrentes y notificaciones locales o push.
 
 | Repo | URL | Licencia | ⭐ | Qué aporta | Estado | También en |
 |---|---|---|---|---|---|---|
 | expo/expo | https://github.com/expo/expo | MIT | 53004 | Sistema de notificaciones y background tasks de Expo (si usas React Native). | candidato | — |
+| binwiederhier/ntfy | https://github.com/binwiederhier/ntfy | Apache-2.0 | 34994 | Push notifications self-hosted simples y potentes. El adjunto lo tenía con otro dueño: ntfy/ntfy (404); se usa el nombre real verificado. | candidato | — |
+| caronc/apprise | https://github.com/caronc/apprise | BSD-2-Clause | 17633 | Librería multi-plataforma de notificaciones (muy útil para reminders). El adjunto lo tenía con otro dueño: apprise/apprise (404); se usa el nombre real verificado. | candidato | — |
 | gotify/server | https://github.com/gotify/server | NOASSERTION (no estándar) | 16107 | Self-hosted push notification server. | candidato (revisar licencia) | — |
 | invertase/react-native-firebase | https://github.com/invertase/react-native-firebase | NOASSERTION (no estándar) | 12321 | Firebase + notificaciones push (muy usado en apps de salud). | candidato (revisar licencia) | — |
 | node-cron/node-cron | https://github.com/node-cron/node-cron | ISC | 3284 | Programar recordatorios de período, pastillas, etc (y repos relacionados). | candidato | — |
@@ -252,7 +256,7 @@ Mood trackers y journaling con analytics.
 | djaiss/journalOS | https://github.com/djaiss/journalOS | MIT | 7 | Self-hosted journaling modular (sleep, mood, health, etc.). | candidato | — |
 | Ashishworks/Horizon | https://github.com/Ashishworks/Horizon | sin licencia | 0 | AI mental health journal con analytics. | solo idea (sin licencia) | — |
 
-## G2-06 · Datos de salud y FHIR (6)
+## G2-06 · Datos de salud y FHIR (7)
 
 Estándares y servidores de datos clínicos (FHIR, EHR).
 
@@ -260,6 +264,7 @@ Estándares y servidores de datos clínicos (FHIR, EHR).
 |---|---|---|---|---|---|---|
 | openemr/openemr | https://github.com/openemr/openemr | GPL-3.0 | 5539 | Open source EHR (muy completo, útil como referencia de datos de salud). | solo idea (GPL/AGPL) | — |
 | medplum/medplum | https://github.com/medplum/medplum | Apache-2.0 | 2756 | FHIR-based health data platform. | candidato | — |
+| hapifhir/hapi-fhir | https://github.com/hapifhir/hapi-fhir | Apache-2.0 | 2418 | Servidor FHIR en Java. El adjunto lo tenía con otro dueño: hapi-fhir/hapi-fhir (404); se usa el nombre real verificado. | candidato | — |
 | microsoft/fhir-server | https://github.com/microsoft/fhir-server | MIT | 1388 | FHIR server de Microsoft. | candidato | — |
 | google/fhir | https://github.com/google/fhir | Apache-2.0 | 963 | Protocol buffers y herramientas FHIR de Google. | candidato | — |
 | HL7/fhir | https://github.com/HL7/fhir | NOASSERTION (no estándar) | 761 | Especificación oficial FHIR. | candidato (revisar licencia) | — |
@@ -302,7 +307,7 @@ Librerías de componentes (shadcn, Radix, Magic UI y similares) con animación.
 | sopo/shadcn-animated | https://github.com/sopo/shadcn-animated | MIT | 28 | shadcn pero animado. | candidato | — |
 | bikash1376/better-components | https://github.com/bikash1376/better-components | MIT | 1 | Animated components + motion design editor en el browser. | candidato | — |
 
-## G3-02 · Gráficos y visualización de datos (5)
+## G3-02 · Gráficos y visualización de datos (6)
 
 Charts y visualización para estadísticas del ciclo.
 
@@ -311,6 +316,7 @@ Charts y visualización para estadísticas del ciclo.
 | d3/d3 | https://github.com/d3/d3 | ISC | 113794 | La base de casi toda visualización seria. | candidato | — |
 | recharts/recharts | https://github.com/recharts/recharts | MIT | 27650 | Gráficos limpios y customizables. | candidato | — |
 | airbnb/visx | https://github.com/airbnb/visx | MIT | 21084 | Visualizaciones de bajo nivel (muy minucioso). | candidato | — |
+| plouc/nivo | https://github.com/plouc/nivo | MIT | 14120 | Charts React hermosos y consistentes. El adjunto lo tenía con otro dueño: nivo/nivo (404); se usa el nombre real verificado. | candidato | — |
 | observablehq/plot | https://github.com/observablehq/plot | ISC | 5410 | Visualizaciones de datos muy precisas. | candidato | — |
 | tremorlabs/tremor | https://github.com/tremorlabs/tremor | Apache-2.0 | 3676 | Charts y dashboards elegantes. | candidato | — |
 
@@ -342,7 +348,7 @@ Listas de referencia para buscar más librerías.
 | noobnooc/awesome-design-dev | https://github.com/noobnooc/awesome-design-dev | sin licencia | 93 | Curated list de las mejores librerías de UI, animaciones y design systems. | solo idea (sin licencia) | — |
 | osmanyz/ui-kits-collection | https://github.com/osmanyz/ui-kits-collection | GPL-3.0 | 30 | Colección de UI kits de React, React Native, Vue y Flutter. | solo idea (GPL/AGPL) | — |
 
-## G3-06 · Animación y scroll (librerías base) (7)
+## G3-06 · Animación y scroll (librerías base) (8)
 
 Motores de animación, smooth scroll y animate-on-scroll.
 
@@ -350,6 +356,7 @@ Motores de animación, smooth scroll y animate-on-scroll.
 |---|---|---|---|---|---|---|
 | juliangarnier/anime | https://github.com/juliangarnier/anime | MIT | 73763 | Animaciones ligeras y potentes. | candidato | — |
 | motiondivision/motion | https://github.com/motiondivision/motion | MIT | 34441 | La librería de animaciones más usada. El adjunto lo nombra framer/motion (redirige). | candidato | — |
+| greensock/GSAP | https://github.com/greensock/GSAP | sin licencia | 29613 | Animaciones de nivel “legendario”. El adjunto lo tenía con otro dueño: gsap/gsap (404); se usa el nombre real verificado. | solo idea (sin licencia) | — |
 | pmndrs/react-spring | https://github.com/pmndrs/react-spring | MIT | 29177 | Animaciones físicas muy naturales. | candidato | — |
 | michalsnik/aos | https://github.com/michalsnik/aos | MIT | 28052 | Animate on scroll (clásico pero efectivo). | candidato | — |
 | darkroomengineering/lenis | https://github.com/darkroomengineering/lenis | MIT | 16796 | Smooth scroll moderno y ligero. | candidato | — |
@@ -381,33 +388,26 @@ El adjunto los citó como cuenta, no como repo. Existen; hay que elegir un repo 
 | ovulation-calculator | https://github.com/ovulation-calculator | — | — | El adjunto decía: Calculadoras de ovulación con UI de calendario avanzado. Existe, pero es un usuario con 1 repo vacío, sin descripción ni estrellas. | descartado | — |
 | whoop | https://github.com/whoop | — | — | El adjunto decía: Algunos proyectos open de análisis de datos de recovery/HRV. Existe, pero es un usuario personal sin relación con WHOOP (10 repos ajenos al tema). | descartado | — |
 
-# Descartados: no existen (24)
+# Descartados: no existen (17)
 
 La API de GitHub devolvió 404 el 2026-10-22. La URL va sin enlace para no dejar links rotos.
 
 | Repo | URL | Licencia | ⭐ | Qué aporta | Estado | También en |
 |---|---|---|---|---|---|---|
-| apprise/apprise | `github.com/apprise/apprise` (404) | — | — | El adjunto decía: Librería multi-plataforma de notificaciones (muy útil para reminders). Existe con otro nombre (verificado): caronc/apprise; no se agregó. | descartado (no existe) | — |
 | bbt-tracker | `github.com/bbt-tracker` (404) | — | — | El adjunto decía: Repos de basal body temperature charting con gráficos detallados. | descartado (no existe) | — |
 | clue-app | `github.com/clue-app` (404) | — | — | El adjunto decía: si existe mirror público: Código relacionado con visualizaciones de Clue (busca “clue period tracker github”). | descartado (no existe) | — |
 | cycle-phase-ring | `github.com/cycle-phase-ring` (404) | — | — | El adjunto decía: Componentes de anillo de fases del ciclo. | descartado (no existe) | — |
 | fertility-awareness | `github.com/fertility-awareness` (404) | — | — | El adjunto decía: Apps y herramientas de método sintotérmico. | descartado (no existe) | — |
 | fitbit | `github.com/fitbit` (404) | — | — | El adjunto decía: Repos de comunidad que procesan datos de temperatura y sueño. | descartado (no existe) | — |
 | flohealth | `github.com/flohealth` (404) | — | — | El adjunto decía: Componentes o estudios de UI de Flo (busca repos relacionados). | descartado (no existe) | — |
-| gsap/gsap | `github.com/gsap/gsap` (404) | — | — | El adjunto decía: Animaciones de nivel “legendario”. Existe con otro nombre (verificado): greensock/GSAP; no se agregó. | descartado (no existe) | — |
-| hapi-fhir/hapi-fhir | `github.com/hapi-fhir/hapi-fhir` (404) | — | — | El adjunto decía: Servidor FHIR en Java. Existe con otro nombre (verificado): hapifhir/hapi-fhir; no se agregó. | descartado (no existe) | — |
 | hormone-graph | `github.com/hormone-graph` (404) | — | — | El adjunto decía: Visualizaciones de estrógeno/progesterona a lo largo del ciclo. | descartado (no existe) | — |
-| lemmy-org/lemmy | `github.com/lemmy-org/lemmy` (404) | — | — | El adjunto decía: Link aggregator / Reddit-like. Existe con otro nombre (verificado): LemmyNet/lemmy; no se agregó. | descartado (no existe) | — |
 | linuxfoundation/cde-fhir | `github.com/linuxfoundation/cde-fhir` (404) | — | — | El adjunto decía: Herramientas FHIR. | descartado (no existe) | — |
 | machikoyasuda/awesome-fam | `github.com/machikoyasuda/awesome-fam` (404) | — | — | El adjunto decía: Lista curada de herramientas, apps y recursos de Fertility Awareness Method. | descartado (no existe) | — |
 | menstrual-cycle-visualizer | `github.com/menstrual-cycle-visualizer` (404) | — | — | El adjunto decía: Proyectos de visualización de fases y hormonas. | descartado (no existe) | — |
-| nivo/nivo | `github.com/nivo/nivo` (404) | — | — | El adjunto decía: Charts React hermosos y consistentes. Existe con otro nombre (verificado): plouc/nivo; no se agregó. | descartado (no existe) | — |
-| ntfy/ntfy | `github.com/ntfy/ntfy` (404) | — | — | El adjunto decía: Push notifications self-hosted simples y potentes. Existe con otro nombre (verificado): binwiederhier/ntfy; no se agregó. | descartado (no existe) | — |
 | open-source-health | `github.com/open-source-health` (404) | — | — | El adjunto decía: (busca repos de integración con wearables de temperatura/HRV). | descartado (no existe) | — |
 | open-source-period-tracker | `github.com/open-source-period-tracker` (404) | — | — | El adjunto decía: Varios forks y discusiones de period trackers privacy-first. | descartado (no existe) | — |
 | oura-community | `github.com/oura-community` (404) | — | — | El adjunto decía: Algunos scripts y repos de comunidad para datos de Oura (temperatura, HRV). | descartado (no existe) | — |
 | period-calendar-widget | `github.com/period-calendar-widget` (404) | — | — | El adjunto decía: Widgets de calendario menstrual reutilizables. | descartado (no existe) | — |
 | privacy-period-tracker | `github.com/privacy-period-tracker` (404) | — | — | El adjunto decía: Varios privacy-first con UI limpia. | descartado (no existe) | — |
-| rocket-chat/rocket.chat | `github.com/rocket-chat/rocket.chat` (404) | — | — | El adjunto decía: Plataforma de chat open source. Existe con otro nombre (verificado): RocketChat/Rocket.Chat; no se agregó. | descartado (no existe) | — |
 | studio-freight/lenis | `github.com/studio-freight/lenis` (404) | — | — | El adjunto decía: (mismo). Existe con otro nombre (verificado): darkroomengineering/lenis (ya en esta lista); no se agregó. | descartado (no existe) | — |
 | symptom-correlation | `github.com/symptom-correlation` (404) | — | — | El adjunto decía: Apps que correlacionan síntomas con fases. | descartado (no existe) | — |
