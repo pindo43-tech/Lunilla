@@ -23,6 +23,7 @@ export function Frame() {
     vault?.settings.remindersEnabled === true,
     prediction?.nextPeriod ?? null,
     prediction?.daysUntil ?? null,
+    vault?.settings.reminderDaysBefore ?? 2,
   )
   if (!vault) return null
   const calendarOn = pathname.startsWith('/app/calendar') || pathname.startsWith('/app/day')

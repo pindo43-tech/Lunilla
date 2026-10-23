@@ -295,6 +295,32 @@ export function SettingsPage() {
         >
           {vault.settings.remindersEnabled ? t('set.remindersOn') : t('set.remindersOff')}
         </Button>
+        {vault.settings.remindersEnabled ? (
+          <div className="space-y-2 pt-2">
+            <p className="text-xs font-semibold uppercase tracking-wider text-muted">{t('set.reminderDays')}</p>
+            <div role="radiogroup" aria-label={t('set.reminderDays')} className="grid grid-cols-3 gap-2">
+              {([1, 2, 3] as const).map((days) => {
+                const selected = (vault.settings.reminderDaysBefore ?? 2) === days
+                const labelKey = days === 1 ? 'set.reminderDay1' : days === 2 ? 'set.reminderDays2' : 'set.reminderDays3'
+                return (
+                  <button
+                    key={days}
+                    type="button"
+                    role="radio"
+                    aria-checked={selected}
+                    onClick={() => void update((current) => ({
+                      ...current,
+                      settings: { ...current.settings, reminderDaysBefore: days },
+                    }))}
+                    className={selected ? 'min-h-11 rounded-2xl bg-rose text-xs font-medium text-white' : 'min-h-11 rounded-2xl bg-white text-xs font-medium shadow-sm'}
+                  >
+                    {t(labelKey)}
+                  </button>
+                )
+              })}
+            </div>
+          </div>
+        ) : null}
         {reminderNote ? <p role="status" className="text-sm leading-relaxed">{reminderNote}</p> : null}
       </section>
 

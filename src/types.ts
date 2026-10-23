@@ -35,6 +35,8 @@ export interface Settings {
   locale: Locale
   historyLength: number
   remindersEnabled: boolean
+  /** Days of anticipation for period reminder notification (1, 2, or 3). */
+  reminderDaysBefore: number
   /** Shown as Notas on the tab and the lock screen. Stored locally, never sent. */
   discreet: boolean
   /** Used only when there is no measured cycle yet. */

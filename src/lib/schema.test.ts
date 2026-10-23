@@ -30,6 +30,21 @@ describe('schema', () => {
     expect(vault?.days['2026-05-01']?.note).toHaveLength(500)
     expect(vault?.days['not-a-date']).toBeUndefined()
     expect(vault?.customSymptoms[0]?.name).toBe('Calor en la cara')
+    expect(vault?.settings.reminderDaysBefore).toBe(2)
+  })
+
+  it('sanitizes reminderDaysBefore to 1, 2, or 3', () => {
+    const base = emptyVault('es')
+    expect(base.settings.reminderDaysBefore).toBe(2)
+
+    const v1 = sanitizeVault({ ...base, settings: { ...base.settings, reminderDaysBefore: 1 } })
+    expect(v1?.settings.reminderDaysBefore).toBe(1)
+
+    const v3 = sanitizeVault({ ...base, settings: { ...base.settings, reminderDaysBefore: 3 } })
+    expect(v3?.settings.reminderDaysBefore).toBe(3)
+
+    const vInvalid = sanitizeVault({ ...base, settings: { ...base.settings, reminderDaysBefore: 10 } })
+    expect(vInvalid?.settings.reminderDaysBefore).toBe(2)
   })
 
   it('rejects a future schema', () => {

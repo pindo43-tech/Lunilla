@@ -43,3 +43,15 @@ Este backlog estructura las mejoras y ensamblajes de módulos desde `REPOS_A_ENS
 - [x] **Tarea 9: Aviso de instalación PWA descartable**
   - Origen: `LATER.md` (Punto 8: aviso de instalación, se puede cerrar).
   - Acción: Banner `InstallPrompt.tsx` con instrucciones para iOS/Android, descartable una sola vez mediante `localStorage`, no invasivo, con tests en `src/lib/installPrompt.test.ts`.
+
+- [x] **Tarea 10: Configuración flexible de anticipación de aviso de regla**
+  - Origen: `LATER.md` (Punto 7: aviso de regla con anticipación configurable de 1 a 3 días).
+  - Acción: Guardar `reminderDaysBefore` (1, 2 o 3 días) en `settings`, selector en `SettingsPage`, soporte en `useReminder` y sanitización en `src/lib/schema.ts` con tests.
+
+- [ ] **Tarea 11: Resumen médico clínico para consulta (Print / PDF)**
+  - Origen: `REPOS_A_ENSAMBLAR.md` (G1-15 / `LATER.md`).
+  - Acción: Generador y vista de reporte clínico con formato limpio para imprimir (`window.print()`), con estadísticas de duración, regularidad, síntomas frecuentes y notas de consulta.
+
+- [ ] **Tarea 12: Gráfico de Temperatura Basal (BBT) y Coverline (sunbeamstudiosdev/Coverline MIT)**
+  - Origen: `REPOS_A_ENSAMBLAR.md` (G1-03 / `sunbeamstudiosdev/Coverline`).
+  - Acción: Detección del salto térmico del ciclo actual y cálculo de la línea de base (coverline) sintotérmica, con gráfico SVG integrado.

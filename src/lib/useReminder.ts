@@ -3,11 +3,16 @@ import { todayISO } from './dates.ts'
 import { useDiscreet } from './discreet.ts'
 import { useI18n } from './i18n.tsx'
 
-export function useReminder(enabled: boolean, nextPeriod: string | null, daysUntil: number | null): void {
+export function useReminder(
+  enabled: boolean,
+  nextPeriod: string | null,
+  daysUntil: number | null,
+  reminderDaysBefore = 2,
+): void {
   const { t } = useI18n()
   const discreet = useDiscreet()
   useEffect(() => {
-    if (!enabled || !nextPeriod || daysUntil === null || daysUntil < 0 || daysUntil > 2) return
+    if (!enabled || !nextPeriod || daysUntil === null || daysUntil < 0 || daysUntil > reminderDaysBefore) return
     if (typeof Notification === 'undefined' || Notification.permission !== 'granted') return
     const stamp = `lunilla-notice:${todayISO()}:${nextPeriod}`
     if (sessionStorage.getItem(stamp)) return
@@ -24,5 +29,5 @@ export function useReminder(enabled: boolean, nextPeriod: string | null, daysUnt
       }
     }, 800)
     return () => window.clearTimeout(handle)
-  }, [enabled, nextPeriod, daysUntil, t, discreet])
+  }, [enabled, nextPeriod, daysUntil, reminderDaysBefore, t, discreet])
 }

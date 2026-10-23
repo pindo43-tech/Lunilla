@@ -49,6 +49,7 @@ export function emptyVault(locale: Locale): Vault {
       locale,
       historyLength: 6,
       remindersEnabled: false,
+      reminderDaysBefore: 2,
       discreet: false,
       typicalCycleLength: null,
     },
@@ -94,6 +95,8 @@ function sanitizeSettings(value: unknown): Settings | null {
   const locale: Locale = raw.locale === 'en' ? 'en' : 'es'
   const history = typeof raw.historyLength === 'number' ? Math.round(raw.historyLength) : 6
   const historyLength = history >= 3 && history <= 12 ? history : 6
+  const reminderDaysRaw = raw.reminderDaysBefore
+  const reminderDaysBefore = reminderDaysRaw === 1 || reminderDaysRaw === 3 ? reminderDaysRaw : 2
   const typicalRaw = raw.typicalCycleLength
   const typicalCycleLength = typeof typicalRaw === 'number'
     && Number.isInteger(typicalRaw)
@@ -106,6 +109,7 @@ function sanitizeSettings(value: unknown): Settings | null {
     locale,
     historyLength,
     remindersEnabled: raw.remindersEnabled === true,
+    reminderDaysBefore,
     discreet: raw.discreet === true,
     typicalCycleLength,
   }
