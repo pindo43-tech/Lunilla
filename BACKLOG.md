@@ -20,7 +20,7 @@ Este backlog estructura las mejoras y ensamblajes de módulos desde `REPOS_A_ENS
   - Origen: `REPOS_A_ENSAMBLAR.md` (G1-01 / `HYPERSAHIL/periodtracker`).
   - Acción: Alerta educativa no alarmista cuando el sangrado actual supere 7 días continuos en `src/lib/safety.ts`, con visualización en `HomePage` y tests en `src/lib/safety.test.ts`.
 
-- [ ] **Tarea 4: Exportación offline a iCalendar .ics (nwcell/ics.js MIT)**
+- [x] **Tarea 4: Exportación offline a iCalendar .ics (nwcell/ics.js MIT)**
   - Origen: `REPOS_A_ENSAMBLAR.md` (G1-26 / `nwcell/ics.js`).
   - Acción: Generador RFC 5545 iCalendar (`src/lib/ics.ts`) para exportar los próximos 3 períodos al calendario nativo de iOS/Android/Mac sin conexión, botón en `SettingsPage`/`SummaryPage`, y tests en `src/lib/ics.test.ts`.
 

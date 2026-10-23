@@ -1,8 +1,11 @@
 import { useRef, useState } from 'react'
 import { Button, DigitField } from '../components/ui.tsx'
 import { PinError } from '../lib/crypto.ts'
+import { todayISO } from '../lib/dates.ts'
+import { buildUpcomingPeriodsIcs, downloadIcsFile } from '../lib/ics.ts'
 import { useI18n } from '../lib/i18n.tsx'
 import { MAX_CYCLE_DAYS, MIN_CYCLE_DAYS } from '../lib/constants.ts'
+import { predict } from '../lib/predict.ts'
 import { useBrandTitle } from '../lib/useTitle.ts'
 import { useSession } from '../state/session.tsx'
 import type { Locale } from '../types.ts'
@@ -29,8 +32,22 @@ export function SettingsPage() {
   const [eraseError, setEraseError] = useState('')
   const [typicalText, setTypicalText] = useState<string | null>(null)
   const [typicalError, setTypicalError] = useState('')
+  const [icsNote, setIcsNote] = useState('')
   useBrandTitle(t('tabs.settings'))
   if (!vault) return null
+
+  function handleExportIcs() {
+    if (!vault) return
+    const today = todayISO()
+    const prediction = predict(vault.days, vault.settings.historyLength, today, vault.settings.typicalCycleLength)
+    const ics = buildUpcomingPeriodsIcs(prediction, today, locale)
+    if (!ics) {
+      setIcsNote(t('set.icsNone'))
+      return
+    }
+    setIcsNote('')
+    downloadIcsFile(`lunilla-previsiones-${today}.ics`, ics)
+  }
 
   async function savePin() {
     setPinMessage('')
@@ -270,6 +287,13 @@ export function SettingsPage() {
         <h2 className="text-lg font-semibold">{t('set.export')}</h2>
         <p className="text-sm leading-relaxed text-muted">{t('set.exportHelp')}</p>
         <Button className="w-full" onClick={() => void exportCopy()}>{t('set.export')}</Button>
+      </section>
+
+      <section className="space-y-3">
+        <h2 className="text-lg font-semibold">{t('set.icsExport')}</h2>
+        <p className="text-sm leading-relaxed text-muted">{t('set.icsHelp')}</p>
+        <Button tone="quiet" className="w-full" onClick={handleExportIcs}>{t('set.icsExport')}</Button>
+        {icsNote ? <p role="status" className="text-sm text-muted">{icsNote}</p> : null}
       </section>
 
       <section className="space-y-3">
