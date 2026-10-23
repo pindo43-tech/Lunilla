@@ -10,7 +10,7 @@
 - **Estados:** `integrado` = ya se usó código o una idea en Lunilla (según `aporte-grok-bot/REUSE.md`) · `candidato` = licencia permisiva, se puede tomar código con atribución · `candidato (revisar licencia)` = licencia no estándar · `solo idea (GPL/AGPL)` = copyleft (GPL, AGPL o LGPL), solo leer ideas y no copiar código en Lunilla (MIT) · `solo idea (sin licencia)` = sin licencia declarada, solo referencia · `descartado` = ya evaluado sin uso o no corresponde.
 - **Datos:** licencia, estrellas y existencia verificadas con la API de GitHub el 2026-10-22. No se inventó ningún dato. Fuente de los repos: lista aportada por el usuario el 2026-10-22.
 - **Totales:** 183 repos únicos en tablas de funciones, 3 organizaciones o usuarios válidos, 2 fuentes que no son GitHub y 20 descartados. Por estado: candidato 87, candidato (revisar licencia) 18, descartado 1, integrado 4, solo idea (GPL/AGPL) 34, solo idea (sin licencia) 39.
-- **Agregados 2026-10-22 (búsqueda del bot de Lunilla):** 289 repos nuevos, buscados función por función para armar la app ensamblando código de otros repos. Están en subtablas `Agregados 2026-10-22` dentro de las secciones que ya existían, y en secciones nuevas (marcadas "nueva 2026-10-22" en el índice) para las funciones que no tenían sección. Cada sección nueva arranca explicando cómo funciona la función por dentro y qué piezas hacen falta. Total del archivo: 472 repos únicos (183 previos + 289 nuevos).
+- **Agregados 2026-10-22 (búsqueda del bot de Lunilla):** 294 repos nuevos, buscados función por función para armar la app ensamblando código de otros repos. Están en subtablas `Agregados 2026-10-22` dentro de las secciones que ya existían, y en secciones nuevas (marcadas "nueva 2026-10-22" en el índice) para las funciones que no tenían sección. Cada sección nueva arranca explicando cómo funciona la función por dentro y qué piezas hacen falta. Total del archivo: 477 repos únicos (183 previos + 294 nuevos).
 - **Columnas de las subtablas nuevas:** `Link` · `owner/nombre` (nombre canónico devuelto por la API de GitHub) · `MB` (campo `size` de la API, en KB, convertido a MB) · `⭐` · `Lenguaje` · `Licencia` (SPDX de la API; se anota tal cual, sin juicio) · `Último commit` (`pushed_at` de la API, fecha del último push) · `Front/Back` (F = interfaz o UI, B = lógica, datos, integraciones o backend) · `Qué es` · `Pieza concreta que aporta a Lunilla` (dónde, cuándo y cómo se ensambla) · `Otras funciones` (códigos de otras secciones donde también sirve; el repo figura una sola vez) · `Origen`. Los repos sin actividad en 2026 llevan una nota de "Vigencia" que explica por qué se quedan. Las funciones que resuelve mejor un LLM (redactar textos, horóscopos, afirmaciones, chat de preguntas) no tienen repos de texto: solo infraestructura.
 
 ## Índice
@@ -45,15 +45,15 @@
 | G1-27 | Registro de condiciones de salud y medicación (extra) (nueva 2026-10-22) | 6 |
 | G2-01 | Educación, contenido y CMS | 12 + 5 agregados 2026-10-22 |
 | G2-02 | Comunidad, foros y chat | 12 + 7 agregados 2026-10-22 |
-| G2-03 | Gamificación | 10 + 2 agregados 2026-10-22 |
+| G2-03 | Gamificación | 10 + 4 agregados 2026-10-22 |
 | G2-04 | Recordatorios y notificaciones | 17 + 6 agregados 2026-10-22 |
 | G2-05 | Ánimo, diario y síntomas emocionales | 9 + 6 agregados 2026-10-22 |
 | G2-06 | Datos de salud y FHIR | 7 + 3 agregados 2026-10-22 |
 | G2-07 | Backend y bases de datos | 3 |
 | G2-08 | Fases lunares, moon sign, astrología y tarot de ciclo (solo cálculo; el texto lo hace un LLM) (nueva 2026-10-22) | 4 |
-| G2-09 | Avatares y personalización de avatar (nueva 2026-10-22) | 2 |
+| G2-09 | Avatares y personalización de avatar (nueva 2026-10-22) | 3 |
 | G2-10 | Cycle syncing de productividad y rutinas por fase (nueva 2026-10-22) | 2 |
-| G2-11 | Videos cortos, GIFs, stories y daily decode (nueva 2026-10-22) | 3 |
+| G2-11 | Videos cortos, GIFs, stories y daily decode (nueva 2026-10-22) | 4 |
 | G2-12 | Modo padre, parent linking y plan multi-hija (nueva 2026-10-22) | 4 |
 | G2-13 | PIN/passcode, decoy screen (pantalla falsa) y auto-borrado programado (nueva 2026-10-22) | 2 |
 | G2-14 | Comparación con otras usuarias: estadística agregada con privacidad (nueva 2026-10-22) | 5 |
@@ -63,7 +63,7 @@
 | G3-01 | Componentes UI animados y design systems | 16 |
 | G3-02 | Gráficos y visualización de datos | 6 + 5 agregados 2026-10-22 |
 | G3-03 | UI mobile (Flutter) | 2 |
-| G3-04 | 3D (React Three Fiber) | 2 + 2 agregados 2026-10-22 |
+| G3-04 | 3D (React Three Fiber) | 2 + 3 agregados 2026-10-22 |
 | G3-05 | Listas curadas (awesome) | 3 |
 | G3-06 | Animación y scroll (librerías base) | 8 |
 
@@ -123,7 +123,7 @@ Cómo se usan: cada app es una implementación completa de varias funciones (reg
 
 | Link | owner/nombre | MB | ⭐ | Lenguaje | Licencia | Último commit | Front/Back | Qué es | Pieza concreta que aporta a Lunilla (dónde/cuándo/cómo se ensambla) | Otras funciones | Origen |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| https://github.com/MBombeck/HealthLog | MBombeck/HealthLog | 92.6 | 194 | TypeScript | NOASSERTION (no estándar) | 2026-10-23 | B | PWA self-hosted de salud (peso, presión, glucosa, sueño, ánimo, medicación, ciclo) con integraciones Withings, WHOOP y Fitbit. | Módulo de ciclo dentro de una PWA de salud general, más sus conectores de wearables: referencia de cómo mezclar ciclo con otras métricas y de cómo hacer OAuth con WHOOP y Fitbit. | G1-06, G1-27 | Lunilla bot, 2026-10-22 |
+| https://github.com/MBombeck/HealthLog | MBombeck/HealthLog | 93.3 | 194 | TypeScript | NOASSERTION (no estándar) | 2026-10-23 | B | PWA self-hosted de salud (peso, presión, glucosa, sueño, ánimo, medicación, ciclo) con integraciones Withings, WHOOP y Fitbit. | Módulo de ciclo dentro de una PWA de salud general, más sus conectores de wearables: referencia de cómo mezclar ciclo con otras métricas y de cómo hacer OAuth con WHOOP y Fitbit. | G1-06, G1-27 | Lunilla bot, 2026-10-22 |
 | https://github.com/treiher/valens | treiher/valens | 9.7 | 12 | Rust | AGPL-3.0 | 2026-10-04 | B | App web self-hosted de entrenamiento y salud que incluye seguimiento del ciclo menstrual junto al entrenamiento. | Cruce de ciclo con entrenamiento y métricas corporales, para G2-10 (cycle syncing). | G2-10 | Lunilla bot, 2026-10-22 |
 | https://github.com/lekhanpro/cyclecare | lekhanpro/cyclecare | 6.0 | 10 | Dart | MIT | 2026-10-09 | B | Tracker Flutter offline-first de ciclo, fertilidad y bienestar, sin cuenta; README con sección de arquitectura. | Arquitectura documentada de un tracker offline (capas de datos, predicción y fertilidad): sirve de plano para ordenar los módulos de Lunilla. | G1-02, G1-10 | Lunilla bot, 2026-10-22 |
 | https://github.com/grovely-org/grovely-app | grovely-org/grovely-app | 18.8 | 10 | Vue | NOASSERTION (no estándar) | 2026-08-18 | B | Hub doméstico self-hosted para parejas con tracking de periodo, predicción y despensa compartida. | Compartir el ciclo con la pareja dentro de una app de hogar (permisos entre dos usuarios). | G1-18 | Lunilla bot, 2026-10-22 |
@@ -682,12 +682,14 @@ Puntos, badges, rachas (streaks), logros y leaderboards.
 | franverona/questlog | https://github.com/franverona/questlog | sin licencia | 0 | API de gamificación (Hono + PostgreSQL + Drizzle). Achievements, streaks, leaderboards. Archivado. | solo idea (sin licencia) | — |
 | JKoontzDev/LevelUp | https://github.com/JKoontzDev/LevelUp | MIT | 0 | Gamified motivation tracker (RPG style). | candidato | — |
 
-### G2-03 · Agregados 2026-10-22 — Gamificación, quizzes, recompensas, rate my day y daily quiz (2)
+### G2-03 · Agregados 2026-10-22 — Gamificación, quizzes, recompensas, rate my day y daily quiz (4)
 
 Cómo funciona: los eventos de registro suman puntos, rachas y logros con reglas locales. Los quizzes son bancos de preguntas con puntaje. Rate my day es una escala diaria. Las animaciones de premio (confetti) refuerzan el hábito. Piezas: motor de logros o rachas, motor de quiz y efectos visuales.
 
 | Link | owner/nombre | MB | ⭐ | Lenguaje | Licencia | Último commit | Front/Back | Qué es | Pieza concreta que aporta a Lunilla (dónde/cuándo/cómo se ensambla) | Otras funciones | Origen |
 |---|---|---|---|---|---|---|---|---|---|---|---|
+| https://github.com/catdad/canvas-confetti | catdad/canvas-confetti | 0.3 | 12828 | JavaScript | ISC | 2025-10-25 | F | Animación de confetti performante en el navegador (canvas, sin dependencias). | Micro-recompensa al completar una racha de registro o un quiz. Vigencia: lib estable y diminuta (último commit oct-2025), sin necesidad de cambios. | G2-11 | Lunilla bot, 2026-10-22 |
+| https://github.com/iSoron/uhabits | iSoron/uhabits | 39.8 | 10347 | Kotlin | GPL-3.0 | 2026-10-22 | B | Loop Habit Tracker: app Android open source, sin anuncios, para hábitos de largo plazo, con "habit strength", rachas, historial y gráficos. | Referencia de la lógica de rachas y del puntaje de fuerza de hábito (decaimiento exponencial en lugar de racha binaria). Se aplica a la constancia de registro diario en la gamificación de G2-03, sin castigar el día que se olvidan. GPL-3.0: tomar la idea, no copiar código. | G3-02 | Lunilla bot, 2026-10-22 |
 | https://github.com/surveyjs/survey-library | surveyjs/survey-library | 332.2 | 4912 | TypeScript | MIT | 2026-10-22 | F | Librería JS open source de formularios y encuestas (React, Angular, Vue o JS plano) definidos en JSON. | Quizzes educativos y cuestionarios de autoevaluación (por ejemplo dolor o ánimo) definidos en JSON, con lógica condicional y puntaje. | G1-14 | Lunilla bot, 2026-10-22 |
 | https://github.com/iNikAnn/DoHabit | iNikAnn/DoHabit | 48.0 | 63 | TypeScript | AGPL-3.0 | 2026-09-30 | F | Habit tracker web local-first, sin registro ni nube. | Rachas y check diario de hábitos para la gamificación (racha de registro diario). | G1-22 | Lunilla bot, 2026-10-22 |
 
@@ -802,7 +804,7 @@ Cómo funciona: la fase lunar y la posición de los astros para una fecha salen 
 | https://github.com/0xStarcat/CircularNatalHoroscopeJS | 0xStarcat/CircularNatalHoroscopeJS | 2.6 | 377 | JavaScript | Unlicense | 2021-07-18 | B | Librería ES6 para cálculos de carta natal astrológica (signos, casas, aspectos); no hace interpretaciones. Vigencia: último push 2021-07; se queda porque es la única librería JS completa de carta natal y no depende de ningún servicio. | Calcular el signo solar y lunar de la usuaria y el "moon sign" del día, offline; los textos los escribe el equipo o lo resuelve un LLM. | — | Lunilla bot, 2026-10-22 |
 | https://github.com/mixvlad/TarotCards | mixvlad/TarotCards | 1067.9 | 34 | Python | MIT | 2026-09-23 | B | Colección curada de mazos de tarot en dominio público (Rider-Waite, Sola Busca, Marseille, etc.) más el mazo original Soimoi bajo Creative Commons, con imágenes y herramientas Python. | Assets de cartas para el "tarot del día" de G2-08 sin problemas de copyright. Pesa ~1 GB: tomar solo las imágenes necesarias. | G2-05 | Lunilla bot, 2026-10-22 |
 
-## G2-09 · Avatares y personalización de avatar (2)
+## G2-09 · Avatares y personalización de avatar (3)
 
 Cómo funciona: los avatares se generan como SVG combinando partes (pelo, cara, ropa) con una semilla o elecciones de la usuaria y se guardan como parámetros. Piezas: generador o editor de avatares SVG y colecciones de assets.
 
@@ -810,6 +812,7 @@ Cómo funciona: los avatares se generan como SVG combinando partes (pelo, cara, 
 |---|---|---|---|---|---|---|---|---|---|---|---|
 | https://github.com/dicebear/dicebear | dicebear/dicebear | 32.4 | 9918 | Vue | MIT | 2026-10-21 | F | DiceBear: librería de avatares con muchos estilos y opciones, que genera SVG de forma determinista desde una semilla. | Avatar de la usuaria sin foto (privacidad): elige estilo, pelo y colores y se guarda sólo la configuración. | G2-02 comunidad anónima | Lunilla bot, 2026-10-22 |
 | https://github.com/boringdesigners/boring-avatars | boringdesigners/boring-avatars | 3.0 | 6467 | TypeScript | MIT | 2026-06-19 | F | Librería React que genera avatares SVG a partir de un nombre y una paleta. | Avatares abstractos para perfiles anónimos y para el "perfil de pareja" compartido. | — | Lunilla bot, 2026-10-22 |
+| https://github.com/dicebear/api | dicebear/api | 1.6 | 146 | JavaScript | MIT | 2026-09-07 | B | Servicio self-hosted de DiceBear sobre Fastify: un contenedor convierte un seed en avatar (61 estilos, 5 formatos) sin base de datos ni llamadas a terceros. | Si los avatares se generan del lado servidor (para la comunidad o para compartir), este contenedor corre junto al backend, sin filtrar el seed a dicebear.com. Complementa la lib dicebear ya listada, que corre en el cliente. | G2-02;G2-15 | Lunilla bot, 2026-10-22 |
 
 ## G2-10 · Cycle syncing de productividad y rutinas por fase (2)
 
@@ -820,7 +823,7 @@ Cómo funciona: según la fase estimada del ciclo se sugieren rutinas o tareas (
 | https://github.com/super-productivity/super-productivity | super-productivity/super-productivity | 178.4 | 23068 | TypeScript | MIT | 2026-10-22 | F | App de tareas avanzada con timeboxing, seguimiento de tiempo e importación desde calendario, Jira y GitHub. | Referencia de rutinas y tareas recurrentes y de planificación diaria para el cycle syncing (tareas sugeridas según la fase). | G2-04 | Lunilla bot, 2026-10-22 |
 | https://github.com/MaiaALex/luna-notes | MaiaALex/luna-notes | 0.1 | 0 | JavaScript | MIT | 2026-06-06 | F | Plantilla o plugin de Obsidian para planificar según el ciclo: fases, diario de síntomas y reflexión emocional. | Plantillas de planificación por fase para el modo cycle syncing. | G2-05 | Lunilla bot, 2026-10-22 |
 
-## G2-11 · Videos cortos, GIFs, stories y daily decode (3)
+## G2-11 · Videos cortos, GIFs, stories y daily decode (4)
 
 Cómo funciona: los formatos tipo stories reproducen tarjetas o videos cortos en secuencia con progreso. Los GIFs salen de APIs de terceros (con privacidad acotada) o de animaciones locales (Lottie). Piezas: componente de stories, reproductor de video y animaciones vectoriales.
 
@@ -829,6 +832,7 @@ Cómo funciona: los formatos tipo stories reproducen tarjetas o videos cortos en
 | https://github.com/remotion-dev/remotion | remotion-dev/remotion | 4335.4 | 66376 | TypeScript | NOASSERTION (no estándar) | 2026-10-22 | B | Hacer videos de forma programática con React. | Plantillas de videos educativos o resúmenes ("Wrapped" anual) renderizados con React, server-side o en el cliente; revisar la licencia (NOASSERTION, licencia propia de la empresa). | G2-01 | Lunilla bot, 2026-10-22 |
 | https://github.com/ffmpegwasm/ffmpeg.wasm | ffmpegwasm/ffmpeg.wasm | 17.5 | 17898 | C | MIT | 2026-09-29 | F | FFmpeg en el navegador vía WebAssembly. | Armar en el dispositivo videos o stories cortos (MP4) a partir de las tarjetas del resumen, sin subir nada. | — | Lunilla bot, 2026-10-22 |
 | https://github.com/mattdesl/gifenc | mattdesl/gifenc | 1.9 | 342 | JavaScript | MIT | 2024-09-19 | F | Codificador GIF rápido y liviano en JS puro, para navegador y Node. Vigencia: último push 2024-09; es una librería pequeña y estable. | Generar GIFs cortos (por ejemplo, la animación "tu ciclo del mes") en el cliente para compartir. | G2-15 | Lunilla bot, 2026-10-22 |
+| https://github.com/KLIPY-com/Klipy-GIF-API | KLIPY-com/Klipy-GIF-API | 0.0 | 79 | — | sin licencia | 2026-03-18 | B | Documentación oficial de la API de KLIPY (GIFs, stickers, clips y memes, con localización por país); se ofrece como reemplazo directo de Tenor. Monetiza con anuncios entre el contenido. | Proveedor de GIFs para stories o reacciones si Tenor deja de estar disponible. Para una app de adolescentes hay que desactivar los anuncios y no mandar identificadores: pasar las llamadas por un proxy en el Worker. | G2-05 | Lunilla bot, 2026-10-22 |
 
 ## G2-12 · Modo padre, parent linking y plan multi-hija (4)
 
@@ -958,13 +962,14 @@ Widgets y componentes para Flutter.
 | pmndrs/react-three-fiber | https://github.com/pmndrs/react-three-fiber | MIT | 33164 | + drei — 3D para UIs premium. | candidato | — |
 | pmndrs/drei | https://github.com/pmndrs/drei | MIT | 10042 | + react-three-fiber — 3D para UIs premium. | candidato | — |
 
-### G3-04 · Agregados 2026-10-22 — AR/3D del bebé y modelos 3D (2)
+### G3-04 · Agregados 2026-10-22 — AR/3D del bebé y modelos 3D (3)
 
 Cómo funciona: un modelo 3D (glTF) por semana de gestación se muestra con WebGL o model-viewer (que incluye AR en el móvil). Piezas: visor 3D o AR y modelos con licencia.
 
 | Link | owner/nombre | MB | ⭐ | Lenguaje | Licencia | Último commit | Front/Back | Qué es | Pieza concreta que aporta a Lunilla (dónde/cuándo/cómo se ensambla) | Otras funciones | Origen |
 |---|---|---|---|---|---|---|---|---|---|---|---|
 | https://github.com/mrdoob/three.js | mrdoob/three.js | 1656.9 | 116791 | JavaScript | MIT | 2026-10-22 | F | Librería 3D para JavaScript (WebGL/WebGPU). | Base para escenas 3D personalizadas (útero o bebé interactivo) si model-viewer no alcanza. | — | Lunilla bot, 2026-10-22 |
+| https://github.com/BabylonJS/Babylon.js | BabylonJS/Babylon.js | 1452.3 | 26219 | TypeScript | Apache-2.0 | 2026-10-23 | F | Motor de render web open source (WebGL/WebGPU, WebXR, glTF) con playground y editor. | Alternativa a three.js para la vista 3D/AR del bebé por semana: carga glTF por semana de gestación y usa el modo WebXR de AR en Android. | G1-11 | Lunilla bot, 2026-10-22 |
 | https://github.com/google/model-viewer | google/model-viewer | 4373.9 | 8289 | TypeScript | Apache-2.0 | 2026-10-09 | F | Web component <model-viewer> para mostrar modelos 3D (glTF) interactivos en la web y en AR. | Mostrar el modelo 3D del bebé por semana (glTF) con AR en móvil, sin código 3D propio. | G1-11 | Lunilla bot, 2026-10-22 |
 
 ## G3-05 · Listas curadas (awesome) (3)
