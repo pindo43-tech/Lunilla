@@ -1,12 +1,14 @@
 import { useEffect, useRef, useState } from 'react'
+import { BbtChart } from '../components/BbtChart.tsx'
 import { ClinicalReportModal } from '../components/ClinicalReportModal.tsx'
 import { Sparkline } from '../components/Sparkline.tsx'
 import { YearlyStrip } from '../components/YearlyStrip.tsx'
+import { extractCycleBbt } from '../lib/bbt.ts'
 import type { CycleEditError, LoggedPeriod } from '../lib/cycles.ts'
 import { applyPeriod, deletePeriod, listPeriods, summarize } from '../lib/cycles.ts'
 import { analyzePhasePatterns } from '../lib/patterns.ts'
 import { SYMPTOM_IDS } from '../lib/catalog.ts'
-import { formatLong, formatShort, todayISO } from '../lib/dates.ts'
+import { addDays, formatLong, formatShort, todayISO } from '../lib/dates.ts'
 import type { MessageKey } from '../lib/i18n.tsx'
 import { useI18n } from '../lib/i18n.tsx'
 import { useBrandTitle } from '../lib/useTitle.ts'
@@ -65,6 +67,10 @@ export function SummaryPage() {
   const summary = summarize(vault.days, vault.settings.historyLength, today)
   const phasePatterns = analyzePhasePatterns(vault.days, today)
   const removingPeriod = periods.find((period) => period.start === removing) ?? null
+
+  const currentCycleStart = periods[periods.length - 1]?.start ?? addDays(today, -45)
+  const cycleBbtReadings = extractCycleBbt(vault.days, currentCycleStart)
+  const allBbtReadings = extractCycleBbt(vault.days, '0000-00-00')
 
   function moodName(id: string): string {
     const key = `mood.${id}` as MessageKey
@@ -220,6 +226,14 @@ export function SummaryPage() {
           </div>
         )}
       </section>
+
+      {allBbtReadings.length >= 2 ? (
+        <section className="space-y-3">
+          <h2 className="text-lg font-semibold">{t('bbt.title')}</h2>
+          <p className="text-sm leading-relaxed text-muted">{t('bbt.help')}</p>
+          <BbtChart readings={cycleBbtReadings.length >= 2 ? cycleBbtReadings : allBbtReadings.slice(-30)} />
+        </section>
+      ) : null}
 
       <section className="space-y-3">
         <h2 className="text-lg font-semibold">{t('sum.history')}</h2>

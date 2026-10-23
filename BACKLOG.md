@@ -52,6 +52,6 @@ Este backlog estructura las mejoras y ensamblajes de módulos desde `REPOS_A_ENS
   - Origen: `REPOS_A_ENSAMBLAR.md` (G1-15 / `LATER.md`).
   - Acción: Generador y vista de reporte clínico con formato limpio para imprimir (`window.print()`), con estadísticas de duración, regularidad, síntomas frecuentes y notas de consulta.
 
-- [ ] **Tarea 12: Gráfico de Temperatura Basal (BBT) y Coverline (sunbeamstudiosdev/Coverline MIT)**
+- [x] **Tarea 12: Gráfico de Temperatura Basal (BBT) y Coverline (sunbeamstudiosdev/Coverline MIT)**
   - Origen: `REPOS_A_ENSAMBLAR.md` (G1-03 / `sunbeamstudiosdev/Coverline`).
   - Acción: Detección del salto térmico del ciclo actual y cálculo de la línea de base (coverline) sintotérmica, con gráfico SVG integrado.
