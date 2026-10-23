@@ -36,6 +36,6 @@ Este backlog estructura las mejoras y ensamblajes de módulos desde `REPOS_A_ENS
   - Origen: `REPOS_A_ENSAMBLAR.md` (G1-25).
   - Acción: Función `src/lib/csv.ts` para exportar el historial a CSV compatible con Excel/Numbers, botón en `SettingsPage`, y tests en `src/lib/csv.test.ts`.
 
-- [ ] **Tarea 8: Vista anual de 12 meses (Heatmap de ciclos)**
+- [x] **Tarea 8: Vista anual de 12 meses (Heatmap de ciclos)**
   - Origen: `LATER.md` (Punto 6: tira de 12 meses por intensidad de flujo).
   - Acción: Cuadrícula visual anual en `CalendarPage` o `SummaryPage` con intensidad de sangrado y regularidad visual por mes.

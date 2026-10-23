@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { Sparkline } from '../components/Sparkline.tsx'
+import { YearlyStrip } from '../components/YearlyStrip.tsx'
 import type { CycleEditError, LoggedPeriod } from '../lib/cycles.ts'
 import { applyPeriod, deletePeriod, listPeriods, summarize } from '../lib/cycles.ts'
 import { analyzePhasePatterns } from '../lib/patterns.ts'
@@ -152,6 +153,8 @@ export function SummaryPage() {
           <p className="text-sm leading-relaxed text-muted">{t('sum.chartAvg', { length: days(summary.averageCycle) })}</p>
         ) : null}
       </section>
+
+      <YearlyStrip days={vault.days} today={today} />
 
       <section className="space-y-2">
         <h2 className="text-lg font-semibold">{t('sum.symptoms')}</h2>
