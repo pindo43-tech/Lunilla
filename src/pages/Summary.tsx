@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+import { ClinicalReportModal } from '../components/ClinicalReportModal.tsx'
 import { Sparkline } from '../components/Sparkline.tsx'
 import { YearlyStrip } from '../components/YearlyStrip.tsx'
 import type { CycleEditError, LoggedPeriod } from '../lib/cycles.ts'
@@ -50,6 +51,7 @@ export function SummaryPage() {
   const [draftEnd, setDraftEnd] = useState('')
   const [editError, setEditError] = useState('')
   const [removing, setRemoving] = useState<string | null>(null)
+  const [showReport, setShowReport] = useState(false)
   const deleteRef = useRef<HTMLButtonElement>(null)
   useBrandTitle(t('tabs.summary'))
 
@@ -99,7 +101,18 @@ export function SummaryPage() {
 
   return (
     <div className="rise space-y-5 pb-6">
-      <h1 className="text-2xl font-semibold tracking-tight">{t('tabs.summary')}</h1>
+      <div className="flex flex-wrap items-center justify-between gap-2">
+        <h1 className="text-2xl font-semibold tracking-tight">{t('tabs.summary')}</h1>
+        {periods.length > 0 ? (
+          <button
+            type="button"
+            onClick={() => setShowReport(true)}
+            className="rounded-2xl border border-black/10 bg-white px-3 py-2 text-xs font-medium text-rose shadow-xs hover:bg-paper"
+          >
+            {t('report.btn')}
+          </button>
+        ) : null}
+      </div>
 
       {summary.weak ? (
         <section className="space-y-2 rounded-3xl bg-lavender-soft px-4 py-4" aria-label={t('sum.weakTitle')}>
@@ -343,6 +356,15 @@ export function SummaryPage() {
             </button>
           </div>
         </div>
+      ) : null}
+
+      {showReport ? (
+        <ClinicalReportModal
+          days={vault.days}
+          historyLength={vault.settings.historyLength}
+          customSymptoms={vault.customSymptoms}
+          onClose={() => setShowReport(false)}
+        />
       ) : null}
 
       <p className="text-sm leading-relaxed text-muted">{t('disclaimer.short')}</p>

@@ -48,7 +48,7 @@ Este backlog estructura las mejoras y ensamblajes de módulos desde `REPOS_A_ENS
   - Origen: `LATER.md` (Punto 7: aviso de regla con anticipación configurable de 1 a 3 días).
   - Acción: Guardar `reminderDaysBefore` (1, 2 o 3 días) en `settings`, selector en `SettingsPage`, soporte en `useReminder` y sanitización en `src/lib/schema.ts` con tests.
 
-- [ ] **Tarea 11: Resumen médico clínico para consulta (Print / PDF)**
+- [x] **Tarea 11: Resumen médico clínico para consulta (Print / PDF)**
   - Origen: `REPOS_A_ENSAMBLAR.md` (G1-15 / `LATER.md`).
   - Acción: Generador y vista de reporte clínico con formato limpio para imprimir (`window.print()`), con estadísticas de duración, regularidad, síntomas frecuentes y notas de consulta.
 
