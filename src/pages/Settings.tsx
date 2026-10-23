@@ -1,6 +1,7 @@
 import { useRef, useState } from 'react'
 import { Button, DigitField } from '../components/ui.tsx'
 import { PinError } from '../lib/crypto.ts'
+import { downloadCsvFile, generateVaultCsv } from '../lib/csv.ts'
 import { todayISO } from '../lib/dates.ts'
 import { buildUpcomingPeriodsIcs, downloadIcsFile } from '../lib/ics.ts'
 import { useI18n } from '../lib/i18n.tsx'
@@ -33,8 +34,22 @@ export function SettingsPage() {
   const [typicalText, setTypicalText] = useState<string | null>(null)
   const [typicalError, setTypicalError] = useState('')
   const [icsNote, setIcsNote] = useState('')
+  const [csvNote, setCsvNote] = useState('')
   useBrandTitle(t('tabs.settings'))
   if (!vault) return null
+
+  function handleExportCsv() {
+    if (!vault) return
+    const daysCount = Object.keys(vault.days).length
+    if (daysCount === 0) {
+      setCsvNote(t('set.csvEmpty'))
+      return
+    }
+    setCsvNote('')
+    const csv = generateVaultCsv(vault, locale)
+    const today = todayISO()
+    downloadCsvFile(`lunilla-registros-${today}.csv`, csv)
+  }
 
   function handleExportIcs() {
     if (!vault) return
@@ -294,6 +309,13 @@ export function SettingsPage() {
         <p className="text-sm leading-relaxed text-muted">{t('set.icsHelp')}</p>
         <Button tone="quiet" className="w-full" onClick={handleExportIcs}>{t('set.icsExport')}</Button>
         {icsNote ? <p role="status" className="text-sm text-muted">{icsNote}</p> : null}
+      </section>
+
+      <section className="space-y-3">
+        <h2 className="text-lg font-semibold">{t('set.csvExport')}</h2>
+        <p className="text-sm leading-relaxed text-muted">{t('set.csvHelp')}</p>
+        <Button tone="quiet" className="w-full" onClick={handleExportCsv}>{t('set.csvExport')}</Button>
+        {csvNote ? <p role="status" className="text-sm text-muted">{csvNote}</p> : null}
       </section>
 
       <section className="space-y-3">

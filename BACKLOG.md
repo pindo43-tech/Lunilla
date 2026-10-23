@@ -32,7 +32,7 @@ Este backlog estructura las mejoras y ensamblajes de módulos desde `REPOS_A_ENS
   - Origen: `LATER.md` (Punto 5: síntomas por fase con $\ge 3$ ciclos) y `REPOS_A_ENSAMBLAR.md` (G1-09).
   - Acción: Motor estadístico `src/lib/patterns.ts` que calcula la correlación de síntomas y estados de ánimo con cada fase cuando hay al menos 3 ciclos registrados, tarjeta en `SummaryPage`, y tests en `src/lib/patterns.test.ts`.
 
-- [ ] **Tarea 7: Exportación tabular a CSV para profesionales de salud**
+- [x] **Tarea 7: Exportación tabular a CSV para profesionales de salud**
   - Origen: `REPOS_A_ENSAMBLAR.md` (G1-25).
   - Acción: Función `src/lib/csv.ts` para exportar el historial a CSV compatible con Excel/Numbers, botón en `SettingsPage`, y tests en `src/lib/csv.test.ts`.
 
