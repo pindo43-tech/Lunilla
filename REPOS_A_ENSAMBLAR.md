@@ -10,7 +10,7 @@
 - **Estados:** `integrado` = ya se usó código o una idea en Lunilla (según `aporte-grok-bot/REUSE.md`) · `candidato` = licencia permisiva, se puede tomar código con atribución · `candidato (revisar licencia)` = licencia no estándar · `solo idea (GPL/AGPL)` = copyleft (GPL, AGPL o LGPL), solo leer ideas y no copiar código en Lunilla (MIT) · `solo idea (sin licencia)` = sin licencia declarada, solo referencia · `descartado` = ya evaluado sin uso o no corresponde.
 - **Datos:** licencia, estrellas y existencia verificadas con la API de GitHub el 2026-10-22. No se inventó ningún dato. Fuente de los repos: lista aportada por el usuario el 2026-10-22.
 - **Totales:** 183 repos únicos en tablas de funciones, 3 organizaciones o usuarios válidos, 2 fuentes que no son GitHub y 20 descartados. Por estado: candidato 87, candidato (revisar licencia) 18, descartado 1, integrado 4, solo idea (GPL/AGPL) 34, solo idea (sin licencia) 39.
-- **Agregados 2026-10-22 (búsqueda del bot de Lunilla):** 334 repos nuevos, buscados función por función para armar la app ensamblando código de otros repos. Están en subtablas `Agregados 2026-10-22` dentro de las secciones que ya existían, y en secciones nuevas (marcadas "nueva 2026-10-22" en el índice) para las funciones que no tenían sección. Cada sección nueva arranca explicando cómo funciona la función por dentro y qué piezas hacen falta. Total del archivo: 517 repos únicos (183 previos + 334 nuevos).
+- **Agregados 2026-10-22 (búsqueda del bot de Lunilla):** 343 repos nuevos, buscados función por función para armar la app ensamblando código de otros repos. Están en subtablas `Agregados 2026-10-22` dentro de las secciones que ya existían, y en secciones nuevas (marcadas "nueva 2026-10-22" en el índice) para las funciones que no tenían sección. Cada sección nueva arranca explicando cómo funciona la función por dentro y qué piezas hacen falta. Total del archivo: 526 repos únicos (183 previos + 343 nuevos).
 - **Columnas de las subtablas nuevas:** `Link` · `owner/nombre` (nombre canónico devuelto por la API de GitHub) · `MB` (campo `size` de la API, en KB, convertido a MB) · `⭐` · `Lenguaje` · `Licencia` (SPDX de la API; se anota tal cual, sin juicio) · `Último commit` (`pushed_at` de la API, fecha del último push) · `Front/Back` (F = interfaz o UI, B = lógica, datos, integraciones o backend) · `Qué es` · `Pieza concreta que aporta a Lunilla` (dónde, cuándo y cómo se ensambla) · `Otras funciones` (códigos de otras secciones donde también sirve; el repo figura una sola vez) · `Origen`. Los repos sin actividad en 2026 llevan una nota de "Vigencia" que explica por qué se quedan. Las funciones que resuelve mejor un LLM (redactar textos, horóscopos, afirmaciones, chat de preguntas) no tienen repos de texto: solo infraestructura.
 
 ## Índice
@@ -19,10 +19,10 @@
 |---|---|---|
 | G1-01 | Apps y trackers de ciclo (referencia completa) | 39 + 15 agregados 2026-10-22 |
 | G1-02 | Predicción de ciclo, ventana fértil y librerías de cálculo | 8 + 7 agregados 2026-10-22 |
-| G1-03 | Método sintotérmico, BBT y fertility awareness | 15 + 15 agregados 2026-10-22 |
+| G1-03 | Método sintotérmico, BBT y fertility awareness | 15 + 18 agregados 2026-10-22 |
 | G1-04 | Modelos ML y series de tiempo para el ciclo | 5 + 15 agregados 2026-10-22 |
 | G1-05 | Datasets y análisis estadístico del ciclo | 5 + 3 agregados 2026-10-22 |
-| G1-06 | Wearables y datos fisiológicos | 4 + 23 agregados 2026-10-22 |
+| G1-06 | Wearables y datos fisiológicos | 4 + 24 agregados 2026-10-22 |
 | G1-07 | Tracking de flujo menstrual (función 3) (nueva 2026-10-22) | 2 |
 | G1-08 | Logging de síntomas físicos y emocionales (función 4) (nueva 2026-10-22) | 7 |
 | G1-09 | Análisis de patrones y correlaciones síntoma ↔ fase (función 5) (nueva 2026-10-22) | 12 |
@@ -30,7 +30,7 @@
 | G1-11 | Modo embarazo: semanas, fecha probable de parto, tamaño del bebé, bump tracker, kick counter, contraction timer y nombres (función 9 y extras) (nueva 2026-10-22) | 11 |
 | G1-12 | Perimenopausia y menopausia (función 10) (nueva 2026-10-22) | 7 |
 | G1-13 | Health assistant / AI coach: solo infraestructura no-LLM (función 11) (nueva 2026-10-22) | 11 |
-| G1-14 | Symptom checker y autoevaluación de patrones PCOS/endometriosis (función 12 y extra) (nueva 2026-10-22) | 7 |
+| G1-14 | Symptom checker y autoevaluación de patrones PCOS/endometriosis (función 12 y extra) (nueva 2026-10-22) | 8 |
 | G1-15 | Reportes PDF para el médico (función 13) (nueva 2026-10-22) | 15 |
 | G1-16 | Predicción de síntomas e intensidad de dolor (función 14 y extras de dolor) (nueva 2026-10-22) | 4 |
 | G1-17 | Tracking de anticonceptivos y quiz de anticoncepción (función 18 y extra) (nueva 2026-10-22) | 2 |
@@ -58,13 +58,13 @@
 | G2-12 | Modo padre, parent linking y plan multi-hija (nueva 2026-10-22) | 6 |
 | G2-13 | PIN/passcode, decoy screen (pantalla falsa) y auto-borrado programado (nueva 2026-10-22) | 5 |
 | G2-14 | Comparación con otras usuarias: estadística agregada con privacidad (nueva 2026-10-22) | 6 |
-| G2-15 | Compartir en redes (tarjetas o imágenes) (nueva 2026-10-22) | 2 |
+| G2-15 | Compartir en redes (tarjetas o imágenes) (nueva 2026-10-22) | 4 |
 | G2-16 | Perks portal / cupones (nueva 2026-10-22) | 2 |
 | G2-17 | Custom tags ilimitados (nueva 2026-10-22) | 2 |
 | G3-01 | Componentes UI animados y design systems | 16 + 1 agregados 2026-10-22 |
 | G3-02 | Gráficos y visualización de datos | 6 + 5 agregados 2026-10-22 |
 | G3-03 | UI mobile (Flutter) | 2 |
-| G3-04 | 3D (React Three Fiber) | 2 + 3 agregados 2026-10-22 |
+| G3-04 | 3D (React Three Fiber) | 2 + 5 agregados 2026-10-22 |
 | G3-05 | Listas curadas (awesome) | 3 |
 | G3-06 | Animación y scroll (librerías base) | 8 |
 
@@ -191,7 +191,7 @@ Reglas sintotérmicas, temperatura basal (BBT), coverline, moco cervical y chart
 | jorgt/tempchart | https://github.com/jorgt/tempchart | sin licencia | 0 | Charting de BBT con SQLite. | solo idea (sin licencia) | — |
 | keyneom/easy-bc | https://github.com/keyneom/easy-bc | NOASSERTION (no estándar) | 0 | Planner de riesgo de fertilidad on-device (combinación de métodos). | candidato (revisar licencia) | — |
 
-### G1-03 · Agregados 2026-10-22 — BBT, algoritmo días rojos/verdes y moco cervical (funciones 7, 8 y 21) (15)
+### G1-03 · Agregados 2026-10-22 — BBT, algoritmo días rojos/verdes y moco cervical (funciones 7, 8 y 21) (18)
 
 Cómo funciona: la BBT se registra cada mañana. Después de la ovulación la progesterona la sube 0,2–0,5 °C, y el algoritmo detecta ese shift con reglas fijas, como la regla 3 sobre 6 con coverline de Sensiplan o la del método sintotérmico. Se cruza con el moco cervical (pico de moco) y la posición cervical. Un algoritmo estilo Natural Cycles suma la estadística del ciclo y la incertidumbre para marcar días rojos (posible fertilidad) y verdes. Piezas: entrada de temperatura con corrección, detector de shift, reglas de moco, combinador sintotérmico y gráfico de temperatura.
 
@@ -199,6 +199,9 @@ Cómo funciona: la BBT se registra cada mañana. Después de la ovulación la pr
 |---|---|---|---|---|---|---|---|---|---|---|---|
 | https://github.com/hildensia/bayesian_changepoint_detection | hildensia/bayesian_changepoint_detection | 2.7 | 779 | Python | MIT | 2026-09-24 | B | Detección bayesiana de puntos de cambio online (Adams & MacKay 2007) y offline (Fearnhead 2006) sobre tensores PyTorch, con probabilidades posteriores calibradas. | Detecta el salto térmico post-ovulación en la serie BBT y da la probabilidad del cambio en lugar de un umbral fijo. Se usa en la investigación del algoritmo y luego se porta a TS. | G1-04;G1-10 | Lunilla bot, 2026-10-22 |
 | https://github.com/rkillick/changepoint | rkillick/changepoint | 0.5 | 140 | R | sin licencia | 2026-08-26 | B | Versión de desarrollo del paquete de CRAN changepoint (R): detección de puntos de cambio en media y varianza con PELT, BinSeg y SegNeigh. Sin README. El DESCRIPTION declara licencia GPL. | Referencia estadística (PELT) para validar offline la detección del shift de BBT y los cambios de duración del ciclo (p. ej. inicio de la perimenopausia) antes de portar la regla a TS. No va dentro de la app, porque GPL y R no encajan en el bundle. | G1-12;G1-05 | Lunilla bot, 2026-10-22 |
+| https://github.com/itamarwe/kalman | itamarwe/kalman | 0.0 | 117 | JavaScript | MIT | 2026-07-01 | B | Filtro de Kalman lineal chico para JavaScript, en modernización (ESM y CJS, tipos TS, tests, CI) con la API compatible con Sylvester. MIT. | Suavizado en el dispositivo de la BBT y de la FC en reposo importada, antes de la regla del shift o de los gráficos de tendencia, sin mandar datos afuera. Requiere pasarle objetos de matriz compatibles con Sylvester. | G3-02;G1-06 | Lunilla bot, 2026-10-22 |
+| https://github.com/gwgundersen/bocd | gwgundersen/bocd | 0.0 | 111 | Python | BSD-3-Clause | 2023-09-03 | B | Implementación mínima en Python de Bayesian Online Changepoint Detection (modelo normal con media desconocida), acompañada de dos posts que explican la derivación. BSD-3. | Referencia legible para entender y testear el BOCPD antes de portarlo a TS (unas 100 líneas): sirve para generar los casos de prueba con los que se valida la versión de la app. Vigencia: 2023, pero es código de referencia de un algoritmo publicado que no cambia. | G1-02 | Lunilla bot, 2026-10-22 |
+| https://github.com/promised-ai/changepoint | promised-ai/changepoint | 7.0 | 36 | Jupyter Notebook | MIT | 2025-10-20 | B | Librería en Rust (con bindings de Python) de detección de puntos de cambio en streams: BOCPD de Adams y MacKay, BOCPD truncado y detector por procesos gaussianos (Argpcp). MIT. | Detección online del shift térmico de BBT y de cambios abruptos en la duración del ciclo a medida que llega cada registro. En Rust se puede compilar a WASM y correr en la PWA sobre datos descifrados. Vigencia: último push 2025-10; algoritmo estable y API chica. | G1-02;G1-12 | Lunilla bot, 2026-10-22 |
 | https://github.com/ringleader/cyclist | ringleader/cyclist | 4.8 | 15 | Python | NOASSERTION (no estándar) | 2026-05-01 | B | Componente de Home Assistant que sigue el ciclo con datos de fertility awareness (BBT, moco y LH) según el objetivo (evitar o buscar embarazo). | Reglas de fertility awareness combinando BBT, moco y LH, y cambio de lógica según el objetivo. | G1-10, G1-19, G1-20 | Lunilla bot, 2026-10-22 |
 | https://github.com/acidg/rise | acidg/rise | 1.5 | 1 | Dart | GPL-3.0 | 2026-09-12 | B | Tracker sintotérmico privado construido alrededor del termómetro BBT Bluetooth Ovy OT35. | Lectura del termómetro BBT por BLE más el sintotérmico: modelo para importar temperaturas de termómetros. | G1-06 | Lunilla bot, 2026-10-22 |
 | https://github.com/Thometoto/cycleseed | Thometoto/cycleseed | 0.1 | 1 | Python | sin licencia | 2026-09-25 | B | Tracker sintotérmico experimental y privacy-first: registra observaciones diarias, entrena un clasificador liviano de ventana fértil y se adapta con cautela a los ciclos completos de la persona. | Combinación reglas fisiológicas + clasificador logístico liviano: se ensambla como capa de "ajuste personal" sobre las reglas fijas de ventana fértil. | G1-04, G1-02 | Lunilla bot, 2026-10-22 |
@@ -280,7 +283,7 @@ Temperatura, HR/HRV y unificación de datos de wearables relacionados con fases 
 | Aminsinichi/wearable-hrv | https://github.com/Aminsinichi/wearable-hrv | MIT | 14 | Paquete Python para validación y análisis de HR y HRV de wearables. | candidato | — |
 | zkhechadoorian/menstrual-cycle-tracking | https://github.com/zkhechadoorian/menstrual-cycle-tracking | sin licencia | 0 | Detección de fases (folicular/luteal) a partir de temperatura de wearable usando regla de coverline. | solo idea (sin licencia) | REPOS-SIMILARES.md |
 
-### G1-06 · Agregados 2026-10-22 — Integración con wearables (función 15 y extras: Oura, HealthKit, Health Connect, Garmin, Fitbit, Whoop, HRV, temperatura de piel) (23)
+### G1-06 · Agregados 2026-10-22 — Integración con wearables (función 15 y extras: Oura, HealthKit, Health Connect, Garmin, Fitbit, Whoop, HRV, temperatura de piel) (24)
 
 Cómo funciona: una PWA no puede leer HealthKit ni Health Connect directamente. O se usa un wrapper nativo (Capacitor o React Native) que lee el SDK del sistema, o se consume la API web del fabricante con OAuth (Oura, Fitbit, Garmin, Whoop, Withings), o se importa un archivo exportado (export.xml de Apple Health, .fit de Garmin). Después hay que normalizar las series (temperatura de piel nocturna, HRV, FC en reposo) y pasarlas al detector de shift. Piezas: cliente o SDK, parser de exportaciones, normalizador y análisis HRV/temperatura.
 
@@ -288,6 +291,7 @@ Cómo funciona: una PWA no puede leer HealthKit ni Health Connect directamente. 
 |---|---|---|---|---|---|---|---|---|---|---|---|
 | https://github.com/tcgoetz/GarminDB | tcgoetz/GarminDB | 6.9 | 3356 | Python | GPL-2.0 | 2026-10-19 | B | Scripts Python que descargan y parsean datos de Garmin (monitoreo diario, FC, sueño, actividades) a SQLite. | Pipeline de importación Garmin → SQLite → export JSON que la PWA importa (temperatura y FC en reposo para el análisis del ciclo). | G1-09 | Lunilla bot, 2026-10-22 |
 | https://github.com/cyberjunky/python-garminconnect | cyberjunky/python-garminconnect | 1.4 | 3193 | Python | MIT | 2026-10-16 | B | Wrapper Python de la API de Garmin Connect para obtener estadísticas. | Importar temperatura de la piel, HRV y sueño de Garmin para la correlación con el ciclo. | G1-09 | Lunilla bot, 2026-10-22 |
+| https://github.com/WenjieDu/PyPOTS | WenjieDu/PyPOTS | 4.6 | 2083 | Python | BSD-3-Clause | 2026-10-19 | B | Toolbox de Python para machine learning sobre series de tiempo parcialmente observadas: imputación, clasificación, clustering y forecasting con valores faltantes (SAITS, BRITS, etc.). BSD-3. | En el entrenamiento offline de modelos sobre datos de wearable (noches sin anillo o reloj, días sin registro), imputa huecos en lugar de descartar ciclos enteros. Solo se lleva a la app el modelo resultante, no la librería. | G1-04;G1-05 | Lunilla bot, 2026-10-22 |
 | https://github.com/kingstinct/react-native-healthkit | kingstinct/react-native-healthkit | 31.4 | 721 | TypeScript | MIT | 2026-10-12 | B | Bindings de HealthKit para React Native con TypeScript completo y promesas. | Si se hace app nativa con RN/Expo: leer y escribir datos de ciclo menstrual, temperatura basal y síntomas en Apple Health. | G1-25 | Lunilla bot, 2026-10-22 |
 | https://github.com/Th0rgal/open_oura | Th0rgal/open_oura | 2.3 | 642 | Rust | MIT | 2026-10-07 | B | Ingeniería inversa del protocolo BLE del anillo Oura, con crates Rust y un cliente sin nube que lee los datos directamente del anillo. | Leer la temperatura del anillo sin pasar por la nube de Oura (local-first, coherente con la privacidad de Lunilla); referencia de protocolo para una futura lectura vía Web Bluetooth. | G1-03 | Lunilla bot, 2026-10-22 |
 | https://github.com/Aura-healthcare/hrv-analysis | Aura-healthcare/hrv-analysis | 9.8 | 461 | Python | GPL-3.0 | 2026-10-06 | B | Módulo Python de análisis de variabilidad de la frecuencia cardíaca (HRV) a partir de intervalos RR. | Calcular métricas HRV (RMSSD, etc.) de datos de wearables como señal de fase lútea y estrés. | G1-04, G1-16 | Lunilla bot, 2026-10-22 |
@@ -412,13 +416,14 @@ Cómo funciona: el texto lo genera un LLM (tarea aparte). Acá van solo las piez
 | https://github.com/babycommando/entity-db | babycommando/entity-db | 9.4 | 295 | JavaScript | sin licencia | 2025-05-08 | F | EntityDB: base de vectores en el navegador que envuelve IndexedDB y Transformers.js. Vigencia: último push 2025-05, se queda porque es la única base vectorial liviana directamente sobre IndexedDB. | Memoria semántica local sobre IndexedDB (mismo almacenamiento que Lunilla) para buscar en el diario o en el CMS sin servidor. | G2-01 CMS | Lunilla bot, 2026-10-22 |
 | https://github.com/LocalMode-AI/LocalMode | LocalMode-AI/LocalMode | 14.1 | 64 | TypeScript | MIT | 2026-10-22 | F | Toolkit de IA local-first para la web: corre modelos de ML enteramente en el navegador, sin servidores ni API keys. | Capa de inferencia on-device (embeddings, clasificación) dentro de la PWA, sin enviar datos de salud fuera del teléfono. | G1-22, G1-16 | Lunilla bot, 2026-10-22 |
 
-## G1-14 · Symptom checker y autoevaluación de patrones PCOS/endometriosis (función 12 y extra) (7)
+## G1-14 · Symptom checker y autoevaluación de patrones PCOS/endometriosis (función 12 y extra) (8)
 
 Cómo funciona: cuestionarios estructurados (criterios de Rotterdam para SOP o escalas de síntomas de endometriosis) con lógica de saltos y un puntaje determinista que no diagnostica: sugiere consultar. Se pueden enriquecer con los datos registrados (irregularidad, dolor). Piezas: motor de formularios o cuestionarios (JSON, FHIR Questionnaire), reglas de puntaje y, como referencia, modelos de investigación.
 
 | Link | owner/nombre | MB | ⭐ | Lenguaje | Licencia | Último commit | Front/Back | Qué es | Pieza concreta que aporta a Lunilla (dónde/cuándo/cómo se ensambla) | Otras funciones | Origen |
 |---|---|---|---|---|---|---|---|---|---|---|---|
 | https://github.com/CacheControl/json-rules-engine | CacheControl/json-rules-engine | 1.2 | 3146 | JavaScript | ISC | 2026-02-16 | B | Motor de reglas expresadas en JSON, para Node y navegador. | Reglas del symptom checker (por ejemplo "ciclos >35 días + acné + vello → sugerir consulta por SOP") versionadas como JSON y revisables por el equipo médico; sin LLM. | G1-13, G2-04 | Lunilla bot, 2026-10-22 |
+| https://github.com/sintel-dev/Orion | sintel-dev/Orion | 35.3 | 1373 | Python | MIT | 2026-10-19 | B | Librería de ML del Data to AI Lab del MIT para detección no supervisada de anomalías en series de tiempo, con pipelines listos y benchmark. MIT. | Banco de pruebas offline para definir cuándo un ciclo o una serie de síntomas es «inusual para vos» (sangrado mucho más largo, ciclos que se acortan) y transformarlo en una regla simple explicable que la app muestra como sugerencia de consultar, nunca como diagnóstico. | G1-09;G1-05 | Lunilla bot, 2026-10-22 |
 | https://github.com/bloo-berries/Endometriosis-Adenomyosis-Resources | bloo-berries/Endometriosis-Adenomyosis-Resources | 10.2 | 19 | Python | CC0-1.0 | 2026-09-03 | B | Fuente de contenido (content/ → dist/) del sitio "1 in 7" de Bloomed Health sobre endometriosis y adenomiosis y sus comorbilidades, licencia CC0. | Contenido CC0 sobre endo/adeno para alimentar las fichas del symptom checker y el CMS educativo (se importa como markdown en build). | G2-01 CMS, G1-24 navegador de cuidados | Lunilla bot, 2026-10-22 |
 | https://github.com/imi-ms/MoPat | imi-ms/MoPat | 23.0 | 15 | Java | Apache-2.0 | 2026-10-22 | B | Mobile Patient Survey: plataforma web (Java) para digitalizar cuestionarios clínicos y exportarlos (incluido FHIR). | Referencia de motor de cuestionarios clínicos con puntaje y export, si se agrega un backend para profesionales. | G2-06 | Lunilla bot, 2026-10-22 |
 | https://github.com/smsolutionsva-byte/OvaCare | smsolutionsva-byte/OvaCare | 2.0 | 14 | TypeScript | sin licencia | 2026-10-04 | F | App React/Vite para explorar síntomas de SOP, registrar estudios y preparar preguntas para profesionales; el puntaje sale de reglas en src/lib/riskCalculator.ts y aclara que no es diagnóstico. | riskCalculator.ts como referencia de autoevaluación de SOP basada en reglas, con texto de "no es diagnóstico" y salida "preguntas para tu médica". | G1-24, G1-15 PDF | Lunilla bot, 2026-10-22 |
@@ -912,7 +917,7 @@ Cómo funciona: para comparar 'qué tan común es tu síntoma' sin centralizar d
 | https://github.com/divviup/janus | divviup/janus | 18.0 | 70 | Rust | MPL-2.0 | 2026-10-23 | B | Implementación experimental del protocolo DAP (Distributed Aggregation Protocol) para mediciones privadas. | Servidor agregador DAP que completa libprio para el modo "comparar con otras" con agregación distribuida. | — | Lunilla bot, 2026-10-22 |
 | https://github.com/brave/sta-rs | brave/sta-rs | 0.9 | 62 | Rust | MPL-2.0 | 2026-10-22 | B | Workspace Rust de STAR: agregación por umbral con secret-sharing distribuido (sin auditar). | Reporte de datos categóricos (por ejemplo, síntoma más común) que sólo se revela cuando lo reportan al menos k usuarias. | — | Lunilla bot, 2026-10-22 |
 
-## G2-15 · Compartir en redes (tarjetas o imágenes) (2)
+## G2-15 · Compartir en redes (tarjetas o imágenes) (4)
 
 Cómo funciona: se renderiza una tarjeta (HTML o SVG) a imagen en el cliente y se comparte con la Web Share API, sin subir datos. Piezas: HTML→imagen y share sheet.
 
@@ -920,6 +925,8 @@ Cómo funciona: se renderiza una tarjeta (HTML o SVG) a imagen en el cliente y s
 |---|---|---|---|---|---|---|---|---|---|---|---|
 | https://github.com/vercel/satori | vercel/satori | 21.5 | 14123 | TypeScript | MPL-2.0 | 2026-10-22 | B | Convierte HTML y CSS (JSX) a SVG. | Generar la tarjeta para compartir ("mi ciclo en números", logros) como SVG/PNG desde una plantilla, en el cliente o en una Cloudflare Worker, sin datos sensibles. | G2-11 | Lunilla bot, 2026-10-22 |
 | https://github.com/bubkoo/html-to-image | bubkoo/html-to-image | 109.0 | 7257 | TypeScript | MIT | 2026-05-28 | F | Genera una imagen a partir de un nodo DOM con canvas y SVG. | Capturar la tarjeta ya renderizada en la UI para exportarla a PNG y compartirla con la Web Share API. | — | Lunilla bot, 2026-10-22 |
+| https://github.com/kane50613/takumi | kane50613/takumi | 333.1 | 3142 | Rust | Apache-2.0 | 2026-10-23 | B | Motor de layout en Rust (texto e inline portados de Chromium) que renderiza JSX, HTML y CSS a imágenes, SVG, GIF animado o PDF sin navegador headless. Apache-2.0. | Tarjetas para compartir en redes («mi racha de registro», un logro, una frase de la fase) generadas en el servidor o en un Worker a partir de un componente, sin datos de salud: solo el texto que la usuaria aprueba. El mismo motor puede hacer el PDF del reporte. | G1-15;G2-03 | Lunilla bot, 2026-10-22 |
+| https://github.com/kvnang/workers-og | kvnang/workers-og | 2.7 | 356 | TypeScript | MIT | 2025-06-12 | B | Generador de imágenes og:image y tarjetas sociales para Cloudflare Workers sobre el motor Satori, sin Puppeteer, con API al estilo de @vercel/og. MIT. | Encaja directo con el deploy de Lunilla en Cloudflare: un endpoint /share/card que devuelve el PNG de la tarjeta para compartir o para preview de link. Vigencia: último push 2025-06; es un wrapper chico y estable de Satori (si se rompe, se usa Satori directo). | G2-03 | Lunilla bot, 2026-10-22 |
 
 ## G2-16 · Perks portal / cupones (2)
 
@@ -1017,7 +1024,7 @@ Widgets y componentes para Flutter.
 | pmndrs/react-three-fiber | https://github.com/pmndrs/react-three-fiber | MIT | 33164 | + drei — 3D para UIs premium. | candidato | — |
 | pmndrs/drei | https://github.com/pmndrs/drei | MIT | 10042 | + react-three-fiber — 3D para UIs premium. | candidato | — |
 
-### G3-04 · Agregados 2026-10-22 — AR/3D del bebé y modelos 3D (3)
+### G3-04 · Agregados 2026-10-22 — AR/3D del bebé y modelos 3D (5)
 
 Cómo funciona: un modelo 3D (glTF) por semana de gestación se muestra con WebGL o model-viewer (que incluye AR en el móvil). Piezas: visor 3D o AR y modelos con licencia.
 
@@ -1026,6 +1033,8 @@ Cómo funciona: un modelo 3D (glTF) por semana de gestación se muestra con WebG
 | https://github.com/mrdoob/three.js | mrdoob/three.js | 1656.9 | 116791 | JavaScript | MIT | 2026-10-22 | F | Librería 3D para JavaScript (WebGL/WebGPU). | Base para escenas 3D personalizadas (útero o bebé interactivo) si model-viewer no alcanza. | — | Lunilla bot, 2026-10-22 |
 | https://github.com/BabylonJS/Babylon.js | BabylonJS/Babylon.js | 1452.3 | 26219 | TypeScript | Apache-2.0 | 2026-10-23 | F | Motor de render web open source (WebGL/WebGPU, WebXR, glTF) con playground y editor. | Alternativa a three.js para la vista 3D/AR del bebé por semana: carga glTF por semana de gestación y usa el modo WebXR de AR en Android. | G1-11 | Lunilla bot, 2026-10-22 |
 | https://github.com/google/model-viewer | google/model-viewer | 4373.9 | 8289 | TypeScript | Apache-2.0 | 2026-10-09 | F | Web component <model-viewer> para mostrar modelos 3D (glTF) interactivos en la web y en AR. | Mostrar el modelo 3D del bebé por semana (glTF) con AR en móvil, sin código 3D propio. | G1-11 | Lunilla bot, 2026-10-22 |
+| https://github.com/google/draco | google/draco | 228.0 | 7524 | C++ | Apache-2.0 | 2026-10-16 | B | Librería de Google para comprimir y descomprimir geometría 3D (mallas y nubes de puntos), con decoders WASM y JS versionados en gstatic. Apache-2.0. | Compresión de las mallas de los modelos del bebé (vía glTF-Transform) y decoder WASM en el cliente, cargado bajo demanda solo al abrir el modo embarazo. El decoder se fija a una versión, como recomienda su README. | G1-11 | Lunilla bot, 2026-10-22 |
+| https://github.com/donmccurdy/glTF-Transform | donmccurdy/glTF-Transform | 24.9 | 1990 | TypeScript | MIT | 2026-10-20 | B | SDK de glTF 2.0 para JS y TS (Web y Node) con CLI: leer, editar y optimizar modelos 3D (Draco, Meshopt, texturas KTX2 y WebP, dedup y prune). MIT. | Pipeline de build de los modelos 3D del bebé por semana: comprimir y optimizar cada .glb una vez en CI para que pese poco y cargue rápido en la PWA, y para que sea cacheable offline por el service worker. | G1-11 | Lunilla bot, 2026-10-22 |
 
 ## G3-05 · Listas curadas (awesome) (3)
 
