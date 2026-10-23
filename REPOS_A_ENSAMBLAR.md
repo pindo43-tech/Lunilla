@@ -10,7 +10,7 @@
 - **Estados:** `integrado` = ya se usó código o una idea en Lunilla (según `aporte-grok-bot/REUSE.md`) · `candidato` = licencia permisiva, se puede tomar código con atribución · `candidato (revisar licencia)` = licencia no estándar · `solo idea (GPL/AGPL)` = copyleft (GPL, AGPL o LGPL), solo leer ideas y no copiar código en Lunilla (MIT) · `solo idea (sin licencia)` = sin licencia declarada, solo referencia · `descartado` = ya evaluado sin uso o no corresponde.
 - **Datos:** licencia, estrellas y existencia verificadas con la API de GitHub el 2026-10-22. No se inventó ningún dato. Fuente de los repos: lista aportada por el usuario el 2026-10-22.
 - **Totales:** 183 repos únicos en tablas de funciones, 3 organizaciones o usuarios válidos, 2 fuentes que no son GitHub y 20 descartados. Por estado: candidato 87, candidato (revisar licencia) 18, descartado 1, integrado 4, solo idea (GPL/AGPL) 34, solo idea (sin licencia) 39.
-- **Agregados 2026-10-22 (búsqueda del bot de Lunilla):** 98 repos nuevos, buscados función por función para armar la app ensamblando código de otros repos. Están en subtablas `Agregados 2026-10-22` dentro de las secciones que ya existían, y en secciones nuevas (marcadas "nueva 2026-10-22" en el índice) para las funciones que no tenían sección. Cada sección nueva arranca explicando cómo funciona la función por dentro y qué piezas hacen falta. Total del archivo: 281 repos únicos (183 previos + 98 nuevos).
+- **Agregados 2026-10-22 (búsqueda del bot de Lunilla):** 159 repos nuevos, buscados función por función para armar la app ensamblando código de otros repos. Están en subtablas `Agregados 2026-10-22` dentro de las secciones que ya existían, y en secciones nuevas (marcadas "nueva 2026-10-22" en el índice) para las funciones que no tenían sección. Cada sección nueva arranca explicando cómo funciona la función por dentro y qué piezas hacen falta. Total del archivo: 342 repos únicos (183 previos + 159 nuevos).
 - **Columnas de las subtablas nuevas:** `Link` · `owner/nombre` (nombre canónico devuelto por la API de GitHub) · `MB` (campo `size` de la API, en KB, convertido a MB) · `⭐` · `Lenguaje` · `Licencia` (SPDX de la API; se anota tal cual, sin juicio) · `Último commit` (`pushed_at` de la API, fecha del último push) · `Front/Back` (F = interfaz o UI, B = lógica, datos, integraciones o backend) · `Qué es` · `Pieza concreta que aporta a Lunilla` (dónde, cuándo y cómo se ensambla) · `Otras funciones` (códigos de otras secciones donde también sirve; el repo figura una sola vez) · `Origen`. Los repos sin actividad en 2026 llevan una nota de "Vigencia" que explica por qué se quedan. Las funciones que resuelve mejor un LLM (redactar textos, horóscopos, afirmaciones, chat de preguntas) no tienen repos de texto: solo infraestructura.
 
 ## Índice
@@ -22,7 +22,7 @@
 | G1-03 | Método sintotérmico, BBT y fertility awareness | 15 + 13 agregados 2026-10-22 |
 | G1-04 | Modelos ML y series de tiempo para el ciclo | 5 + 3 agregados 2026-10-22 |
 | G1-05 | Datasets y análisis estadístico del ciclo | 5 + 1 agregados 2026-10-22 |
-| G1-06 | Wearables y datos fisiológicos | 4 + 2 agregados 2026-10-22 |
+| G1-06 | Wearables y datos fisiológicos | 4 + 5 agregados 2026-10-22 |
 | G1-07 | Tracking de flujo menstrual (función 3) (nueva 2026-10-22) | 1 |
 | G1-08 | Logging de síntomas físicos y emocionales (función 4) (nueva 2026-10-22) | 6 |
 | G1-09 | Análisis de patrones y correlaciones síntoma ↔ fase (función 5) (nueva 2026-10-22) | 7 |
@@ -30,26 +30,34 @@
 | G1-12 | Perimenopausia y menopausia (función 10) (nueva 2026-10-22) | 7 |
 | G1-13 | Health assistant / AI coach: solo infraestructura no-LLM (función 11) (nueva 2026-10-22) | 9 |
 | G1-14 | Symptom checker y autoevaluación de patrones PCOS/endometriosis (función 12 y extra) (nueva 2026-10-22) | 2 |
+| G1-15 | Reportes PDF para el médico (función 13) (nueva 2026-10-22) | 5 |
 | G1-16 | Predicción de síntomas e intensidad de dolor (función 14 y extras de dolor) (nueva 2026-10-22) | 1 |
-| G1-18 | Partner sharing con permiso, E2E (función 20 y extra partner mode / inner circle) (nueva 2026-10-22) | 1 |
+| G1-18 | Partner sharing con permiso, E2E (función 20 y extra partner mode / inner circle) (nueva 2026-10-22) | 4 |
 | G1-19 | Tests OPK/LH: registro, lector de tiras por foto y curva de LH (función 22 y extras) (nueva 2026-10-22) | 1 |
 | G1-20 | Modos por objetivo, personalización y guided journey / checklists (función 23 y extra) (nueva 2026-10-22) | 2 |
-| G1-21 | Backup y sync multi-dispositivo E2E, CRDT, local-first (función 24 y extra backup Drive/iCloud) (nueva 2026-10-22) | 2 |
-| G1-22 | Almacenamiento on-device y privacy-first, cifrado y modo anónimo (función 25 y extra) (nueva 2026-10-22) | 1 |
+| G1-21 | Backup y sync multi-dispositivo E2E, CRDT, local-first (función 24 y extra backup Drive/iCloud) (nueva 2026-10-22) | 11 |
+| G1-22 | Almacenamiento on-device y privacy-first, cifrado y modo anónimo (función 25 y extra) (nueva 2026-10-22) | 9 |
 | G1-23 | Modo postparto y bebé: sangrado, lactancia, sueño y alimentación (extras) (nueva 2026-10-22) | 1 |
 | G1-24 | Care navigator / buscador de clínicas y recursos (extra) (nueva 2026-10-22) | 1 |
-| G1-25 | Exportar a CSV/spreadsheet e importar de otras apps (extra) (nueva 2026-10-22) | 2 |
+| G1-25 | Exportar a CSV/spreadsheet e importar de otras apps (extra) (nueva 2026-10-22) | 3 |
+| G1-26 | Calendario, vista de ciclo y filtros por síntoma (extra) (nueva 2026-10-22) | 5 |
 | G1-27 | Registro de condiciones de salud y medicación (extra) (nueva 2026-10-22) | 2 |
 | G2-01 | Educación, contenido y CMS | 12 |
 | G2-02 | Comunidad, foros y chat | 12 |
-| G2-03 | Gamificación | 10 + 1 agregados 2026-10-22 |
-| G2-04 | Recordatorios y notificaciones | 17 |
-| G2-05 | Ánimo, diario y síntomas emocionales | 9 |
+| G2-03 | Gamificación | 10 + 2 agregados 2026-10-22 |
+| G2-04 | Recordatorios y notificaciones | 17 + 1 agregados 2026-10-22 |
+| G2-05 | Ánimo, diario y síntomas emocionales | 9 + 5 agregados 2026-10-22 |
 | G2-06 | Datos de salud y FHIR | 7 |
 | G2-07 | Backend y bases de datos | 3 |
+| G2-08 | Fases lunares, moon sign, astrología y tarot de ciclo (solo cálculo; el texto lo hace un LLM) (nueva 2026-10-22) | 3 |
+| G2-09 | Avatares y personalización de avatar (nueva 2026-10-22) | 2 |
 | G2-10 | Cycle syncing de productividad y rutinas por fase (nueva 2026-10-22) | 1 |
+| G2-11 | Videos cortos, GIFs, stories y daily decode (nueva 2026-10-22) | 3 |
+| G2-13 | PIN/passcode, decoy screen (pantalla falsa) y auto-borrado programado (nueva 2026-10-22) | 2 |
+| G2-14 | Comparación con otras usuarias: estadística agregada con privacidad (nueva 2026-10-22) | 5 |
+| G2-15 | Compartir en redes (tarjetas o imágenes) (nueva 2026-10-22) | 2 |
 | G3-01 | Componentes UI animados y design systems | 16 |
-| G3-02 | Gráficos y visualización de datos | 6 + 1 agregados 2026-10-22 |
+| G3-02 | Gráficos y visualización de datos | 6 + 4 agregados 2026-10-22 |
 | G3-03 | UI mobile (Flutter) | 2 |
 | G3-04 | 3D (React Three Fiber) | 2 |
 | G3-05 | Listas curadas (awesome) | 3 |
@@ -248,13 +256,16 @@ Temperatura, HR/HRV y unificación de datos de wearables relacionados con fases 
 | Aminsinichi/wearable-hrv | https://github.com/Aminsinichi/wearable-hrv | MIT | 14 | Paquete Python para validación y análisis de HR y HRV de wearables. | candidato | — |
 | zkhechadoorian/menstrual-cycle-tracking | https://github.com/zkhechadoorian/menstrual-cycle-tracking | sin licencia | 0 | Detección de fases (folicular/luteal) a partir de temperatura de wearable usando regla de coverline. | solo idea (sin licencia) | REPOS-SIMILARES.md |
 
-### G1-06 · Agregados 2026-10-22 — Integración con wearables (función 15 y extras: Oura, HealthKit, Health Connect, Garmin, Fitbit, Whoop, HRV, temperatura de piel) (2)
+### G1-06 · Agregados 2026-10-22 — Integración con wearables (función 15 y extras: Oura, HealthKit, Health Connect, Garmin, Fitbit, Whoop, HRV, temperatura de piel) (5)
 
 Cómo funciona: una PWA no puede leer HealthKit ni Health Connect directamente. O se usa un wrapper nativo (Capacitor o React Native) que lee el SDK del sistema, o se consume la API web del fabricante con OAuth (Oura, Fitbit, Garmin, Whoop, Withings), o se importa un archivo exportado (export.xml de Apple Health, .fit de Garmin). Después hay que normalizar las series (temperatura de piel nocturna, HRV, FC en reposo) y pasarlas al detector de shift. Piezas: cliente o SDK, parser de exportaciones, normalizador y análisis HRV/temperatura.
 
 | Link | owner/nombre | MB | ⭐ | Lenguaje | Licencia | Último commit | Front/Back | Qué es | Pieza concreta que aporta a Lunilla (dónde/cuándo/cómo se ensambla) | Otras funciones | Origen |
 |---|---|---|---|---|---|---|---|---|---|---|---|
+| https://github.com/cyberjunky/python-garminconnect | cyberjunky/python-garminconnect | 1.4 | 3193 | Python | MIT | 2026-10-16 | B | Wrapper Python de la API de Garmin Connect para obtener estadísticas. | Importar temperatura de la piel, HRV y sueño de Garmin para la correlación con el ciclo. | G1-09 | Lunilla bot, 2026-10-22 |
 | https://github.com/jimmykane/quantified-self | jimmykane/quantified-self | 78.0 | 235 | TypeScript | NOASSERTION (no estándar) | 2026-10-22 | B | Plataforma abierta que importa actividad de Garmin, Suunto, COROS, Wahoo y otros, con dashboards, tendencias de sueño y análisis de entrenamiento. | Importadores de archivos y servicios de wearables deportivos para traer sueño y actividad al cruce con el ciclo. | G2-10 | Lunilla bot, 2026-10-22 |
+| https://github.com/hedgertronic/oura-ring | hedgertronic/oura-ring | 0.1 | 92 | Python | MIT | 2026-07-07 | B | Cliente Python para la API v2 de Oura con OAuth2 (sueño, SpO2, estrés, temperatura). | Importar la desviación de temperatura del anillo Oura como señal de ovulación (job puntual en un backend opcional). | G1-03 | Lunilla bot, 2026-10-22 |
+| https://github.com/mley/capacitor-health | mley/capacitor-health | 0.3 | 20 | Swift | MIT | 2026-09-23 | B | Plugin Capacitor para leer datos de Apple Health y Google Health Connect. | Si la PWA se empaqueta con Capacitor: importar temperatura, sueño y ciclo de HealthKit / Health Connect. | G1-03 | Lunilla bot, 2026-10-22 |
 | https://github.com/home-health-hub/easyathome-bbt-daemon | home-health-hub/easyathome-bbt-daemon | 2.6 | 0 | Python | GPL-3.0 | 2026-08-22 | B | Daemon Linux que lee el termómetro BBT Easy@Home EBT-300 por Bluetooth LE y guarda las lecturas en local. | Protocolo BLE documentado del EBT-300: base para leer el termómetro con Web Bluetooth desde la PWA. | G1-03 | Lunilla bot, 2026-10-22 |
 
 ## G1-07 · Tracking de flujo menstrual (función 3) (1)
@@ -349,6 +360,18 @@ Cómo funciona: cuestionarios estructurados (criterios de Rotterdam para SOP o e
 | https://github.com/bloo-berries/Endometriosis-Adenomyosis-Resources | bloo-berries/Endometriosis-Adenomyosis-Resources | 10.2 | 19 | Python | CC0-1.0 | 2026-09-03 | B | Fuente de contenido (content/ → dist/) del sitio "1 in 7" de Bloomed Health sobre endometriosis y adenomiosis y sus comorbilidades, licencia CC0. | Contenido CC0 sobre endo/adeno para alimentar las fichas del symptom checker y el CMS educativo (se importa como markdown en build). | G2-01 CMS, G1-24 navegador de cuidados | Lunilla bot, 2026-10-22 |
 | https://github.com/smsolutionsva-byte/OvaCare | smsolutionsva-byte/OvaCare | 2.0 | 14 | TypeScript | sin licencia | 2026-10-04 | F | App React/Vite para explorar síntomas de SOP, registrar estudios y preparar preguntas para profesionales; el puntaje sale de reglas en src/lib/riskCalculator.ts y aclara que no es diagnóstico. | riskCalculator.ts como referencia de autoevaluación de SOP basada en reglas, con texto de "no es diagnóstico" y salida "preguntas para tu médica". | G1-24, G1-15 PDF | Lunilla bot, 2026-10-22 |
 
+## G1-15 · Reportes PDF para el médico (función 13) (5)
+
+Cómo funciona: se toman los datos descifrados en el dispositivo y se arma un PDF en el navegador (sin servidor) con resumen de ciclos, gráficos y tabla de síntomas, que se descarga o se comparte. Piezas: librería PDF client-side, plantillas y render de gráficos a imagen o vector.
+
+| Link | owner/nombre | MB | ⭐ | Lenguaje | Licencia | Último commit | Front/Back | Qué es | Pieza concreta que aporta a Lunilla (dónde/cuándo/cómo se ensambla) | Otras funciones | Origen |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| https://github.com/parallax/jsPDF | parallax/jsPDF | 141.0 | 31316 | JavaScript | MIT | 2026-10-21 | F | Generación de PDF en el navegador, del lado del cliente, en JavaScript. | Generar el "informe para la médica" (tabla de ciclos, síntomas y gráfico) dentro de la PWA, sin servidor: los datos descifrados nunca salen del dispositivo. | G1-25 | Lunilla bot, 2026-10-22 |
+| https://github.com/diegomura/react-pdf | diegomura/react-pdf | 47.9 | 16837 | TypeScript | MIT | 2026-10-20 | F | Crear archivos PDF con componentes React (layout tipo flexbox), en navegador o Node. | Maquetar el informe PDF con componentes, si la UI de Lunilla usa React; mismo diseño en pantalla y en PDF. | — | Lunilla bot, 2026-10-22 |
+| https://github.com/bpampuch/pdfmake | bpampuch/pdfmake | 149.4 | 12352 | JavaScript | NOASSERTION (no estándar) | 2026-10-19 | F | Impresión de PDF en JavaScript puro, cliente o servidor, a partir de una definición declarativa del documento (JSON). | Plantilla declarativa del informe (encabezado, tablas de ciclos, notas) que se arma con los datos locales; buena opción en Vite + TS sin framework. | — | Lunilla bot, 2026-10-22 |
+| https://github.com/foliojs/pdfkit | foliojs/pdfkit | 59.1 | 10722 | JavaScript | MIT | 2026-10-22 | F | Librería de generación de PDF para Node y el navegador con API de dibujo de bajo nivel (texto, vectores, imágenes). | Dibujo vectorial de gráficos de ciclo/temperatura directamente en el PDF. | G3-02 | Lunilla bot, 2026-10-22 |
+| https://github.com/Hopding/pdf-lib | Hopding/pdf-lib | 132.6 | 8666 | TypeScript | MIT | 2024-07-17 | F | Crear y modificar documentos PDF en cualquier entorno JavaScript (incluye llenar formularios PDF). Vigencia: último push 2024-07, se queda porque es la librería de referencia para editar PDFs existentes y llenar formularios. | Llenar un formulario PDF existente (por ejemplo una planilla de diario de síntomas oficial) con los datos de la usuaria. | G1-12 | Lunilla bot, 2026-10-22 |
+
 ## G1-16 · Predicción de síntomas e intensidad de dolor (función 14 y extras de dolor) (1)
 
 Cómo funciona: con los síntomas alineados por día de ciclo se estima la probabilidad de cada síntoma en los próximos días (frecuencia histórica por día de ciclo, regresión o clasificador liviano). El dolor se registra con escalas estándar (EVA/NRS, mapa corporal) y se predice igual. Piezas: escala de dolor, mapa corporal, modelo de probabilidad por día y alertas.
@@ -357,12 +380,15 @@ Cómo funciona: con los síntomas alineados por día de ciclo se estima la proba
 |---|---|---|---|---|---|---|---|---|---|---|---|
 | https://github.com/GreenNovaEmma/migraine-risk-card | GreenNovaEmma/migraine-risk-card | 0.1 | 90 | JavaScript | MIT | 2026-05-25 | F | Tarjeta de Home Assistant que calcula un puntaje compuesto de riesgo de migraña a partir de 9 factores de clima y calidad del aire. | Patrón de puntaje compuesto de riesgo (factores ponderados → gauge) para el pronóstico de dolor/migraña menstrual, sumando la fase del ciclo como factor. | G1-09 | Lunilla bot, 2026-10-22 |
 
-## G1-18 · Partner sharing con permiso, E2E (función 20 y extra partner mode / inner circle) (1)
+## G1-18 · Partner sharing con permiso, E2E (función 20 y extra partner mode / inner circle) (4)
 
 Cómo funciona: la usuaria elige qué compartir y el dato sale cifrado de punta a punta: se intercambian claves (QR o enlace), cada envío se cifra con la clave pública o una clave compartida, y el permiso se puede revocar rotando la clave. Piezas: librería de cripto (libsodium, age, MLS), intercambio de claves, transporte (relay o P2P) y permisos.
 
 | Link | owner/nombre | MB | ⭐ | Lenguaje | Licencia | Último commit | Front/Back | Qué es | Pieza concreta que aporta a Lunilla (dónde/cuándo/cómo se ensambla) | Otras funciones | Origen |
 |---|---|---|---|---|---|---|---|---|---|---|---|
+| https://github.com/openpgpjs/openpgpjs | openpgpjs/openpgpjs | 44.2 | 5976 | JavaScript | LGPL-3.0 | 2026-10-08 | B | Implementación de OpenPGP en JavaScript (claves, cifrado, firmas). | Alternativa estándar para compartir con terceros (por ejemplo una profesional) con claves públicas OpenPGP. | G1-15 | Lunilla bot, 2026-10-22 |
+| https://github.com/jedisct1/libsodium.js | jedisct1/libsodium.js | 178.8 | 1161 | HTML | NOASSERTION (no estándar) | 2026-10-22 | B | libsodium compilado a WebAssembly y JS puro, con wrappers. | Primitivas de sobres (crypto_box, sealed boxes) para invitaciones de pareja y padre/madre con intercambio de claves X25519. | G2-12 modo padres | Lunilla bot, 2026-10-22 |
+| https://github.com/FiloSottile/typage | FiloSottile/typage | 1.5 | 491 | TypeScript | BSD-3-Clause | 2026-08-28 | B | age-encryption: implementación en TypeScript del formato de cifrado de archivos age, que depende sólo de las librerías noble; soporta passkeys. | Cifrar el "paquete compartido" para la pareja con la clave pública de ella (recipient age), y descifrarlo en su dispositivo: compartir E2E sin servidor que lea los datos. | G1-21 backup cifrado | Lunilla bot, 2026-10-22 |
 | https://github.com/848deepak/Soma | 848deepak/Soma | 14.4 | 3 | TypeScript | sin licencia | 2026-04-08 | B | App Expo/React Native + Supabase con sincronización con pareja, registros diarios, sesión anónima y sitio Next.js. | Flujo de vinculación con pareja (invitación, permisos de lectura) como referencia de UX del modo pareja; en Lunilla el transporte se reemplaza por E2E. | G1-22 modo anónimo | Lunilla bot, 2026-10-22 |
 
 ## G1-19 · Tests OPK/LH: registro, lector de tiras por foto y curva de LH (función 22 y extras) (1)
@@ -382,21 +408,38 @@ Cómo funciona: el objetivo (seguir el ciclo, buscar embarazo, evitar embarazo, 
 | https://github.com/Twipped/Spiral | Twipped/Spiral | 10.3 | 11 | JavaScript | NOASSERTION (no estándar) | 2022-03-04 | F | App React Native de bio-ciclos "para todos los humanos": registra síntomas físicos y estado mental ligados a hormonas, con lenguaje neutro que evita disparadores de disforia. Vigencia: último push 2022, se queda porque es el único diseño abierto de tracker inclusivo para personas trans/no binarias. | Copy y estructura de pantallas con lenguaje neutro de género: base del modo inclusivo de Lunilla (onboarding y etiquetas sin "mujer"). | G1-08 | Lunilla bot, 2026-10-22 |
 | https://github.com/al-mabsut/muslimah | al-mabsut/muslimah | 6.8 | 2 | JavaScript | sin licencia | 2025-12-28 | B | Librería NPM de recursos de jurisprudencia islámica sobre temas de mujeres (masaail de hayd/menstruación), que alimenta myhayd.app. Vigencia: último push 2025-12, se queda porque es la única fuente abierta y auditable de reglas de hayd. | Reglas de hayd como modo religioso opcional (cálculo de días de pureza/menstruación según escuela) dentro del sistema de modos de Lunilla. | G1-01, G2-01 | Lunilla bot, 2026-10-22 |
 
-## G1-21 · Backup y sync multi-dispositivo E2E, CRDT, local-first (función 24 y extra backup Drive/iCloud) (2)
+## G1-21 · Backup y sync multi-dispositivo E2E, CRDT, local-first (función 24 y extra backup Drive/iCloud) (11)
 
 Cómo funciona: los datos viven en el dispositivo. Para sincronizar se cifran antes de salir y se mezclan sin conflictos con CRDT (Yjs, Automerge) o con un log de cambios. El transporte puede ser un servidor de sync, WebRTC P2P o un almacenamiento del usuario (Google Drive appDataFolder, WebDAV, remoteStorage). Piezas: CRDT o motor de sync, cifrado del lado del cliente y adaptador de almacenamiento.
 
 | Link | owner/nombre | MB | ⭐ | Lenguaje | Licencia | Último commit | Front/Back | Qué es | Pieza concreta que aporta a Lunilla (dónde/cuándo/cómo se ensambla) | Otras funciones | Origen |
 |---|---|---|---|---|---|---|---|---|---|---|---|
+| https://github.com/actualbudget/actual | actualbudget/actual | 644.1 | 29679 | TypeScript | MIT | 2026-10-21 | B | App de finanzas personales local-first con servidor de sincronización y cifrado E2E opcional. | Arquitectura probada en producción: CRDT con timestamps lógicos, servidor de sync liviano y cifrado E2E con contraseña. Se copian el protocolo de sync y la UX de "clave de cifrado". | G1-22 | Lunilla bot, 2026-10-22 |
+| https://github.com/pubkey/rxdb | pubkey/rxdb | 644.9 | 23411 | TypeScript | Apache-2.0 | 2026-10-22 | B | Base local-first que corre en cualquier runtime JS y replica con el backend existente, con plugins de cifrado. | Replicación con plugins (CouchDB, HTTP, WebRTC) y almacenamiento cifrado listo, si se quiere un framework completo. | G1-22 | Lunilla bot, 2026-10-22 |
+| https://github.com/yjs/yjs | yjs/yjs | 72.1 | 22971 | JavaScript | NOASSERTION (no estándar) | 2026-10-18 | B | Tipos de datos compartidos (CRDT) para software colaborativo, con proveedores de red y persistencia (y-indexeddb). | Sincronización entre dispositivos de la usuaria sin conflictos: el documento CRDT se cifra antes de enviarse a un relay (por ejemplo un Durable Object de Cloudflare). | G1-18 | Lunilla bot, 2026-10-22 |
+| https://github.com/apache/pouchdb | apache/pouchdb | 125.3 | 17626 | JavaScript | Apache-2.0 | 2026-10-21 | B | PouchDB: base de datos JavaScript "de bolsillo" que replica con CouchDB. | Replicación probada offline→online con CouchDB autoalojado para el backup opcional. | — | Lunilla bot, 2026-10-22 |
+| https://github.com/automerge/automerge | automerge/automerge | 132.3 | 6682 | JavaScript | MIT | 2026-10-22 | B | Estructura de datos JSON tipo CRDT que pueden modificar a la vez varios usuarios y fusionar automáticamente. | Historial del registro como documento Automerge: merge determinista entre teléfono y tablet, y export binario compacto para backup. | — | Lunilla bot, 2026-10-22 |
+| https://github.com/tinyplex/tinybase | tinyplex/tinybase | 474.8 | 5197 | TypeScript | MIT | 2026-10-22 | B | Store de datos reactivo en memoria con persistencia y sincronización para apps local-first. | Store reactivo chico con persisters (IndexedDB, archivos, Durable Objects de Cloudflare) y sync por CRDT incluidos. | G1-22 | Lunilla bot, 2026-10-22 |
+| https://github.com/vlcn-io/cr-sqlite | vlcn-io/cr-sqlite | 42.2 | 3808 | Rust | MIT | 2026-08-10 | B | SQLite convergente y replicado: soporte multi-escritor y CRDT para SQLite. | Si se usa SQLite en el cliente (wa-sqlite), las tablas pasan a CRDT y se sincronizan por changesets cifrados. | G1-22 | Lunilla bot, 2026-10-22 |
+| https://github.com/remotestorage/remotestorage.js | remotestorage/remotestorage.js | 27.1 | 2427 | JavaScript | MIT | 2026-08-12 | B | Librería JS para guardar datos del usuario localmente en el navegador y conectarlos a remoteStorage, Dropbox o Google Drive. | Backup a la nube de la usuaria (Google Drive / Dropbox / remoteStorage) con un solo conector: se sube el blob ya cifrado. | G1-22 | Lunilla bot, 2026-10-22 |
+| https://github.com/evoluhq/evolu | evoluhq/evolu | 21.2 | 1909 | TypeScript | MIT | 2026-10-22 | B | Plataforma local-first y librería TypeScript con sync E2E cifrado y mnemónico para restaurar. | El modelo más parecido a Lunilla: datos locales cifrados, sync E2E con relay y restauración con frase mnemónica en lugar de cuenta. | G1-22, G2-13 | Lunilla bot, 2026-10-22 |
 | https://github.com/FriesI23/mhabit | FriesI23/mhabit | 147.6 | 1670 | Dart | Apache-2.0 | 2026-10-22 | B | Habit tracker Flutter con puntuación, gráficos de progreso, almacenamiento local-first y sincronización WebDAV entre dispositivos. | Sincronización WebDAV opcional de un store local-first: referencia del backup/sync autoalojado de Lunilla (subir el blob cifrado a WebDAV). | G2-03 | Lunilla bot, 2026-10-22 |
 | https://github.com/SoftwareEngineer-Hadi/CycleTrack | SoftwareEngineer-Hadi/CycleTrack | 40.7 | 0 | Dart | sin licencia | 2026-08-18 | B | Tracker Flutter de periodo y ovulación offline con almacenamiento local cifrado, anónimo por defecto y backup cifrado opcional en la nube vía Supabase con Google sign-in. | Backup cifrado opcional a la nube con login de Google: referencia del flujo "anónimo primero, backup opcional después". | G1-22 | Lunilla bot, 2026-10-22 |
 
-## G1-22 · Almacenamiento on-device y privacy-first, cifrado y modo anónimo (función 25 y extra) (1)
+## G1-22 · Almacenamiento on-device y privacy-first, cifrado y modo anónimo (función 25 y extra) (9)
 
 Cómo funciona: los datos se guardan en IndexedDB u OPFS (SQLite WASM) cifrados con AES-GCM y una clave derivada del PIN (PBKDF2 o Argon2). Opcionalmente se desbloquean con passkey (WebAuthn PRF). No hay cuenta y no salen datos (modo anónimo). Piezas: wrapper de IndexedDB, cifrado, KDF y base de datos local.
 
 | Link | owner/nombre | MB | ⭐ | Lenguaje | Licencia | Último commit | Front/Back | Qué es | Pieza concreta que aporta a Lunilla (dónde/cuándo/cómo se ensambla) | Otras funciones | Origen |
 |---|---|---|---|---|---|---|---|---|---|---|---|
+| https://github.com/electric-sql/pglite | electric-sql/pglite | 32.3 | 16180 | TypeScript | Apache-2.0 | 2026-10-21 | B | Postgres embebible en WebAssembly con bindings reactivos en tiempo real, en navegador o Node. | Base relacional completa en el cliente si el modelo crece; persiste en IndexedDB. | G1-21 | Lunilla bot, 2026-10-22 |
+| https://github.com/dexie/Dexie.js | dexie/Dexie.js | 73.4 | 14658 | TypeScript | Apache-2.0 | 2026-10-21 | B | Wrapper minimalista de IndexedDB con consultas, índices, versionado de esquema y liveQuery. | Capa de datos sobre IndexedDB con migraciones de esquema; con un hook de cifrado de campos (AES-GCM) antes de escribir. | G1-21 (Dexie Cloud opcional) | Lunilla bot, 2026-10-22 |
+| https://github.com/jakearchibald/idb | jakearchibald/idb | 0.5 | 7429 | TypeScript | ISC | 2026-10-06 | B | IndexedDB con promesas: wrapper mínimo (~1 KB) que respeta la API original. | Alternativa mínima a Dexie para guardar los blobs cifrados (un store por tipo de registro) con transacciones con promesas. | — | Lunilla bot, 2026-10-22 |
+| https://github.com/rhashimoto/wa-sqlite | rhashimoto/wa-sqlite | 24.5 | 1419 | JavaScript | MIT | 2026-10-13 | B | Build WebAssembly de SQLite con sistemas de archivos virtuales escritos en JS (IndexedDB, OPFS). | SQLite en el navegador sobre OPFS/IndexedDB para consultas de tendencias y correlaciones con SQL, en lugar de recorrer todo en JS. | G1-09, G3-02 | Lunilla bot, 2026-10-22 |
+| https://github.com/Daninet/hash-wasm | Daninet/hash-wasm | 1.2 | 1163 | TypeScript | NOASSERTION (no estándar) | 2024-11-19 | B | Funciones hash en WebAssembly afinado a mano para navegador y Node, incluido Argon2id. Vigencia: último push 2024-11, se queda porque es el Argon2id más rápido en el navegador. | Argon2id rápido en Wasm para derivar la clave del PIN con parámetros de memoria altos sin trabar la UI. | G2-13 | Lunilla bot, 2026-10-22 |
+| https://github.com/sqlite/sqlite-wasm | sqlite/sqlite-wasm | 6.3 | 1069 | JavaScript | sin licencia | 2026-10-20 | B | SQLite oficial compilado a Wasm, empaquetado como módulo ES (con soporte OPFS). | Variante oficial de SQLite para la PWA (persistencia OPFS en worker). | — | Lunilla bot, 2026-10-22 |
+| https://github.com/paulmillr/noble-hashes | paulmillr/noble-hashes | 15.7 | 932 | TypeScript | MIT | 2026-09-08 | B | Implementación JS auditada y mínima de funciones hash, MACs y KDFs (SHA-2/3, HKDF, PBKDF2, scrypt, Argon2). | Derivar la clave desde el PIN con Argon2id o scrypt (más resistente a fuerza bruta que PBKDF2), con HKDF para subclaves por uso. | G2-13 PIN | Lunilla bot, 2026-10-22 |
+| https://github.com/paulmillr/noble-ciphers | paulmillr/noble-ciphers | 2.5 | 429 | TypeScript | MIT | 2026-09-17 | B | Implementación JS auditada y mínima de Salsa20, ChaCha y AES (incluye AES-GCM y XChaCha20-Poly1305). | Cifrado de los registros si hace falta algo más allá de WebCrypto (por ejemplo XChaCha20-Poly1305 con nonces aleatorios largos) y para tests deterministas. | G1-18, G1-21 | Lunilla bot, 2026-10-22 |
 | https://github.com/vincenzo-afk/Synapse | vincenzo-afk/Synapse | 0.9 | 39 | TypeScript | MIT | 2026-10-18 | F | "Sistema operativo personal" PWA local-first y offline que une hábitos, tareas, finanzas y diario. | Arquitectura PWA instalable y totalmente offline con múltiples módulos sobre almacenamiento local, muy cercana al stack de Lunilla. | G1-21 | Lunilla bot, 2026-10-22 |
 
 ## G1-23 · Modo postparto y bebé: sangrado, lactancia, sueño y alimentación (extras) (1)
@@ -415,14 +458,27 @@ Cómo funciona: un directorio de servicios (clínicas, telesalud, líneas de ayu
 |---|---|---|---|---|---|---|---|---|---|---|---|
 | https://github.com/monapdx/awesome-reproductive-justice | monapdx/awesome-reproductive-justice | 5.8 | 2 | CSS | NOASSERTION (no estándar) | 2026-07-21 | B | Lista curada de recursos de salud reproductiva y aborto: clínicas, directorios verificados, líneas de ayuda y herramientas. | Directorio de recursos externos para el navegador de cuidados (pantalla "¿A dónde voy?"), como JSON estático por país. | G2-01 | Lunilla bot, 2026-10-22 |
 
-## G1-25 · Exportar a CSV/spreadsheet e importar de otras apps (extra) (2)
+## G1-25 · Exportar a CSV/spreadsheet e importar de otras apps (extra) (3)
 
 Cómo funciona: los registros se serializan a CSV o XLSX en el navegador y se descargan. Para migrar, se parsean las exportaciones de otras apps (Clue, Flo, drip) y se mapean al modelo de Lunilla. Piezas: librería CSV/XLSX, conversores de formatos de otras apps y esquema común.
 
 | Link | owner/nombre | MB | ⭐ | Lenguaje | Licencia | Último commit | Front/Back | Qué es | Pieza concreta que aporta a Lunilla (dónde/cuándo/cómo se ensambla) | Otras funciones | Origen |
 |---|---|---|---|---|---|---|---|---|---|---|---|
+| https://github.com/mholt/PapaParse | mholt/PapaParse | 14.5 | 13590 | JavaScript | MIT | 2026-10-09 | B | Parser de CSV rápido para el navegador que maneja archivos grandes y malformados, con streaming y workers. | Importar CSV de otras apps (Clue, Flo, drip, planillas) y exportar el historial a CSV desde la PWA. | G1-21 | Lunilla bot, 2026-10-22 |
 | https://github.com/isosphere/Clue-Period-Tracker-Backup-Converter | isosphere/Clue-Period-Tracker-Backup-Converter | 0.0 | 25 | Python | sin licencia | 2022-07-17 | B | Script Python que lee el backup .cluedata (JSON) de Clue y lo pasa a Excel. Vigencia: último push 2022, se queda porque es corto y explica la estructura del backup de Clue. | Estructura del JSON de backup de Clue para el importador. | — | Lunilla bot, 2026-10-22 |
 | https://github.com/fabfabretti/clue-to-drip | fabfabretti/clue-to-drip | 0.1 | 6 | JavaScript | MIT | 2024-03-04 | F | Página web que convierte la exportación de Clue en un archivo importable en drip (sangrado y la mayoría de los tags). Vigencia: último push 2024, se queda porque documenta el formato de exportación de Clue. | Mapeo de campos de exportación de Clue a un modelo abierto: base del importador "desde Clue" de Lunilla. | G1-08 | Lunilla bot, 2026-10-22 |
+
+## G1-26 · Calendario, vista de ciclo y filtros por síntoma (extra) (5)
+
+Cómo funciona: un calendario mensual que pinta cada día según su estado (periodo, predicción, fértil, síntomas) y se filtra para mostrar hasta N síntomas. Necesita aritmética de fechas confiable (zonas horarias, DST) y un componente de calendario liviano. Piezas: componente de calendario, librería de fechas y capa de filtros.
+
+| Link | owner/nombre | MB | ⭐ | Lenguaje | Licencia | Último commit | Front/Back | Qué es | Pieza concreta que aporta a Lunilla (dónde/cuándo/cómo se ensambla) | Otras funciones | Origen |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| https://github.com/fullcalendar/fullcalendar | fullcalendar/fullcalendar | 34.8 | 20711 | TypeScript | MIT | 2026-10-16 | F | Calendario de eventos completo en JavaScript con drag & drop y vistas mes, semana y lista. | Vista mensual del ciclo: los días de periodo, fértiles y predichos se pintan como eventos de fondo, y al tocar un día se abre el registro. | G1-11 (semanas de embarazo) | Lunilla bot, 2026-10-22 |
+| https://github.com/gpbl/react-day-picker | gpbl/react-day-picker | 123.6 | 6862 | TypeScript | MIT | 2026-10-21 | F | DayPicker: componente React personalizable para elegir fechas y mostrar calendarios, con modificadores por día. | Calendario chico estilo app de ciclo, con modificadores (periodo / fértil / predicho / registrado) y selección de rangos para cargar periodos pasados. | G1-07 | Lunilla bot, 2026-10-22 |
+| https://github.com/wojtekmaj/react-calendar | wojtekmaj/react-calendar | 7.1 | 3787 | TypeScript | MIT | 2026-10-21 | F | Componente de calendario para React (mes, año, década, rangos). | Alternativa simple para la vista mes, con tileClassName por fase del ciclo. | — | Lunilla bot, 2026-10-22 |
+| https://github.com/schedule-x/schedule-x | schedule-x/schedule-x | 85.1 | 2603 | TypeScript | MIT | 2026-10-22 | F | Calendario de eventos JavaScript moderno, responsive y con i18n, alternativa a fullcalendar. | Calendario con i18n (es/pt), tema oscuro y plugins para mostrar fases y recordatorios. | G2-04 | Lunilla bot, 2026-10-22 |
+| https://github.com/vkurko/calendar | vkurko/calendar | 2.2 | 2292 | JavaScript | MIT | 2026-10-21 | F | EventCalendar: calendario de eventos JS liviano (35 KB br), sin dependencias, con vistas de recursos y línea de tiempo. | Calendario sin framework para la PWA Vite+TS: bundle standalone chico y vistas mes/lista. | — | Lunilla bot, 2026-10-22 |
 
 ## G1-27 · Registro de condiciones de salud y medicación (extra) (2)
 
@@ -492,12 +548,13 @@ Puntos, badges, rachas (streaks), logros y leaderboards.
 | franverona/questlog | https://github.com/franverona/questlog | sin licencia | 0 | API de gamificación (Hono + PostgreSQL + Drizzle). Achievements, streaks, leaderboards. Archivado. | solo idea (sin licencia) | — |
 | JKoontzDev/LevelUp | https://github.com/JKoontzDev/LevelUp | MIT | 0 | Gamified motivation tracker (RPG style). | candidato | — |
 
-### G2-03 · Agregados 2026-10-22 — Gamificación, quizzes, recompensas, rate my day y daily quiz (1)
+### G2-03 · Agregados 2026-10-22 — Gamificación, quizzes, recompensas, rate my day y daily quiz (2)
 
 Cómo funciona: los eventos de registro suman puntos, rachas y logros con reglas locales. Los quizzes son bancos de preguntas con puntaje. Rate my day es una escala diaria. Las animaciones de premio (confetti) refuerzan el hábito. Piezas: motor de logros o rachas, motor de quiz y efectos visuales.
 
 | Link | owner/nombre | MB | ⭐ | Lenguaje | Licencia | Último commit | Front/Back | Qué es | Pieza concreta que aporta a Lunilla (dónde/cuándo/cómo se ensambla) | Otras funciones | Origen |
 |---|---|---|---|---|---|---|---|---|---|---|---|
+| https://github.com/surveyjs/survey-library | surveyjs/survey-library | 332.2 | 4912 | TypeScript | MIT | 2026-10-22 | F | Librería JS open source de formularios y encuestas (React, Angular, Vue o JS plano) definidos en JSON. | Quizzes educativos y cuestionarios de autoevaluación (por ejemplo dolor o ánimo) definidos en JSON, con lógica condicional y puntaje. | G1-14 | Lunilla bot, 2026-10-22 |
 | https://github.com/iNikAnn/DoHabit | iNikAnn/DoHabit | 48.0 | 63 | TypeScript | AGPL-3.0 | 2026-09-30 | F | Habit tracker web local-first, sin registro ni nube. | Rachas y check diario de hábitos para la gamificación (racha de registro diario). | G1-22 | Lunilla bot, 2026-10-22 |
 
 ## G2-04 · Recordatorios y notificaciones (17)
@@ -524,6 +581,14 @@ Scheduling, recordatorios recurrentes y notificaciones locales o push.
 | notifee/notifee | https://github.com/notifee/notifee | Apache-2.0 | 0 | Sistema de notificaciones locales avanzadas (React Native). Es un fork. | candidato | — |
 | sivab193/event-reminder | https://github.com/sivab193/event-reminder | sin licencia | 0 | Multi-channel reminders + calendar sync + timezone. | solo idea (sin licencia) | — |
 
+### G2-04 · Agregados 2026-10-22 — Recordatorios inteligentes y notificaciones de prep day (función 17 y extra) (1)
+
+Cómo funciona: una PWA puede mostrar notificaciones locales cuando está abierta o en segundo plano limitado. Para avisos confiables con la app cerrada hace falta Web Push (servidor VAPID que dispara) o un wrapper nativo con notificaciones locales programadas. La agenda sale de la predicción (prep day 1–3 días antes, toma de píldora, BBT de la mañana). Piezas: service worker, Web Push, scheduler o recurrencias y notificaciones nativas.
+
+| Link | owner/nombre | MB | ⭐ | Lenguaje | Licencia | Último commit | Front/Back | Qué es | Pieza concreta que aporta a Lunilla (dónde/cuándo/cómo se ensambla) | Otras funciones | Origen |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| https://github.com/web-push-libs/web-push | web-push-libs/web-push | 1.9 | 3565 | JavaScript | NOASSERTION (no estándar) | 2026-10-19 | B | Librería Node para enviar Web Push con el protocolo y el cifrado de mensajes estándar. | Recordatorios push de la PWA (periodo próximo, pastilla) desde un cron de Cloudflare Worker, con payload cifrado y sin datos de salud en el servidor. | G1-17 | Lunilla bot, 2026-10-22 |
+
 ## G2-05 · Ánimo, diario y síntomas emocionales (9)
 
 Mood trackers y journaling con analytics.
@@ -539,6 +604,18 @@ Mood trackers y journaling con analytics.
 | dnlzrgz/moodmo | https://github.com/dnlzrgz/moodmo | GPL-3.0 | 9 | Self-hosted mood tracking (Django + Docker). | solo idea (GPL/AGPL) | — |
 | djaiss/journalOS | https://github.com/djaiss/journalOS | MIT | 7 | Self-hosted journaling modular (sleep, mood, health, etc.). | candidato | — |
 | Ashishworks/Horizon | https://github.com/Ashishworks/Horizon | sin licencia | 0 | AI mental health journal con analytics. | solo idea (sin licencia) | — |
+
+### G2-05 · Agregados 2026-10-22 — Stickers, emojis y diario visual (5)
+
+Cómo funciona: el diario guarda por día notas, stickers o emojis y fotos (cifradas). Hace falta un selector de emoji o stickers con assets con licencia y un editor liviano. Piezas: emoji picker, sets de stickers o íconos y editor de notas.
+
+| Link | owner/nombre | MB | ⭐ | Lenguaje | Licencia | Último commit | Front/Back | Qué es | Pieza concreta que aporta a Lunilla (dónde/cuándo/cómo se ensambla) | Otras funciones | Origen |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| https://github.com/microsoft/fluentui-emoji | microsoft/fluentui-emoji | 132.6 | 10175 | Python | MIT | 2026-08-24 | F | Colección de emojis de Microsoft (3D, color, plano, alto contraste). | Stickers 3D de alta calidad para el diario y los logros. | G3-01 | Lunilla bot, 2026-10-22 |
+| https://github.com/hfg-gmuend/openmoji | hfg-gmuend/openmoji | 1608.7 | 4570 | HTML | CC-BY-SA-4.0 | 2026-08-12 | F | OpenMoji: emojis open source (SVG/PNG), incluidos emojis extra no estándar. | Set de stickers y emojis extra (salud, cuerpo) para el diario visual; licencia CC BY-SA, se acredita. | — | Lunilla bot, 2026-10-22 |
+| https://github.com/jdecked/twemoji | jdecked/twemoji | 821.7 | 1889 | HTML | MIT | 2026-06-01 | F | Twemoji: set de emojis (fork comunitario mantenido de Twitter). | Emojis consistentes entre plataformas para el registro rápido de ánimo y síntomas. | G1-08 | Lunilla bot, 2026-10-22 |
+| https://github.com/rive-app/rive-wasm | rive-app/rive-wasm | 28.0 | 1011 | TypeScript | MIT | 2026-10-22 | F | Runtime Wasm/JS para animaciones Rive (máquinas de estado interactivas). | Mascota o personaje animado que reacciona a la fase del ciclo o al ánimo, con estados interactivos. | G2-09 | Lunilla bot, 2026-10-22 |
+| https://github.com/LottieFiles/dotlottie-web | LottieFiles/dotlottie-web | 133.2 | 924 | TypeScript | MIT | 2026-10-22 | F | Reproductor Lottie/dotLottie de alto rendimiento para la web (Rust + WASM), con wrappers para React, Vue y Svelte. | Stickers animados y celebraciones (racha, periodo registrado) en formato .lottie liviano. | G2-03 | Lunilla bot, 2026-10-22 |
 
 ## G2-06 · Datos de salud y FHIR (7)
 
@@ -564,6 +641,25 @@ Backend-as-a-service y motores de workflows.
 | appwrite/appwrite | https://github.com/appwrite/appwrite | BSD-3-Clause | 57749 | Backend open source (auth, database, storage) ideal para prototipos locales o self-hosted. | candidato | — |
 | argoproj/argo-workflows | https://github.com/argoproj/argo-workflows | Apache-2.0 | 17047 | Workflow engine (útil para pipelines de contenido o notificaciones complejas). | candidato | — |
 
+## G2-08 · Fases lunares, moon sign, astrología y tarot de ciclo (solo cálculo; el texto lo hace un LLM) (3)
+
+Cómo funciona: la fase lunar y la posición de los astros para una fecha salen de algoritmos astronómicos (Meeus, VSOP87, efemérides suizas). El 'signo' y el arquetipo se asignan con reglas sobre esas posiciones y el día del ciclo. El texto lo genera un LLM. Piezas: librería de efemérides o fases lunares y datos de cartas de tarot (como dataset, no texto generado).
+
+| Link | owner/nombre | MB | ⭐ | Lenguaje | Licencia | Último commit | Front/Back | Qué es | Pieza concreta que aporta a Lunilla (dónde/cuándo/cómo se ensambla) | Otras funciones | Origen |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| https://github.com/mourner/suncalc | mourner/suncalc | 0.3 | 3503 | JavaScript | BSD-2-Clause | 2026-10-05 | B | Librería JS chica para calcular posiciones y fases del sol y la luna. | Fase e iluminación lunar por fecha, offline, para el overlay lunar en el calendario y el "ciclo vs luna". | G1-26 | Lunilla bot, 2026-10-22 |
+| https://github.com/cosinekitty/astronomy | cosinekitty/astronomy | 52.3 | 1063 | C | MIT | 2025-01-27 | B | Astronomy Engine: cálculo en varios lenguajes (incluido JS) de posiciones de Sol, Luna y planetas, fases lunares y eclipses. Vigencia: último push 2025-01; es una librería de cálculo estable y sin dependencias. | Fases lunares exactas, búsqueda de la próxima luna llena/nueva y longitud eclíptica de la Luna para calcular el "moon sign" (signo zodiacal en que está la Luna). | G2-04 | Lunilla bot, 2026-10-22 |
+| https://github.com/0xStarcat/CircularNatalHoroscopeJS | 0xStarcat/CircularNatalHoroscopeJS | 2.6 | 377 | JavaScript | Unlicense | 2021-07-18 | B | Librería ES6 para cálculos de carta natal astrológica (signos, casas, aspectos); no hace interpretaciones. Vigencia: último push 2021-07; se queda porque es la única librería JS completa de carta natal y no depende de ningún servicio. | Calcular el signo solar y lunar de la usuaria y el "moon sign" del día, offline; los textos los escribe el equipo o lo resuelve un LLM. | — | Lunilla bot, 2026-10-22 |
+
+## G2-09 · Avatares y personalización de avatar (2)
+
+Cómo funciona: los avatares se generan como SVG combinando partes (pelo, cara, ropa) con una semilla o elecciones de la usuaria y se guardan como parámetros. Piezas: generador o editor de avatares SVG y colecciones de assets.
+
+| Link | owner/nombre | MB | ⭐ | Lenguaje | Licencia | Último commit | Front/Back | Qué es | Pieza concreta que aporta a Lunilla (dónde/cuándo/cómo se ensambla) | Otras funciones | Origen |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| https://github.com/dicebear/dicebear | dicebear/dicebear | 32.4 | 9918 | Vue | MIT | 2026-10-21 | F | DiceBear: librería de avatares con muchos estilos y opciones, que genera SVG de forma determinista desde una semilla. | Avatar de la usuaria sin foto (privacidad): elige estilo, pelo y colores y se guarda sólo la configuración. | G2-02 comunidad anónima | Lunilla bot, 2026-10-22 |
+| https://github.com/boringdesigners/boring-avatars | boringdesigners/boring-avatars | 3.0 | 6467 | TypeScript | MIT | 2026-06-19 | F | Librería React que genera avatares SVG a partir de un nombre y una paleta. | Avatares abstractos para perfiles anónimos y para el "perfil de pareja" compartido. | — | Lunilla bot, 2026-10-22 |
+
 ## G2-10 · Cycle syncing de productividad y rutinas por fase (1)
 
 Cómo funciona: según la fase estimada del ciclo se sugieren rutinas o tareas (más intensidad en la folicular, descanso en la lútea tardía), y el planner o calendario se anota por fase. Piezas: cálculo de fase (G1-02) más integración con planners o calendarios (ICS).
@@ -571,6 +667,46 @@ Cómo funciona: según la fase estimada del ciclo se sugieren rutinas o tareas (
 | Link | owner/nombre | MB | ⭐ | Lenguaje | Licencia | Último commit | Front/Back | Qué es | Pieza concreta que aporta a Lunilla (dónde/cuándo/cómo se ensambla) | Otras funciones | Origen |
 |---|---|---|---|---|---|---|---|---|---|---|---|
 | https://github.com/MaiaALex/luna-notes | MaiaALex/luna-notes | 0.1 | 0 | JavaScript | MIT | 2026-06-06 | F | Plantilla o plugin de Obsidian para planificar según el ciclo: fases, diario de síntomas y reflexión emocional. | Plantillas de planificación por fase para el modo cycle syncing. | G2-05 | Lunilla bot, 2026-10-22 |
+
+## G2-11 · Videos cortos, GIFs, stories y daily decode (3)
+
+Cómo funciona: los formatos tipo stories reproducen tarjetas o videos cortos en secuencia con progreso. Los GIFs salen de APIs de terceros (con privacidad acotada) o de animaciones locales (Lottie). Piezas: componente de stories, reproductor de video y animaciones vectoriales.
+
+| Link | owner/nombre | MB | ⭐ | Lenguaje | Licencia | Último commit | Front/Back | Qué es | Pieza concreta que aporta a Lunilla (dónde/cuándo/cómo se ensambla) | Otras funciones | Origen |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| https://github.com/remotion-dev/remotion | remotion-dev/remotion | 4335.4 | 66376 | TypeScript | NOASSERTION (no estándar) | 2026-10-22 | B | Hacer videos de forma programática con React. | Plantillas de videos educativos o resúmenes ("Wrapped" anual) renderizados con React, server-side o en el cliente; revisar la licencia (NOASSERTION, licencia propia de la empresa). | G2-01 | Lunilla bot, 2026-10-22 |
+| https://github.com/ffmpegwasm/ffmpeg.wasm | ffmpegwasm/ffmpeg.wasm | 17.5 | 17898 | C | MIT | 2026-09-29 | F | FFmpeg en el navegador vía WebAssembly. | Armar en el dispositivo videos o stories cortos (MP4) a partir de las tarjetas del resumen, sin subir nada. | — | Lunilla bot, 2026-10-22 |
+| https://github.com/mattdesl/gifenc | mattdesl/gifenc | 1.9 | 342 | JavaScript | MIT | 2024-09-19 | F | Codificador GIF rápido y liviano en JS puro, para navegador y Node. Vigencia: último push 2024-09; es una librería pequeña y estable. | Generar GIFs cortos (por ejemplo, la animación "tu ciclo del mes") en el cliente para compartir. | G2-15 | Lunilla bot, 2026-10-22 |
+
+## G2-13 · PIN/passcode, decoy screen (pantalla falsa) y auto-borrado programado (2)
+
+Cómo funciona: el PIN deriva la clave (ver G1-22). Un PIN de pánico (duress) muestra datos falsos o borra. La decoy screen disfraza la app (calculadora o similar). El auto-borrado elimina registros con más de N días con una tarea programada al abrir la app. Piezas: pantalla de PIN, WebAuthn, lógica de duress y decoy, y borrado seguro.
+
+| Link | owner/nombre | MB | ⭐ | Lenguaje | Licencia | Último commit | Front/Back | Qué es | Pieza concreta que aporta a Lunilla (dónde/cuándo/cómo se ensambla) | Otras funciones | Origen |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| https://github.com/MasterKale/SimpleWebAuthn | MasterKale/SimpleWebAuthn | 5.2 | 2373 | TypeScript | MIT | 2026-10-11 | B | Librerías TypeScript para integrar WebAuthn (passkeys) del lado del navegador y del servidor. | Desbloqueo con biometría/passkey además del PIN; con la extensión PRF se puede derivar la clave de cifrado de la passkey. | G1-22 | Lunilla bot, 2026-10-22 |
+| https://github.com/passwordless-id/webauthn | passwordless-id/webauthn | 2.6 | 615 | TypeScript | MIT | 2026-10-21 | B | Helper de WebAuthn/passkeys del lado cliente y servidor. | Alternativa más simple para el desbloqueo biométrico local de la PWA. | — | Lunilla bot, 2026-10-22 |
+
+## G2-14 · Comparación con otras usuarias: estadística agregada con privacidad (5)
+
+Cómo funciona: para comparar 'qué tan común es tu síntoma' sin centralizar datos crudos se usa privacidad diferencial local (cada dispositivo agrega ruido antes de enviar) o agregación segura, y el servidor solo ve totales. También vale usar estadísticas publicadas (datasets) sin enviar nada. Piezas: librerías de DP o agregación segura y analítica privada.
+
+| Link | owner/nombre | MB | ⭐ | Lenguaje | Licencia | Último commit | Front/Back | Qué es | Pieza concreta que aporta a Lunilla (dónde/cuándo/cómo se ensambla) | Otras funciones | Origen |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| https://github.com/google/differential-privacy | google/differential-privacy | 10.3 | 3368 | Go | Apache-2.0 | 2026-10-21 | B | Librerías de privacidad diferencial de Google (C++, Go, Java), con agregaciones con ruido y herramientas para pipelines. | Estadísticas agregadas ("usuarias de tu edad tienen ciclos de X días") calculadas con ruido DP sobre datos donados de forma opcional. | G1-05 | Lunilla bot, 2026-10-22 |
+| https://github.com/opendp/opendp | opendp/opendp | 261.8 | 445 | Rust | MIT | 2026-10-22 | B | Biblioteca núcleo de algoritmos de privacidad diferencial del proyecto OpenDP (Rust, con bindings para Python y R). | Alternativa con presupuesto de privacidad explícito para publicar comparativas anónimas. | — | Lunilla bot, 2026-10-22 |
+| https://github.com/divviup/libprio-rs | divviup/libprio-rs | 3.8 | 122 | Rust | MPL-2.0 | 2026-10-22 | B | Implementación en Rust de Prio/VDAF para agregación privada de mediciones entre dos servidores. | El cliente divide su medición (por ejemplo, duración del ciclo) en partes secretas; ningún servidor solo ve el dato individual. Es la base para comparativas sin exponer a nadie. | G1-22 | Lunilla bot, 2026-10-22 |
+| https://github.com/divviup/janus | divviup/janus | 18.0 | 70 | Rust | MPL-2.0 | 2026-10-23 | B | Implementación experimental del protocolo DAP (Distributed Aggregation Protocol) para mediciones privadas. | Servidor agregador DAP que completa libprio para el modo "comparar con otras" con agregación distribuida. | — | Lunilla bot, 2026-10-22 |
+| https://github.com/brave/sta-rs | brave/sta-rs | 0.9 | 62 | Rust | MPL-2.0 | 2026-10-22 | B | Workspace Rust de STAR: agregación por umbral con secret-sharing distribuido (sin auditar). | Reporte de datos categóricos (por ejemplo, síntoma más común) que sólo se revela cuando lo reportan al menos k usuarias. | — | Lunilla bot, 2026-10-22 |
+
+## G2-15 · Compartir en redes (tarjetas o imágenes) (2)
+
+Cómo funciona: se renderiza una tarjeta (HTML o SVG) a imagen en el cliente y se comparte con la Web Share API, sin subir datos. Piezas: HTML→imagen y share sheet.
+
+| Link | owner/nombre | MB | ⭐ | Lenguaje | Licencia | Último commit | Front/Back | Qué es | Pieza concreta que aporta a Lunilla (dónde/cuándo/cómo se ensambla) | Otras funciones | Origen |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| https://github.com/vercel/satori | vercel/satori | 21.5 | 14123 | TypeScript | MPL-2.0 | 2026-10-22 | B | Convierte HTML y CSS (JSX) a SVG. | Generar la tarjeta para compartir ("mi ciclo en números", logros) como SVG/PNG desde una plantilla, en el cliente o en una Cloudflare Worker, sin datos sensibles. | G2-11 | Lunilla bot, 2026-10-22 |
+| https://github.com/bubkoo/html-to-image | bubkoo/html-to-image | 109.0 | 7257 | TypeScript | MIT | 2026-05-28 | F | Genera una imagen a partir de un nodo DOM con canvas y SVG. | Capturar la tarjeta ya renderizada en la UI para exportarla a PNG y compartirla con la Web Share API. | — | Lunilla bot, 2026-10-22 |
 
 # Grupo 3 — UI, animación y visualización
 
@@ -612,12 +748,15 @@ Charts y visualización para estadísticas del ciclo.
 | observablehq/plot | https://github.com/observablehq/plot | ISC | 5410 | Visualizaciones de datos muy precisas. | candidato | — |
 | tremorlabs/tremor | https://github.com/tremorlabs/tremor | Apache-2.0 | 3676 | Charts y dashboards elegantes. | candidato | — |
 
-### G3-02 · Agregados 2026-10-22 — Tendencias de ciclo a largo plazo y gráficos (función 19) (1)
+### G3-02 · Agregados 2026-10-22 — Tendencias de ciclo a largo plazo y gráficos (función 19) (4)
 
 Cómo funciona: las series (duración de ciclo, duración de periodo, BBT, LH, síntomas por fase) se grafican con librerías livianas en el cliente: líneas con bandas de variabilidad, heatmaps tipo calendario y gráficos radiales del ciclo. Piezas: librería de gráficos o heatmap y componentes radiales.
 
 | Link | owner/nombre | MB | ⭐ | Lenguaje | Licencia | Último commit | Front/Back | Qué es | Pieza concreta que aporta a Lunilla (dónde/cuándo/cómo se ensambla) | Otras funciones | Origen |
 |---|---|---|---|---|---|---|---|---|---|---|---|
+| https://github.com/chartjs/Chart.js | chartjs/Chart.js | 43.2 | 67753 | JavaScript | MIT | 2026-10-22 | F | Gráficos HTML5 simples sobre canvas. | Gráficos estándar (barras de duración de ciclo, líneas de ánimo) con plugins de anotación para marcar ovulación. | G1-15 (render a imagen para el PDF) | Lunilla bot, 2026-10-22 |
+| https://github.com/apache/echarts | apache/echarts | 264.9 | 67572 | TypeScript | Apache-2.0 | 2026-10-13 | F | Librería de visualización interactiva con muchos tipos de gráfico (incluidos polar, heatmap y calendario). | Heatmap tipo calendario de síntomas y gráfico polar del ciclo ("rueda" de fases) en una sola librería. | G1-09, G1-26 | Lunilla bot, 2026-10-22 |
+| https://github.com/leeoniya/uPlot | leeoniya/uPlot | 12.3 | 10575 | JavaScript | MIT | 2026-10-22 | F | Gráfico chico y rápido para series de tiempo (líneas, áreas, barras). | Gráfico de temperatura basal y de duración de ciclos de varios años, muy liviano (~50 KB) para la PWA. | G1-03 | Lunilla bot, 2026-10-22 |
 | https://github.com/kinduff/year-in-pixels | kinduff/year-in-pixels | 0.1 | 32 | CSS | MIT | 2026-01-04 | F | Herramienta web "year in pixels" que guarda el ánimo diario y lo visualiza como cuadrícula anual. | Cuadrícula anual de 365 celdas reutilizable para la vista de tendencias a largo plazo (color por fase o por síntoma). | G1-08 | Lunilla bot, 2026-10-22 |
 
 ## G3-03 · UI mobile (Flutter) (2)
