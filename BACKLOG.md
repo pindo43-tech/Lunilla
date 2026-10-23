@@ -16,7 +16,7 @@ Este backlog estructura las mejoras y ensamblajes de módulos desde `REPOS_A_ENS
   - Origen: `REPOS_A_ENSAMBLAR.md` (G1-02 / `IraSoro/peri`) y `LATER.md` (Punto 4: texto corto de cada fase sin diagnóstico).
   - Acción: Implementar `src/lib/phases.ts` con descripciones de fases hormonales y síntomas comunes (bilingüe `es`/`en`), componente explicativo en `HomePage`, y suite de tests `src/lib/phases.test.ts`.
 
-- [ ] **Tarea 3: Regla de seguridad ACOG para sangrado prolongado (HYPERSAHIL/periodtracker MIT)**
+- [x] **Tarea 3: Regla de seguridad ACOG para sangrado prolongado (HYPERSAHIL/periodtracker MIT)**
   - Origen: `REPOS_A_ENSAMBLAR.md` (G1-01 / `HYPERSAHIL/periodtracker`).
   - Acción: Alerta educativa no alarmista cuando el sangrado actual supere 7 días continuos en `src/lib/safety.ts`, con visualización en `HomePage` y tests en `src/lib/safety.test.ts`.
 

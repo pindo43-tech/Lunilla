@@ -6,6 +6,7 @@ import { useI18n } from '../lib/i18n.tsx'
 import { markContinued, markEnded, markStarted } from '../lib/logs.ts'
 import { getPhaseInfo } from '../lib/phases.ts'
 import { hasDay, predict } from '../lib/predict.ts'
+import { evaluateBleedSafety } from '../lib/safety.ts'
 import { useBrandTitle } from '../lib/useTitle.ts'
 import { useSession } from '../state/session.tsx'
 import type { Confidence, PhaseName, Prediction } from '../types.ts'
@@ -48,10 +49,18 @@ export function HomePage() {
   const prediction = predict(vault.days, vault.settings.historyLength, today, vault.settings.typicalCycleLength)
   const bleeding = vault.days[today]?.flow && vault.days[today]?.flow !== 'none'
   const todayKnown = hasDay(vault.days, today)
+  const isOngoing = bleeding || prediction.periodOpen || (prediction.bleedEnd !== null && today <= prediction.bleedEnd)
+  const safety = evaluateBleedSafety(prediction.bleedLength, Boolean(isOngoing))
 
   return (
     <div className="rise space-y-5 pb-4">
       <p className="text-sm text-muted">{formatShort(today, locale)}</p>
+      {safety.prolongedBleed ? (
+        <section role="alert" className="space-y-1 rounded-3xl border border-amber-300 bg-amber-50 px-4 py-4 text-ink shadow-sm">
+          <p className="font-semibold text-amber-900">{t('safety.prolongedTitle')}</p>
+          <p className="text-sm leading-relaxed text-amber-800">{t('safety.prolongedBody', { n: safety.consecutiveDays })}</p>
+        </section>
+      ) : null}
       {prediction.lastStart ? (
         <CycleCard prediction={prediction} locale={locale} />
       ) : (
