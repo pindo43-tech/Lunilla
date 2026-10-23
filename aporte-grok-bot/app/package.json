@@ -1,1 +1,0 @@
-{"name": "lunilla-tracker", "type": "module", "private": true, "scripts": {"test": "node --test test/predict.test.mjs test/ronda4.test.mjs test/ronda5.test.mjs test/ronda6.test.mjs test/ronda8.test.mjs"}}
