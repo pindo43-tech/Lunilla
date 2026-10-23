@@ -12,7 +12,7 @@ Este backlog estructura las mejoras y ensamblajes de módulos desde `REPOS_A_ENS
   - Origen: Auditoría de arquitectura & `DEPLOY.md`.
   - Acción: Crear `.node-version`, fijar `engines` en `package.json`, workflow `.github/workflows/ci.yml` para GitHub Actions, y purgar residuos obsoletos (`aporte-grok-bot/`).
 
-- [ ] **Tarea 2: Información educativa por fase del ciclo (IraSoro/peri MIT)**
+- [x] **Tarea 2: Información educativa por fase del ciclo (IraSoro/peri MIT)**
   - Origen: `REPOS_A_ENSAMBLAR.md` (G1-02 / `IraSoro/peri`) y `LATER.md` (Punto 4: texto corto de cada fase sin diagnóstico).
   - Acción: Implementar `src/lib/phases.ts` con descripciones de fases hormonales y síntomas comunes (bilingüe `es`/`en`), componente explicativo en `HomePage`, y suite de tests `src/lib/phases.test.ts`.
 

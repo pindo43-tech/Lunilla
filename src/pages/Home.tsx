@@ -4,6 +4,7 @@ import { addDays, formatNumber, formatShort, todayISO } from '../lib/dates.ts'
 import type { MessageKey } from '../lib/i18n.tsx'
 import { useI18n } from '../lib/i18n.tsx'
 import { markContinued, markEnded, markStarted } from '../lib/logs.ts'
+import { getPhaseInfo } from '../lib/phases.ts'
 import { hasDay, predict } from '../lib/predict.ts'
 import { useBrandTitle } from '../lib/useTitle.ts'
 import { useSession } from '../state/session.tsx'
@@ -52,7 +53,7 @@ export function HomePage() {
     <div className="rise space-y-5 pb-4">
       <p className="text-sm text-muted">{formatShort(today, locale)}</p>
       {prediction.lastStart ? (
-        <CycleCard prediction={prediction} />
+        <CycleCard prediction={prediction} locale={locale} />
       ) : (
         <section className="rounded-3xl bg-rose-soft px-4 py-5">
           <h1 className="text-2xl font-semibold tracking-tight">{t('home.emptyTitle')}</h1>
@@ -135,48 +136,65 @@ export function HomePage() {
   )
 }
 
-function CycleCard({ prediction }: { prediction: Prediction }) {
+function CycleCard({ prediction, locale }: { prediction: Prediction; locale: 'es' | 'en' }) {
   const { t } = useI18n()
   const length = prediction.predictedLength
   const progress = length && prediction.cycleDay ? Math.min(1, prediction.cycleDay / length) : 0
   const radius = 42
   const circumference = 2 * Math.PI * radius
   const dash = circumference * progress
+  const info = prediction.phase ? getPhaseInfo(prediction.phase, locale) : null
   return (
-    <section className="flex items-center gap-4 rounded-3xl bg-white px-4 py-5 shadow-sm">
-      <svg viewBox="0 0 120 120" className="h-28 w-28 shrink-0" aria-hidden="true">
-        <circle cx="60" cy="60" r={radius} fill="none" stroke="#F6D5DE" strokeWidth="10" />
-        <circle
-          cx="60"
-          cy="60"
-          r={radius}
-          fill="none"
-          stroke="#8F3D56"
-          strokeWidth="10"
-          strokeLinecap="round"
-          strokeDasharray={`${dash} ${circumference - dash}`}
-          transform="rotate(-90 60 60)"
-        />
-      </svg>
-      <div>
-        <p className="text-sm text-muted">{t('home.dayCaption')}</p>
-        <p className="text-5xl font-semibold tracking-tight">{prediction.cycleDay}</p>
-        <p className="sr-only">{t('home.cycleDay', { day: prediction.cycleDay ?? 0 })}</p>
-        {prediction.phase ? (
-          <>
-            <p className="mt-2 inline-flex rounded-full bg-rose-soft px-3 py-1 text-sm font-medium">
-              <span className="sr-only">{t('home.phaseLabel')}: </span>
-              {t(PHASE_NAME[prediction.phase])}
-            </p>
-            <p className="mt-2 text-sm leading-relaxed text-muted">{t(PHASE_HELP[prediction.phase])}</p>
-          </>
-        ) : (
-          <>
-            <p className="mt-2 font-medium">{t('home.noPhase')}</p>
-            <p className="mt-1 text-sm leading-relaxed text-muted">{t('home.noPhaseBody')}</p>
-          </>
-        )}
+    <section className="space-y-4 rounded-3xl bg-white px-4 py-5 shadow-sm">
+      <div className="flex items-center gap-4">
+        <svg viewBox="0 0 120 120" className="h-28 w-28 shrink-0" aria-hidden="true">
+          <circle cx="60" cy="60" r={radius} fill="none" stroke="#F6D5DE" strokeWidth="10" />
+          <circle
+            cx="60"
+            cy="60"
+            r={radius}
+            fill="none"
+            stroke="#8F3D56"
+            strokeWidth="10"
+            strokeLinecap="round"
+            strokeDasharray={`${dash} ${circumference - dash}`}
+            transform="rotate(-90 60 60)"
+          />
+        </svg>
+        <div>
+          <p className="text-sm text-muted">{t('home.dayCaption')}</p>
+          <p className="text-5xl font-semibold tracking-tight">{prediction.cycleDay}</p>
+          <p className="sr-only">{t('home.cycleDay', { day: prediction.cycleDay ?? 0 })}</p>
+          {prediction.phase ? (
+            <>
+              <p className="mt-2 inline-flex rounded-full bg-rose-soft px-3 py-1 text-sm font-medium">
+                <span className="sr-only">{t('home.phaseLabel')}: </span>
+                {t(PHASE_NAME[prediction.phase])}
+              </p>
+              <p className="mt-2 text-sm leading-relaxed text-muted">{t(PHASE_HELP[prediction.phase])}</p>
+            </>
+          ) : (
+            <>
+              <p className="mt-2 font-medium">{t('home.noPhase')}</p>
+              <p className="mt-1 text-sm leading-relaxed text-muted">{t('home.noPhaseBody')}</p>
+            </>
+          )}
+        </div>
       </div>
+      {info ? (
+        <details className="rounded-2xl bg-paper/60 p-3 text-sm text-muted">
+          <summary className="cursor-pointer font-medium text-ink select-none">{t('phase.learn')}</summary>
+          <div className="mt-2 space-y-2 pt-2 border-t border-black/5 text-ink">
+            <p className="leading-relaxed">{info.description}</p>
+            <p className="text-xs font-semibold text-muted uppercase tracking-wider">{t('phase.commonSigns')}</p>
+            <ul className="list-inside list-disc space-y-1 text-xs text-muted">
+              {info.symptoms.map((symptom, idx) => (
+                <li key={idx}>{symptom}</li>
+              ))}
+            </ul>
+          </div>
+        </details>
+      ) : null}
     </section>
   )
 }
