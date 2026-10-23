@@ -39,3 +39,7 @@ Este backlog estructura las mejoras y ensamblajes de módulos desde `REPOS_A_ENS
 - [x] **Tarea 8: Vista anual de 12 meses (Heatmap de ciclos)**
   - Origen: `LATER.md` (Punto 6: tira de 12 meses por intensidad de flujo).
   - Acción: Cuadrícula visual anual en `CalendarPage` o `SummaryPage` con intensidad de sangrado y regularidad visual por mes.
+
+- [x] **Tarea 9: Aviso de instalación PWA descartable**
+  - Origen: `LATER.md` (Punto 8: aviso de instalación, se puede cerrar).
+  - Acción: Banner `InstallPrompt.tsx` con instrucciones para iOS/Android, descartable una sola vez mediante `localStorage`, no invasivo, con tests en `src/lib/installPrompt.test.ts`.

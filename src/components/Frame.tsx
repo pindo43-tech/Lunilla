@@ -6,6 +6,7 @@ import { predict } from '../lib/predict.ts'
 import { todayISO } from '../lib/dates.ts'
 import { useReminder } from '../lib/useReminder.ts'
 import { useSession } from '../state/session.tsx'
+import { InstallPrompt } from './InstallPrompt.tsx'
 import { MoonMark } from './ui.tsx'
 
 export function Frame() {
@@ -47,6 +48,9 @@ export function Frame() {
           {t('common.saveError')}
         </p>
       ) : null}
+      <div className="pt-2">
+        <InstallPrompt />
+      </div>
       <main id="main" className="min-h-0 flex-1 overflow-y-auto px-5 py-4">
         <Outlet />
       </main>
