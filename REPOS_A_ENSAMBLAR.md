@@ -10,26 +10,42 @@
 - **Estados:** `integrado` = ya se usó código o una idea en Lunilla (según `aporte-grok-bot/REUSE.md`) · `candidato` = licencia permisiva, se puede tomar código con atribución · `candidato (revisar licencia)` = licencia no estándar · `solo idea (GPL/AGPL)` = copyleft (GPL, AGPL o LGPL), solo leer ideas y no copiar código en Lunilla (MIT) · `solo idea (sin licencia)` = sin licencia declarada, solo referencia · `descartado` = ya evaluado sin uso o no corresponde.
 - **Datos:** licencia, estrellas y existencia verificadas con la API de GitHub el 2026-10-22. No se inventó ningún dato. Fuente de los repos: lista aportada por el usuario el 2026-10-22.
 - **Totales:** 183 repos únicos en tablas de funciones, 3 organizaciones o usuarios válidos, 2 fuentes que no son GitHub y 20 descartados. Por estado: candidato 87, candidato (revisar licencia) 18, descartado 1, integrado 4, solo idea (GPL/AGPL) 34, solo idea (sin licencia) 39.
+- **Agregados 2026-10-22 (búsqueda del bot de Lunilla):** 51 repos nuevos, buscados función por función para armar la app ensamblando código de otros repos. Están en subtablas `Agregados 2026-10-22` dentro de las secciones que ya existían, y en secciones nuevas (marcadas "nueva 2026-10-22" en el índice) para las funciones que no tenían sección. Cada sección nueva arranca explicando cómo funciona la función por dentro y qué piezas hacen falta. Total del archivo: 234 repos únicos (183 previos + 51 nuevos).
+- **Columnas de las subtablas nuevas:** `Link` · `owner/nombre` (nombre canónico devuelto por la API de GitHub) · `MB` (campo `size` de la API, en KB, convertido a MB) · `⭐` · `Lenguaje` · `Licencia` (SPDX de la API; se anota tal cual, sin juicio) · `Último commit` (`pushed_at` de la API, fecha del último push) · `Front/Back` (F = interfaz o UI, B = lógica, datos, integraciones o backend) · `Qué es` · `Pieza concreta que aporta a Lunilla` (dónde, cuándo y cómo se ensambla) · `Otras funciones` (códigos de otras secciones donde también sirve; el repo figura una sola vez) · `Origen`. Los repos sin actividad en 2026 llevan una nota de "Vigencia" que explica por qué se quedan. Las funciones que resuelve mejor un LLM (redactar textos, horóscopos, afirmaciones, chat de preguntas) no tienen repos de texto: solo infraestructura.
 
 ## Índice
 
 | Código | Función | Repos |
 |---|---|---|
-| G1-01 | Apps y trackers de ciclo (referencia completa) | 39 |
-| G1-02 | Predicción de ciclo, ventana fértil y librerías de cálculo | 8 |
-| G1-03 | Método sintotérmico, BBT y fertility awareness | 15 |
-| G1-04 | Modelos ML y series de tiempo para el ciclo | 5 |
-| G1-05 | Datasets y análisis estadístico del ciclo | 5 |
-| G1-06 | Wearables y datos fisiológicos | 4 |
+| G1-01 | Apps y trackers de ciclo (referencia completa) | 39 + 15 agregados 2026-10-22 |
+| G1-02 | Predicción de ciclo, ventana fértil y librerías de cálculo | 8 + 4 agregados 2026-10-22 |
+| G1-03 | Método sintotérmico, BBT y fertility awareness | 15 + 3 agregados 2026-10-22 |
+| G1-04 | Modelos ML y series de tiempo para el ciclo | 5 + 1 agregados 2026-10-22 |
+| G1-05 | Datasets y análisis estadístico del ciclo | 5 + 1 agregados 2026-10-22 |
+| G1-06 | Wearables y datos fisiológicos | 4 + 1 agregados 2026-10-22 |
+| G1-07 | Tracking de flujo menstrual (función 3) (nueva 2026-10-22) | 1 |
+| G1-08 | Logging de síntomas físicos y emocionales (función 4) (nueva 2026-10-22) | 6 |
+| G1-09 | Análisis de patrones y correlaciones síntoma ↔ fase (función 5) (nueva 2026-10-22) | 2 |
+| G1-14 | Symptom checker y autoevaluación de patrones PCOS/endometriosis (función 12 y extra) (nueva 2026-10-22) | 2 |
+| G1-16 | Predicción de síntomas e intensidad de dolor (función 14 y extras de dolor) (nueva 2026-10-22) | 1 |
+| G1-18 | Partner sharing con permiso, E2E (función 20 y extra partner mode / inner circle) (nueva 2026-10-22) | 1 |
+| G1-19 | Tests OPK/LH: registro, lector de tiras por foto y curva de LH (función 22 y extras) (nueva 2026-10-22) | 1 |
+| G1-20 | Modos por objetivo, personalización y guided journey / checklists (función 23 y extra) (nueva 2026-10-22) | 2 |
+| G1-21 | Backup y sync multi-dispositivo E2E, CRDT, local-first (función 24 y extra backup Drive/iCloud) (nueva 2026-10-22) | 1 |
+| G1-22 | Almacenamiento on-device y privacy-first, cifrado y modo anónimo (función 25 y extra) (nueva 2026-10-22) | 1 |
+| G1-24 | Care navigator / buscador de clínicas y recursos (extra) (nueva 2026-10-22) | 1 |
+| G1-25 | Exportar a CSV/spreadsheet e importar de otras apps (extra) (nueva 2026-10-22) | 2 |
+| G1-27 | Registro de condiciones de salud y medicación (extra) (nueva 2026-10-22) | 2 |
 | G2-01 | Educación, contenido y CMS | 12 |
 | G2-02 | Comunidad, foros y chat | 12 |
-| G2-03 | Gamificación | 10 |
+| G2-03 | Gamificación | 10 + 1 agregados 2026-10-22 |
 | G2-04 | Recordatorios y notificaciones | 17 |
 | G2-05 | Ánimo, diario y síntomas emocionales | 9 |
 | G2-06 | Datos de salud y FHIR | 7 |
 | G2-07 | Backend y bases de datos | 3 |
+| G2-10 | Cycle syncing de productividad y rutinas por fase (nueva 2026-10-22) | 1 |
 | G3-01 | Componentes UI animados y design systems | 16 |
-| G3-02 | Gráficos y visualización de datos | 6 |
+| G3-02 | Gráficos y visualización de datos | 6 + 1 agregados 2026-10-22 |
 | G3-03 | UI mobile (Flutter) | 2 |
 | G3-04 | 3D (React Three Fiber) | 2 |
 | G3-05 | Listas curadas (awesome) | 3 |
@@ -85,6 +101,28 @@ Apps de tracking menstrual open source: calendario, registro diario, síntomas, 
 | TheRGuy9201/wellnessher.ai | https://github.com/TheRGuy9201/wellnessher.ai | sin licencia | 0 | React + Vite + Tailwind. Women’s health platform con charts. | solo idea (sin licencia) | — |
 | twenty-eight-days/twenty-eight-days | https://github.com/twenty-eight-days/twenty-eight-days | MIT | 0 | Visualizaciones de ciclo con Userbase (privacy). | candidato | — |
 
+### G1-01 · Agregados 2026-10-22 — Apps completas de ciclo con actividad en 2026 (referencia de funciones enteras) (15)
+
+Cómo se usan: cada app es una implementación completa de varias funciones (registro, predicción, exportación, bloqueo). Sirven para copiar flujos enteros (modelo de datos, pantallas, reglas) y para comparar decisiones. En cada fila se indica qué módulo concreto conviene mirar.
+
+| Link | owner/nombre | MB | ⭐ | Lenguaje | Licencia | Último commit | Front/Back | Qué es | Pieza concreta que aporta a Lunilla (dónde/cuándo/cómo se ensambla) | Otras funciones | Origen |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| https://github.com/MBombeck/HealthLog | MBombeck/HealthLog | 92.6 | 193 | TypeScript | NOASSERTION (no estándar) | 2026-10-23 | B | PWA self-hosted de salud (peso, presión, glucosa, sueño, ánimo, medicación, ciclo) con integraciones Withings, WHOOP y Fitbit. | Módulo de ciclo dentro de una PWA de salud general, más sus conectores de wearables: referencia de cómo mezclar ciclo con otras métricas y de cómo hacer OAuth con WHOOP y Fitbit. | G1-06, G1-27 | Lunilla bot, 2026-10-22 |
+| https://github.com/treiher/valens | treiher/valens | 9.7 | 12 | Rust | AGPL-3.0 | 2026-10-04 | B | App web self-hosted de entrenamiento y salud que incluye seguimiento del ciclo menstrual junto al entrenamiento. | Cruce de ciclo con entrenamiento y métricas corporales, para G2-10 (cycle syncing). | G2-10 | Lunilla bot, 2026-10-22 |
+| https://github.com/lekhanpro/cyclecare | lekhanpro/cyclecare | 6.0 | 10 | Dart | MIT | 2026-10-09 | B | Tracker Flutter offline-first de ciclo, fertilidad y bienestar, sin cuenta; README con sección de arquitectura. | Arquitectura documentada de un tracker offline (capas de datos, predicción y fertilidad): sirve de plano para ordenar los módulos de Lunilla. | G1-02, G1-10 | Lunilla bot, 2026-10-22 |
+| https://github.com/grovely-org/grovely-app | grovely-org/grovely-app | 18.8 | 10 | Vue | NOASSERTION (no estándar) | 2026-08-18 | B | Hub doméstico self-hosted para parejas con tracking de periodo, predicción y despensa compartida. | Compartir el ciclo con la pareja dentro de una app de hogar (permisos entre dos usuarios). | G1-18 | Lunilla bot, 2026-10-22 |
+| https://github.com/Novawerk/YIMA | Novawerk/YIMA | 44.2 | 5 | Kotlin | MIT | 2026-05-21 | B | Calendario de periodo con Kotlin Multiplatform y Compose: sin red, sin cuenta y sin analítica. | Lógica de ciclo compartida multiplataforma (módulo común KMP): referencia de modelo de datos y predicción para portar a TS. | G1-02 | Lunilla bot, 2026-10-22 |
+| https://github.com/ovumcy/ovumcy-app | ovumcy/ovumcy-app | 5.7 | 4 | TypeScript | NOASSERTION (no estándar) | 2026-10-18 | B | Cliente móvil local-first de Ovumcy (iOS y Android): tracking, síntomas, insights, exportación y backup en el dispositivo. | Flujos de exportación y backup local y lógica de insights que comparte con ovumcy-web (ya en G1-01): base para el backup de Lunilla. | G1-21, G1-25 | Lunilla bot, 2026-10-22 |
+| https://github.com/Het161/SheCareX | Het161/SheCareX | 1.2 | 4 | TypeScript | MIT | 2026-08-16 | B | Companion de salud femenina que muestra cómo calcula cada número: ciclo, síntomas y screening de riesgo explicado. | Screening de riesgo transparente (muestra el cálculo) para G1-14, y patrón de "no inventar números" en las predicciones. | G1-14, G1-08 | Lunilla bot, 2026-10-22 |
+| https://github.com/QuietFlare/Cycluna | QuietFlare/Cycluna | 6.8 | 4 | Kotlin | MIT | 2026-10-16 | B | Tracker de ciclo con fases lunares: clientes nativos iOS y Android con lógica compartida y un Cloudflare Worker público. | Lógica compartida de ciclo + luna y uso de Cloudflare Worker (mismo proveedor que Lunilla). | G2-08 | Lunilla bot, 2026-10-22 |
+| https://github.com/csoftware-arigpt/lunabelle | csoftware-arigpt/lunabelle | 0.3 | 2 | Kotlin | AGPL-3.0 | 2026-06-22 | B | Tracker Android offline con base cifrada (Room + SQLCipher), bloqueo con PIN o biometría y export/import JSON. | Patrón de cifrado de base, bloqueo de la app y formato de export/import JSON. | G1-22, G2-13, G1-25 | Lunilla bot, 2026-10-22 |
+| https://github.com/pavoras/freeperiod | pavoras/freeperiod | 59.9 | 1 | Kotlin | GPL-3.0 | 2026-10-22 | B | Calendario de periodo y diario Android sin permiso de internet. | Combinación de calendario con diario diario y la decisión de no tener red: referencia de la vista diario + ciclo de Lunilla. | G2-05 | Lunilla bot, 2026-10-22 |
+| https://github.com/Dheirav/Luna | Dheirav/Luna | 1.2 | 0 | Kotlin | Apache-2.0 | 2026-10-13 | B | Tracker Android offline que predice una ventana en lugar de una fecha exacta y declara la incertidumbre. | Idea clave para G1-02: mostrar el próximo periodo como ventana con incertidumbre cuando hay pocos datos. | G1-02 | Lunilla bot, 2026-10-22 |
+| https://github.com/Rishiidev/Nari | Rishiidev/Nari | 0.4 | 0 | TypeScript | MIT | 2026-06-18 | F | PWA de ciclo local-only que guarda todo en el navegador y funciona offline e instalable. | Misma arquitectura que Lunilla (PWA local, sin servidor): comparar service worker, almacenamiento y pantallas. | G1-22 | Lunilla bot, 2026-10-22 |
+| https://github.com/periodly-app/periodly | periodly-app/periodly | 0.3 | 0 | JavaScript | MIT | 2026-09-14 | F | PWA minimalista de periodo con un toque, privada y sin cuenta. | Flujo de registro en un solo toque para la pantalla principal. | G1-07 | Lunilla bot, 2026-10-22 |
+| https://github.com/carlodandan/ovulate | carlodandan/ovulate | 2.3 | 0 | JavaScript | MIT | 2026-10-06 | F | Tracker React + Vite + Tailwind offline que calcula ovulación, ventana fértil, periodos activos y fases. | Funciones de cálculo de ovulación y ventana en un stack igual al de Lunilla (Vite). | G1-02 | Lunilla bot, 2026-10-22 |
+| https://github.com/ClermontDigital/ClueCycle | ClermontDigital/ClueCycle | 1.4 | 0 | Python | Apache-2.0 | 2026-10-07 | F | Tracker para Home Assistant que imita a Clue: anillo de ciclo y registro diario con las mismas categorías y tags que Clue. | Catálogo de categorías y tags estilo Clue y el componente de anillo de ciclo. | G1-08, G1-26 | Lunilla bot, 2026-10-22 |
+
 ## G1-02 · Predicción de ciclo, ventana fértil y librerías de cálculo (8)
 
 Algoritmos y librerías que calculan próximo periodo, ovulación, ventana fértil y confianza.
@@ -99,6 +137,17 @@ Algoritmos y librerías que calculan próximo periodo, ovulación, ventana fért
 | danielhuang74/ovulation-prediction | https://github.com/danielhuang74/ovulation-prediction | sin licencia | 1 | Modelos de ML (regresión, random forest) para predecir día de ovulación a partir de BBT. | solo idea (sin licencia) | — |
 | fertilai/nc-fet-simulator | https://github.com/fertilai/nc-fet-simulator | sin licencia | 1 | Simulador de predicción de ovulación (relacionado con paper de ML en tiempo real). | solo idea (sin licencia) | — |
 | apiverve/menstrualcycle-api | https://github.com/apiverve/menstrualcycle-api | MIT | 0 | API de cálculo de ciclos, fertile window y ovulación. | candidato | — |
+
+### G1-02 · Agregados 2026-10-22 — Predicción de periodo y ciclo · Ovulación y ventana fértil (funciones 1 y 2) (4)
+
+Cómo funciona: se toma el historial de inicios de periodo, se calcula la duración de cada ciclo y se estima el próximo inicio con un modelo que tiene en cuenta la variabilidad propia (media ponderada, mediana robusta, bayesiano o serie de tiempo), no un 28 fijo. La ovulación se ubica restando la fase lútea (unos 12–14 días) al próximo inicio, o con señales (BBT, LH, moco) cuando las hay. La ventana fértil va de unos 5 días antes a 1 después de la ovulación. Piezas: cálculo de duraciones, filtro de outliers, intervalo de confianza, cálculo de fases y ventana.
+
+| Link | owner/nombre | MB | ⭐ | Lenguaje | Licencia | Último commit | Front/Back | Qué es | Pieza concreta que aporta a Lunilla (dónde/cuándo/cómo se ensambla) | Otras funciones | Origen |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| https://github.com/P-H-V/feve-bayesian-ovulation-prediction | P-H-V/feve-bayesian-ovulation-prediction | 0.0 | 0 | JavaScript | MIT | 2026-10-15 | B | Motor bayesiano autocalibrado de predicción de ovulación (BBT + moco + historial), 100% en el dispositivo, en JavaScript. | Pieza directa para G1-02: reemplaza el promedio fijo por una posterior bayesiana del día de ovulación que se recalibra con cada ciclo. | G1-03, G1-10 | Lunilla bot, 2026-10-22 |
+| https://github.com/theanalyticalmum/cycle-phase-engine | theanalyticalmum/cycle-phase-engine | 0.0 | 0 | TypeScript | MIT | 2026-07-03 | B | Utilidad TypeScript sin dependencias que pasa de fecha de inicio a fase del ciclo, anclada en la fase lútea y con casos borde resueltos. | Función `fase(fecha)` lista para usar en la pantalla de hoy y en el calendario. | G1-09, G2-10 | Lunilla bot, 2026-10-22 |
+| https://github.com/evelyn9191/period_predictions | evelyn9191/period_predictions | 0.0 | 0 | Python | MIT | 2026-05-29 | B | Script Python que predice ciclos futuros con simulación Monte Carlo y devuelve rangos de probabilidad en vez de fechas fijas. | Algoritmo Monte Carlo para la banda de probabilidad del próximo periodo (portable a TS). | G1-04 | Lunilla bot, 2026-10-22 |
+| https://github.com/aarohim24/nfp-prediction | aarohim24/nfp-prediction | 0.3 | 0 | Python | sin licencia | 2026-07-01 | B | Pipeline Python que predice el día pico de ovulación con modelado bayesiano de fase lútea sobre el dataset clínico de Marquette (Fehring 2012). | Modelo bayesiano de fase lútea validado contra datos reales: referencia para calibrar la ventana fértil de Lunilla (se porta la fórmula a TS). | G1-05 datasets, G1-21 moco | Lunilla bot, 2026-10-22 |
 
 ## G1-03 · Método sintotérmico, BBT y fertility awareness (15)
 
@@ -122,6 +171,16 @@ Reglas sintotérmicas, temperatura basal (BBT), coverline, moco cervical y chart
 | jorgt/tempchart | https://github.com/jorgt/tempchart | sin licencia | 0 | Charting de BBT con SQLite. | solo idea (sin licencia) | — |
 | keyneom/easy-bc | https://github.com/keyneom/easy-bc | NOASSERTION (no estándar) | 0 | Planner de riesgo de fertilidad on-device (combinación de métodos). | candidato (revisar licencia) | — |
 
+### G1-03 · Agregados 2026-10-22 — BBT, algoritmo días rojos/verdes y moco cervical (funciones 7, 8 y 21) (3)
+
+Cómo funciona: la BBT se registra cada mañana. Después de la ovulación la progesterona la sube 0,2–0,5 °C, y el algoritmo detecta ese shift con reglas fijas, como la regla 3 sobre 6 con coverline de Sensiplan o la del método sintotérmico. Se cruza con el moco cervical (pico de moco) y la posición cervical. Un algoritmo estilo Natural Cycles suma la estadística del ciclo y la incertidumbre para marcar días rojos (posible fertilidad) y verdes. Piezas: entrada de temperatura con corrección, detector de shift, reglas de moco, combinador sintotérmico y gráfico de temperatura.
+
+| Link | owner/nombre | MB | ⭐ | Lenguaje | Licencia | Último commit | Front/Back | Qué es | Pieza concreta que aporta a Lunilla (dónde/cuándo/cómo se ensambla) | Otras funciones | Origen |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| https://github.com/ringleader/cyclist | ringleader/cyclist | 4.8 | 15 | Python | NOASSERTION (no estándar) | 2026-05-01 | B | Componente de Home Assistant que sigue el ciclo con datos de fertility awareness (BBT, moco y LH) según el objetivo (evitar o buscar embarazo). | Reglas de fertility awareness combinando BBT, moco y LH, y cambio de lógica según el objetivo. | G1-10, G1-19, G1-20 | Lunilla bot, 2026-10-22 |
+| https://github.com/acidg/rise | acidg/rise | 1.5 | 1 | Dart | GPL-3.0 | 2026-09-12 | B | Tracker sintotérmico privado construido alrededor del termómetro BBT Bluetooth Ovy OT35. | Lectura del termómetro BBT por BLE más el sintotérmico: modelo para importar temperaturas de termómetros. | G1-06 | Lunilla bot, 2026-10-22 |
+| https://github.com/izzydoesizzy/lunachart-tracker | izzydoesizzy/lunachart-tracker | 1.1 | 0 | HTML | sin licencia | 2026-07-21 | F | Tracker móvil del método Justisse (sintotérmico secular), con asistente de aprendizaje y gráfico diario de biomarcadores. | Gráfico diario de biomarcadores (BBT, moco, cérvix) y asistente que enseña a registrar. | G1-26 | Lunilla bot, 2026-10-22 |
+
 ## G1-04 · Modelos ML y series de tiempo para el ciclo (5)
 
 Modelos entrenados (LSTM, ARIMA, Prophet, boosting) para predecir longitud del ciclo.
@@ -133,6 +192,14 @@ Modelos entrenados (LSTM, ARIMA, Prophet, boosting) para predecir longitud del c
 | sammanamgain/MENSTRUAL-PERIOD-TRACKER | https://github.com/sammanamgain/MENSTRUAL-PERIOD-TRACKER | sin licencia | 1 | Flutter + Flask con modelo ARIMA para predicción. | solo idea (sin licencia) | REPOS-SIMILARES.md |
 | 10anshika/RituCare | https://github.com/10anshika/RituCare | sin licencia | 0 | Full-stack con ARIMA, SARIMA, Prophet y ensemble para forecasting de ciclo + predicción de PCOS. | solo idea (sin licencia) | — |
 | gurveenkaur6/Menstrual_cycle_prediction_model | https://github.com/gurveenkaur6/Menstrual_cycle_prediction_model | sin licencia | 0 | Red neuronal (TensorFlow/Keras) para predecir longitud de ciclo. | solo idea (sin licencia) | — |
+
+### G1-04 · Agregados 2026-10-22 — Modelos ML y series de tiempo para predicción (1)
+
+Cómo funciona: los modelos aprenden de la secuencia de duraciones de ciclo (y opcionalmente de síntomas o datos de wearables) para predecir el próximo ciclo con su incertidumbre. En Lunilla tienen que correr en el dispositivo (JS/WASM/ONNX) o servir como referencia del algoritmo. Piezas: modelo entrenado o algoritmo, features y métrica de error.
+
+| Link | owner/nombre | MB | ⭐ | Lenguaje | Licencia | Último commit | Front/Back | Qué es | Pieza concreta que aporta a Lunilla (dónde/cuándo/cómo se ensambla) | Otras funciones | Origen |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| https://github.com/YifanWang-China/FemMHC | YifanWang-China/FemMHC | 3.1 | 2 | Python | sin licencia | 2026-08-08 | B | Código de investigación de FemWear, un modelo fundacional para series de wearables aplicado a salud menstrual (especializa el encoder OpenMHC). | Referencia de modelo para tareas menstruales a partir de wearables (fases y anomalías); para evaluar, no para correr en la PWA. | G1-06 | Lunilla bot, 2026-10-22 |
 
 ## G1-05 · Datasets y análisis estadístico del ciclo (5)
 
@@ -146,6 +213,14 @@ Datos reales, modelos estadísticos y paquetes de análisis de ciclos auto-regis
 | jmjordan/cycles | https://github.com/jmjordan/cycles | sin licencia | 2 | CLI tool con base de datos local de ciclos (SQLite). Buena referencia de modelo de datos. | solo idea (sin licencia) | — |
 | MarieGombertLabedens/MenstrualClock | https://github.com/MarieGombertLabedens/MenstrualClock | NOASSERTION (no estándar) | 0 | R package para visualizar fases en reloj. Muy minucioso. | candidato (revisar licencia) | — |
 
+### G1-05 · Agregados 2026-10-22 — Datasets y análisis estadístico (1)
+
+Cómo funciona: se usan datos reales de ciclos para calibrar y validar el modelo de predicción (distribución de duraciones, fase lútea, variabilidad por edad). Piezas: dataset con licencia y notebooks o paquetes de análisis.
+
+| Link | owner/nombre | MB | ⭐ | Lenguaje | Licencia | Último commit | Front/Back | Qué es | Pieza concreta que aporta a Lunilla (dónde/cuándo/cómo se ensambla) | Otras funciones | Origen |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| https://github.com/eisenlohrmoullab/menstrualcycleR | eisenlohrmoullab/menstrualcycleR | 5.5 | 6 | R | GPL-3.0 | 2026-10-01 | B | Paquete R que prepara datos longitudinales del ciclo (centrado en menstruación u ovulación, escala de fase) para modelado no lineal. | Método para alinear registros por día de ciclo y por fase (centrado en ovulación): base algorítmica de G1-09. | G1-09 | Lunilla bot, 2026-10-22 |
+
 ## G1-06 · Wearables y datos fisiológicos (4)
 
 Temperatura, HR/HRV y unificación de datos de wearables relacionados con fases del ciclo.
@@ -156,6 +231,128 @@ Temperatura, HR/HRV y unificación de datos de wearables relacionados con fases 
 | elkimek/get-based | https://github.com/elkimek/get-based | AGPL-3.0 | 148 | Dashboard de biomarcadores + wearables (Oura, etc.) local-first. | solo idea (GPL/AGPL) | — |
 | Aminsinichi/wearable-hrv | https://github.com/Aminsinichi/wearable-hrv | MIT | 14 | Paquete Python para validación y análisis de HR y HRV de wearables. | candidato | — |
 | zkhechadoorian/menstrual-cycle-tracking | https://github.com/zkhechadoorian/menstrual-cycle-tracking | sin licencia | 0 | Detección de fases (folicular/luteal) a partir de temperatura de wearable usando regla de coverline. | solo idea (sin licencia) | REPOS-SIMILARES.md |
+
+### G1-06 · Agregados 2026-10-22 — Integración con wearables (función 15 y extras: Oura, HealthKit, Health Connect, Garmin, Fitbit, Whoop, HRV, temperatura de piel) (1)
+
+Cómo funciona: una PWA no puede leer HealthKit ni Health Connect directamente. O se usa un wrapper nativo (Capacitor o React Native) que lee el SDK del sistema, o se consume la API web del fabricante con OAuth (Oura, Fitbit, Garmin, Whoop, Withings), o se importa un archivo exportado (export.xml de Apple Health, .fit de Garmin). Después hay que normalizar las series (temperatura de piel nocturna, HRV, FC en reposo) y pasarlas al detector de shift. Piezas: cliente o SDK, parser de exportaciones, normalizador y análisis HRV/temperatura.
+
+| Link | owner/nombre | MB | ⭐ | Lenguaje | Licencia | Último commit | Front/Back | Qué es | Pieza concreta que aporta a Lunilla (dónde/cuándo/cómo se ensambla) | Otras funciones | Origen |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| https://github.com/home-health-hub/easyathome-bbt-daemon | home-health-hub/easyathome-bbt-daemon | 2.6 | 0 | Python | GPL-3.0 | 2026-08-22 | B | Daemon Linux que lee el termómetro BBT Easy@Home EBT-300 por Bluetooth LE y guarda las lecturas en local. | Protocolo BLE documentado del EBT-300: base para leer el termómetro con Web Bluetooth desde la PWA. | G1-03 | Lunilla bot, 2026-10-22 |
+
+## G1-07 · Tracking de flujo menstrual (función 3) (1)
+
+Cómo funciona: cada día de sangrado guarda una intensidad (manchado, leve, medio, abundante) y opcionalmente el producto usado y su cantidad, o un puntaje PBAC (Pictorial Blood Loss Assessment Chart) para estimar la pérdida. De ahí salen la duración del periodo, los días de manchado y las alertas de sangrado abundante. Piezas: modelo de datos de flujo, escala PBAC y vista de días de sangrado.
+
+| Link | owner/nombre | MB | ⭐ | Lenguaje | Licencia | Último commit | Front/Back | Qué es | Pieza concreta que aporta a Lunilla (dónde/cuándo/cómo se ensambla) | Otras funciones | Origen |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| https://github.com/GeiserX/SuperCycleTracker | GeiserX/SuperCycleTracker | 0.5 | 1 | Python | AGPL-3.0 | 2026-10-20 | B | Bot de Telegram para un hogar que pregunta los días probables de período, registra flujo, dolor y síntomas con botones o texto libre, aprende el ciclo de cada persona y guarda todo en un repo git privado; habla español. | Modelo de registro diario de flujo + dolor con entrada rápida por botones y el flujo "preguntar sólo en días probables": se copia al formulario diario de Lunilla (pantalla Hoy) y a la lógica de cuándo mostrar el prompt de registro. | G1-01, G1-17 recordatorios, G1-21 (historial en git) | Lunilla bot, 2026-10-22 |
+
+## G1-08 · Logging de síntomas físicos y emocionales (función 4) (6)
+
+Cómo funciona: un catálogo configurable de categorías (dolor, piel, digestión, ánimo, energía, sueño, libido…; las apps grandes tienen 30–200+) con valores por día (sí/no, escala o etiqueta), guardado como eventos fechados. La UI necesita entrada rápida (chips o iconos), notas y escalas validadas cuando hagan falta (por ejemplo DRSP para SPM/TDPM). Piezas: modelo de eventos, catálogo de síntomas, UI de registro y escalas.
+
+| Link | owner/nombre | MB | ⭐ | Lenguaje | Licencia | Último commit | Front/Back | Qué es | Pieza concreta que aporta a Lunilla (dónde/cuándo/cómo se ensambla) | Otras funciones | Origen |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| https://github.com/open-nomie/nomie5 | open-nomie/nomie5 | 10.9 | 559 | Svelte | MIT | 2021-12-02 | F | Life tracker / diario de datos Svelte con trackers configurables (contadores, escalas, notas) y almacenamiento local. Vigencia: último push 2021, se queda porque su modelo de "trackers" configurables es el más completo abierto. | Modelo de trackers configurables (tipo, unidad, escala, emoji) para que la usuaria cree síntomas propios. | G2-17 etiquetas, G1-09 correlaciones | Lunilla bot, 2026-10-22 |
+| https://github.com/mrzmyr/pixy-mood-tracker-app | mrzmyr/pixy-mood-tracker-app | 87.8 | 153 | TypeScript | MIT | 2026-10-21 | F | Diario de ánimo minimalista "un píxel por día" (React Native/TS), con desarrollo retomado en 2026 y versiones en las tiendas. | Registro diario de ánimo con etiquetas y vista anual en píxeles: componente de check-in emocional y heatmap anual de Lunilla. | G3-02 tendencias, G2-17 etiquetas | Lunilla bot, 2026-10-22 |
+| https://github.com/lcdcode/mood-cairns | lcdcode/mood-cairns | 1.9 | 27 | Kotlin | GPL-3.0 | 2026-10-20 | B | Tracker de ánimo Android totalmente offline con escalas y etiquetas propias, ventanas horarias y notificación que pide el registro; gráficos y backup. | Escalas personalizadas + ventanas horarias de recordatorio para el check-in de síntomas. | G1-17, G2-17 | Lunilla bot, 2026-10-22 |
+| https://github.com/sebferrer/life-notes | sebferrer/life-notes | 6.1 | 17 | TypeScript | MIT | 2026-02-26 | B | App móvil para registrar síntomas crónicos y hábitos diarios y ver cómo evolucionan para detectar patrones. | Modelo de síntoma con intensidad por día + hábitos asociados: esquema de datos de síntomas de Lunilla. | G1-09, G3-02 | Lunilla bot, 2026-10-22 |
+| https://github.com/rudi-q/pinkrain_health_journal | rudi-q/pinkrain_health_journal | 47.9 | 15 | Dart | AGPL-3.0 | 2026-09-07 | B | Diario de salud Flutter privacy-first: medicación, síntomas, ánimo y funciones de IA experimentales, datos en el dispositivo. | Estructura de diario de síntomas + medicación local-first, como referencia para el registro combinado síntoma/medicamento. | G1-27, G1-22 | Lunilla bot, 2026-10-22 |
+| https://github.com/aradar46/Vibecheck-Private-Mood-Tracker | aradar46/Vibecheck-Private-Mood-Tracker | 9.2 | 11 | TypeScript | NOASSERTION (no estándar) | 2026-10-19 | F | Tracker de ánimo y síntomas local-first para Android, sin cuenta ni nube, con quick log, línea de tiempo, insights y calendario. | Pantalla de "quick log" de baja fricción y timeline de síntomas para la pantalla Hoy. | G1-26 calendario, G1-09 | Lunilla bot, 2026-10-22 |
+
+## G1-09 · Análisis de patrones y correlaciones síntoma ↔ fase (función 5) (2)
+
+Cómo funciona: cada registro se alinea con el día del ciclo (o con la fase: folicular, ovulatoria, lútea, menstrual), se agrega entre ciclos y se buscan asociaciones: frecuencia por fase, correlación con desfase, estadística circular o detección de puntos de cambio. Es estadística determinista que corre en el dispositivo. Piezas: alineación por día de ciclo, librerías estadísticas, estadística circular o cosinor, y visualización.
+
+| Link | owner/nombre | MB | ⭐ | Lenguaje | Licencia | Último commit | Front/Back | Qué es | Pieza concreta que aporta a Lunilla (dónde/cuándo/cómo se ensambla) | Otras funciones | Origen |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| https://github.com/GenerateNU/remetra | GenerateNU/remetra | 16.8 | 7 | Python | MIT | 2026-10-22 | B | Plataforma para pacientes autoinmunes que registra síntomas, comidas y actividades y usa análisis de datos/ML para encontrar patrones y prevenir brotes. | Pipeline de correlación síntoma ↔ comida/actividad, para el motor de "patrones" (se porta la lógica al cliente). | G1-08, G1-16 | Lunilla bot, 2026-10-22 |
+| https://github.com/rigzoltan83/SymptomTracker | rigzoltan83/SymptomTracker | 0.4 | 0 | Python | GPL-3.0 | 2026-09-04 | B | Web self-hosted para registrar comida, medicación y síntomas y explorar relaciones entre eventos, con herramientas de análisis bilingües. | Análisis de relaciones evento → síntoma con ventana temporal, para correlaciones ciclo/síntoma en Lunilla. | G1-08, G1-27 | Lunilla bot, 2026-10-22 |
+
+## G1-14 · Symptom checker y autoevaluación de patrones PCOS/endometriosis (función 12 y extra) (2)
+
+Cómo funciona: cuestionarios estructurados (criterios de Rotterdam para SOP o escalas de síntomas de endometriosis) con lógica de saltos y un puntaje determinista que no diagnostica: sugiere consultar. Se pueden enriquecer con los datos registrados (irregularidad, dolor). Piezas: motor de formularios o cuestionarios (JSON, FHIR Questionnaire), reglas de puntaje y, como referencia, modelos de investigación.
+
+| Link | owner/nombre | MB | ⭐ | Lenguaje | Licencia | Último commit | Front/Back | Qué es | Pieza concreta que aporta a Lunilla (dónde/cuándo/cómo se ensambla) | Otras funciones | Origen |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| https://github.com/bloo-berries/Endometriosis-Adenomyosis-Resources | bloo-berries/Endometriosis-Adenomyosis-Resources | 10.2 | 19 | Python | CC0-1.0 | 2026-09-03 | B | Fuente de contenido (content/ → dist/) del sitio "1 in 7" de Bloomed Health sobre endometriosis y adenomiosis y sus comorbilidades, licencia CC0. | Contenido CC0 sobre endo/adeno para alimentar las fichas del symptom checker y el CMS educativo (se importa como markdown en build). | G2-01 CMS, G1-24 navegador de cuidados | Lunilla bot, 2026-10-22 |
+| https://github.com/smsolutionsva-byte/OvaCare | smsolutionsva-byte/OvaCare | 2.0 | 14 | TypeScript | sin licencia | 2026-10-04 | F | App React/Vite para explorar síntomas de SOP, registrar estudios y preparar preguntas para profesionales; el puntaje sale de reglas en src/lib/riskCalculator.ts y aclara que no es diagnóstico. | riskCalculator.ts como referencia de autoevaluación de SOP basada en reglas, con texto de "no es diagnóstico" y salida "preguntas para tu médica". | G1-24, G1-15 PDF | Lunilla bot, 2026-10-22 |
+
+## G1-16 · Predicción de síntomas e intensidad de dolor (función 14 y extras de dolor) (1)
+
+Cómo funciona: con los síntomas alineados por día de ciclo se estima la probabilidad de cada síntoma en los próximos días (frecuencia histórica por día de ciclo, regresión o clasificador liviano). El dolor se registra con escalas estándar (EVA/NRS, mapa corporal) y se predice igual. Piezas: escala de dolor, mapa corporal, modelo de probabilidad por día y alertas.
+
+| Link | owner/nombre | MB | ⭐ | Lenguaje | Licencia | Último commit | Front/Back | Qué es | Pieza concreta que aporta a Lunilla (dónde/cuándo/cómo se ensambla) | Otras funciones | Origen |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| https://github.com/GreenNovaEmma/migraine-risk-card | GreenNovaEmma/migraine-risk-card | 0.1 | 90 | JavaScript | MIT | 2026-05-25 | F | Tarjeta de Home Assistant que calcula un puntaje compuesto de riesgo de migraña a partir de 9 factores de clima y calidad del aire. | Patrón de puntaje compuesto de riesgo (factores ponderados → gauge) para el pronóstico de dolor/migraña menstrual, sumando la fase del ciclo como factor. | G1-09 | Lunilla bot, 2026-10-22 |
+
+## G1-18 · Partner sharing con permiso, E2E (función 20 y extra partner mode / inner circle) (1)
+
+Cómo funciona: la usuaria elige qué compartir y el dato sale cifrado de punta a punta: se intercambian claves (QR o enlace), cada envío se cifra con la clave pública o una clave compartida, y el permiso se puede revocar rotando la clave. Piezas: librería de cripto (libsodium, age, MLS), intercambio de claves, transporte (relay o P2P) y permisos.
+
+| Link | owner/nombre | MB | ⭐ | Lenguaje | Licencia | Último commit | Front/Back | Qué es | Pieza concreta que aporta a Lunilla (dónde/cuándo/cómo se ensambla) | Otras funciones | Origen |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| https://github.com/848deepak/Soma | 848deepak/Soma | 14.4 | 3 | TypeScript | sin licencia | 2026-04-08 | B | App Expo/React Native + Supabase con sincronización con pareja, registros diarios, sesión anónima y sitio Next.js. | Flujo de vinculación con pareja (invitación, permisos de lectura) como referencia de UX del modo pareja; en Lunilla el transporte se reemplaza por E2E. | G1-22 modo anónimo | Lunilla bot, 2026-10-22 |
+
+## G1-19 · Tests OPK/LH: registro, lector de tiras por foto y curva de LH (función 22 y extras) (1)
+
+Cómo funciona: se registra cada test (negativo, positivo o pico). El lector por foto detecta la tira (OpenCV o un modelo de visión), recorta la ventana, mide la intensidad de la línea de test (T) frente a la de control (C) y calcula el ratio T/C. La serie de ratios forma la curva de LH, cuyo pico anticipa la ovulación en 24–36 h. Piezas: captura de cámara, detección de la tira, perfil de intensidad, ratio y gráfico.
+
+| Link | owner/nombre | MB | ⭐ | Lenguaje | Licencia | Último commit | Front/Back | Qué es | Pieza concreta que aporta a Lunilla (dónde/cuándo/cómo se ensambla) | Otras funciones | Origen |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| https://github.com/lrq3000/fertility-test-analyzer | lrq3000/fertility-test-analyzer | 5.2 | 5 | Java | Apache-2.0 | 2023-11-18 | B | App Android que interpreta tiras de ovulación y embarazo cuantificando las líneas de la foto. Vigencia: último push 2023, se queda porque es de las pocas implementaciones abiertas de cuantificación de tiras. | Procesamiento de imagen de la tira (líneas T/C) para el lector de LH por foto. | G1-10 | Lunilla bot, 2026-10-22 |
+
+## G1-20 · Modos por objetivo, personalización y guided journey / checklists (función 23 y extra) (2)
+
+Cómo funciona: el objetivo (seguir el ciclo, buscar embarazo, evitar embarazo, embarazo, perimenopausia) define qué pantallas, campos y predicciones se muestran. Se resuelve con configuración y feature flags locales más un onboarding. Las checklists semanales son listas de tareas atadas a la semana o fase. Piezas: feature flags offline, onboarding o tours y listas de tareas.
+
+| Link | owner/nombre | MB | ⭐ | Lenguaje | Licencia | Último commit | Front/Back | Qué es | Pieza concreta que aporta a Lunilla (dónde/cuándo/cómo se ensambla) | Otras funciones | Origen |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| https://github.com/Twipped/Spiral | Twipped/Spiral | 10.3 | 11 | JavaScript | NOASSERTION (no estándar) | 2022-03-04 | F | App React Native de bio-ciclos "para todos los humanos": registra síntomas físicos y estado mental ligados a hormonas, con lenguaje neutro que evita disparadores de disforia. Vigencia: último push 2022, se queda porque es el único diseño abierto de tracker inclusivo para personas trans/no binarias. | Copy y estructura de pantallas con lenguaje neutro de género: base del modo inclusivo de Lunilla (onboarding y etiquetas sin "mujer"). | G1-08 | Lunilla bot, 2026-10-22 |
+| https://github.com/al-mabsut/muslimah | al-mabsut/muslimah | 6.8 | 2 | JavaScript | sin licencia | 2025-12-28 | B | Librería NPM de recursos de jurisprudencia islámica sobre temas de mujeres (masaail de hayd/menstruación), que alimenta myhayd.app. Vigencia: último push 2025-12, se queda porque es la única fuente abierta y auditable de reglas de hayd. | Reglas de hayd como modo religioso opcional (cálculo de días de pureza/menstruación según escuela) dentro del sistema de modos de Lunilla. | G1-01, G2-01 | Lunilla bot, 2026-10-22 |
+
+## G1-21 · Backup y sync multi-dispositivo E2E, CRDT, local-first (función 24 y extra backup Drive/iCloud) (1)
+
+Cómo funciona: los datos viven en el dispositivo. Para sincronizar se cifran antes de salir y se mezclan sin conflictos con CRDT (Yjs, Automerge) o con un log de cambios. El transporte puede ser un servidor de sync, WebRTC P2P o un almacenamiento del usuario (Google Drive appDataFolder, WebDAV, remoteStorage). Piezas: CRDT o motor de sync, cifrado del lado del cliente y adaptador de almacenamiento.
+
+| Link | owner/nombre | MB | ⭐ | Lenguaje | Licencia | Último commit | Front/Back | Qué es | Pieza concreta que aporta a Lunilla (dónde/cuándo/cómo se ensambla) | Otras funciones | Origen |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| https://github.com/FriesI23/mhabit | FriesI23/mhabit | 147.6 | 1670 | Dart | Apache-2.0 | 2026-10-22 | B | Habit tracker Flutter con puntuación, gráficos de progreso, almacenamiento local-first y sincronización WebDAV entre dispositivos. | Sincronización WebDAV opcional de un store local-first: referencia del backup/sync autoalojado de Lunilla (subir el blob cifrado a WebDAV). | G2-03 | Lunilla bot, 2026-10-22 |
+
+## G1-22 · Almacenamiento on-device y privacy-first, cifrado y modo anónimo (función 25 y extra) (1)
+
+Cómo funciona: los datos se guardan en IndexedDB u OPFS (SQLite WASM) cifrados con AES-GCM y una clave derivada del PIN (PBKDF2 o Argon2). Opcionalmente se desbloquean con passkey (WebAuthn PRF). No hay cuenta y no salen datos (modo anónimo). Piezas: wrapper de IndexedDB, cifrado, KDF y base de datos local.
+
+| Link | owner/nombre | MB | ⭐ | Lenguaje | Licencia | Último commit | Front/Back | Qué es | Pieza concreta que aporta a Lunilla (dónde/cuándo/cómo se ensambla) | Otras funciones | Origen |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| https://github.com/vincenzo-afk/Synapse | vincenzo-afk/Synapse | 0.9 | 39 | TypeScript | MIT | 2026-10-18 | F | "Sistema operativo personal" PWA local-first y offline que une hábitos, tareas, finanzas y diario. | Arquitectura PWA instalable y totalmente offline con múltiples módulos sobre almacenamiento local, muy cercana al stack de Lunilla. | G1-21 | Lunilla bot, 2026-10-22 |
+
+## G1-24 · Care navigator / buscador de clínicas y recursos (extra) (1)
+
+Cómo funciona: un directorio de servicios (clínicas, telesalud, líneas de ayuda) con coordenadas, mostrado en un mapa y filtrado por tipo y distancia. Puede funcionar offline con datos empaquetados o usando OpenStreetMap (amenity=clinic, healthcare=*). Piezas: dataset o directorio, mapa (Leaflet o MapLibre), geocodificación y filtros.
+
+| Link | owner/nombre | MB | ⭐ | Lenguaje | Licencia | Último commit | Front/Back | Qué es | Pieza concreta que aporta a Lunilla (dónde/cuándo/cómo se ensambla) | Otras funciones | Origen |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| https://github.com/monapdx/awesome-reproductive-justice | monapdx/awesome-reproductive-justice | 5.8 | 2 | CSS | NOASSERTION (no estándar) | 2026-07-21 | B | Lista curada de recursos de salud reproductiva y aborto: clínicas, directorios verificados, líneas de ayuda y herramientas. | Directorio de recursos externos para el navegador de cuidados (pantalla "¿A dónde voy?"), como JSON estático por país. | G2-01 | Lunilla bot, 2026-10-22 |
+
+## G1-25 · Exportar a CSV/spreadsheet e importar de otras apps (extra) (2)
+
+Cómo funciona: los registros se serializan a CSV o XLSX en el navegador y se descargan. Para migrar, se parsean las exportaciones de otras apps (Clue, Flo, drip) y se mapean al modelo de Lunilla. Piezas: librería CSV/XLSX, conversores de formatos de otras apps y esquema común.
+
+| Link | owner/nombre | MB | ⭐ | Lenguaje | Licencia | Último commit | Front/Back | Qué es | Pieza concreta que aporta a Lunilla (dónde/cuándo/cómo se ensambla) | Otras funciones | Origen |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| https://github.com/isosphere/Clue-Period-Tracker-Backup-Converter | isosphere/Clue-Period-Tracker-Backup-Converter | 0.0 | 25 | Python | sin licencia | 2022-07-17 | B | Script Python que lee el backup .cluedata (JSON) de Clue y lo pasa a Excel. Vigencia: último push 2022, se queda porque es corto y explica la estructura del backup de Clue. | Estructura del JSON de backup de Clue para el importador. | — | Lunilla bot, 2026-10-22 |
+| https://github.com/fabfabretti/clue-to-drip | fabfabretti/clue-to-drip | 0.1 | 6 | JavaScript | MIT | 2024-03-04 | F | Página web que convierte la exportación de Clue en un archivo importable en drip (sangrado y la mayoría de los tags). Vigencia: último push 2024, se queda porque documenta el formato de exportación de Clue. | Mapeo de campos de exportación de Clue a un modelo abierto: base del importador "desde Clue" de Lunilla. | G1-08 | Lunilla bot, 2026-10-22 |
+
+## G1-27 · Registro de condiciones de salud y medicación (extra) (2)
+
+Cómo funciona: la usuaria marca sus condiciones (migraña, adenomiosis, vulvodinia…) y su medicación. Codificarlas con terminologías estándar (ICD-10/11, SNOMED CT, RxNorm) permite exportarlas o compartirlas (FHIR). Piezas: catálogo o terminología, buscador de códigos y modelo de datos.
+
+| Link | owner/nombre | MB | ⭐ | Lenguaje | Licencia | Último commit | Front/Back | Qué es | Pieza concreta que aporta a Lunilla (dónde/cuándo/cómo se ensambla) | Otras funciones | Origen |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| https://github.com/hiraethclub/FlareEnough | hiraethclub/FlareEnough | 1.3 | 4 | Kotlin | GPL-3.0 | 2026-10-12 | B | App Android libre para enfermedades crónicas: medicación, registro de síntomas y meditación simple, sin anuncios ni suscripciones. | Registro de medicación y brotes para el módulo de condiciones de salud (endo, SOP, migraña). | G1-08 | Lunilla bot, 2026-10-22 |
+| https://github.com/sharancreates/selene | sharancreates/selene | 2.9 | 0 | JavaScript | MIT | 2026-10-19 | B | Plataforma privacy-first de salud menstrual y hormonal con arquitectura zero-knowledge y una sección de "clinical intelligence". | Arquitectura zero-knowledge (cifrado cliente) y las reglas clínicas que documenta. | G1-22, G1-14 | Lunilla bot, 2026-10-22 |
 
 # Grupo 2 — Funciones secundarias
 
@@ -215,6 +412,14 @@ Puntos, badges, rachas (streaks), logros y leaderboards.
 | AnmolCanCodes/groundtruth | https://github.com/AnmolCanCodes/groundtruth | NOASSERTION (no estándar) | 1 | Quest platform con XP, streaks y leaderboards. | candidato (revisar licencia) | — |
 | franverona/questlog | https://github.com/franverona/questlog | sin licencia | 0 | API de gamificación (Hono + PostgreSQL + Drizzle). Achievements, streaks, leaderboards. Archivado. | solo idea (sin licencia) | — |
 | JKoontzDev/LevelUp | https://github.com/JKoontzDev/LevelUp | MIT | 0 | Gamified motivation tracker (RPG style). | candidato | — |
+
+### G2-03 · Agregados 2026-10-22 — Gamificación, quizzes, recompensas, rate my day y daily quiz (1)
+
+Cómo funciona: los eventos de registro suman puntos, rachas y logros con reglas locales. Los quizzes son bancos de preguntas con puntaje. Rate my day es una escala diaria. Las animaciones de premio (confetti) refuerzan el hábito. Piezas: motor de logros o rachas, motor de quiz y efectos visuales.
+
+| Link | owner/nombre | MB | ⭐ | Lenguaje | Licencia | Último commit | Front/Back | Qué es | Pieza concreta que aporta a Lunilla (dónde/cuándo/cómo se ensambla) | Otras funciones | Origen |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| https://github.com/iNikAnn/DoHabit | iNikAnn/DoHabit | 48.0 | 63 | TypeScript | AGPL-3.0 | 2026-09-30 | F | Habit tracker web local-first, sin registro ni nube. | Rachas y check diario de hábitos para la gamificación (racha de registro diario). | G1-22 | Lunilla bot, 2026-10-22 |
 
 ## G2-04 · Recordatorios y notificaciones (17)
 
@@ -280,6 +485,14 @@ Backend-as-a-service y motores de workflows.
 | appwrite/appwrite | https://github.com/appwrite/appwrite | BSD-3-Clause | 57749 | Backend open source (auth, database, storage) ideal para prototipos locales o self-hosted. | candidato | — |
 | argoproj/argo-workflows | https://github.com/argoproj/argo-workflows | Apache-2.0 | 17047 | Workflow engine (útil para pipelines de contenido o notificaciones complejas). | candidato | — |
 
+## G2-10 · Cycle syncing de productividad y rutinas por fase (1)
+
+Cómo funciona: según la fase estimada del ciclo se sugieren rutinas o tareas (más intensidad en la folicular, descanso en la lútea tardía), y el planner o calendario se anota por fase. Piezas: cálculo de fase (G1-02) más integración con planners o calendarios (ICS).
+
+| Link | owner/nombre | MB | ⭐ | Lenguaje | Licencia | Último commit | Front/Back | Qué es | Pieza concreta que aporta a Lunilla (dónde/cuándo/cómo se ensambla) | Otras funciones | Origen |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| https://github.com/MaiaALex/luna-notes | MaiaALex/luna-notes | 0.1 | 0 | JavaScript | MIT | 2026-06-06 | F | Plantilla o plugin de Obsidian para planificar según el ciclo: fases, diario de síntomas y reflexión emocional. | Plantillas de planificación por fase para el modo cycle syncing. | G2-05 | Lunilla bot, 2026-10-22 |
+
 # Grupo 3 — UI, animación y visualización
 
 Componentes y librerías para la interfaz, gráficos y animaciones.
@@ -319,6 +532,14 @@ Charts y visualización para estadísticas del ciclo.
 | plouc/nivo | https://github.com/plouc/nivo | MIT | 14120 | Charts React hermosos y consistentes. El adjunto lo tenía con otro dueño: nivo/nivo (404); se usa el nombre real verificado. | candidato | — |
 | observablehq/plot | https://github.com/observablehq/plot | ISC | 5410 | Visualizaciones de datos muy precisas. | candidato | — |
 | tremorlabs/tremor | https://github.com/tremorlabs/tremor | Apache-2.0 | 3676 | Charts y dashboards elegantes. | candidato | — |
+
+### G3-02 · Agregados 2026-10-22 — Tendencias de ciclo a largo plazo y gráficos (función 19) (1)
+
+Cómo funciona: las series (duración de ciclo, duración de periodo, BBT, LH, síntomas por fase) se grafican con librerías livianas en el cliente: líneas con bandas de variabilidad, heatmaps tipo calendario y gráficos radiales del ciclo. Piezas: librería de gráficos o heatmap y componentes radiales.
+
+| Link | owner/nombre | MB | ⭐ | Lenguaje | Licencia | Último commit | Front/Back | Qué es | Pieza concreta que aporta a Lunilla (dónde/cuándo/cómo se ensambla) | Otras funciones | Origen |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| https://github.com/kinduff/year-in-pixels | kinduff/year-in-pixels | 0.1 | 32 | CSS | MIT | 2026-01-04 | F | Herramienta web "year in pixels" que guarda el ánimo diario y lo visualiza como cuadrícula anual. | Cuadrícula anual de 365 celdas reutilizable para la vista de tendencias a largo plazo (color por fase o por síntoma). | G1-08 | Lunilla bot, 2026-10-22 |
 
 ## G3-03 · UI mobile (Flutter) (2)
 
