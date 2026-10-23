@@ -10,7 +10,7 @@
 - **Estados:** `integrado` = ya se usó código o una idea en Lunilla (según `aporte-grok-bot/REUSE.md`) · `candidato` = licencia permisiva, se puede tomar código con atribución · `candidato (revisar licencia)` = licencia no estándar · `solo idea (GPL/AGPL)` = copyleft (GPL, AGPL o LGPL), solo leer ideas y no copiar código en Lunilla (MIT) · `solo idea (sin licencia)` = sin licencia declarada, solo referencia · `descartado` = ya evaluado sin uso o no corresponde.
 - **Datos:** licencia, estrellas y existencia verificadas con la API de GitHub el 2026-10-22. No se inventó ningún dato. Fuente de los repos: lista aportada por el usuario el 2026-10-22.
 - **Totales:** 183 repos únicos en tablas de funciones, 3 organizaciones o usuarios válidos, 2 fuentes que no son GitHub y 20 descartados. Por estado: candidato 87, candidato (revisar licencia) 18, descartado 1, integrado 4, solo idea (GPL/AGPL) 34, solo idea (sin licencia) 39.
-- **Agregados 2026-10-22 (búsqueda del bot de Lunilla):** 324 repos nuevos, buscados función por función para armar la app ensamblando código de otros repos. Están en subtablas `Agregados 2026-10-22` dentro de las secciones que ya existían, y en secciones nuevas (marcadas "nueva 2026-10-22" en el índice) para las funciones que no tenían sección. Cada sección nueva arranca explicando cómo funciona la función por dentro y qué piezas hacen falta. Total del archivo: 507 repos únicos (183 previos + 324 nuevos).
+- **Agregados 2026-10-22 (búsqueda del bot de Lunilla):** 334 repos nuevos, buscados función por función para armar la app ensamblando código de otros repos. Están en subtablas `Agregados 2026-10-22` dentro de las secciones que ya existían, y en secciones nuevas (marcadas "nueva 2026-10-22" en el índice) para las funciones que no tenían sección. Cada sección nueva arranca explicando cómo funciona la función por dentro y qué piezas hacen falta. Total del archivo: 517 repos únicos (183 previos + 334 nuevos).
 - **Columnas de las subtablas nuevas:** `Link` · `owner/nombre` (nombre canónico devuelto por la API de GitHub) · `MB` (campo `size` de la API, en KB, convertido a MB) · `⭐` · `Lenguaje` · `Licencia` (SPDX de la API; se anota tal cual, sin juicio) · `Último commit` (`pushed_at` de la API, fecha del último push) · `Front/Back` (F = interfaz o UI, B = lógica, datos, integraciones o backend) · `Qué es` · `Pieza concreta que aporta a Lunilla` (dónde, cuándo y cómo se ensambla) · `Otras funciones` (códigos de otras secciones donde también sirve; el repo figura una sola vez) · `Origen`. Los repos sin actividad en 2026 llevan una nota de "Vigencia" que explica por qué se quedan. Las funciones que resuelve mejor un LLM (redactar textos, horóscopos, afirmaciones, chat de preguntas) no tienen repos de texto: solo infraestructura.
 
 ## Índice
@@ -19,8 +19,8 @@
 |---|---|---|
 | G1-01 | Apps y trackers de ciclo (referencia completa) | 39 + 15 agregados 2026-10-22 |
 | G1-02 | Predicción de ciclo, ventana fértil y librerías de cálculo | 8 + 7 agregados 2026-10-22 |
-| G1-03 | Método sintotérmico, BBT y fertility awareness | 15 + 14 agregados 2026-10-22 |
-| G1-04 | Modelos ML y series de tiempo para el ciclo | 5 + 13 agregados 2026-10-22 |
+| G1-03 | Método sintotérmico, BBT y fertility awareness | 15 + 15 agregados 2026-10-22 |
+| G1-04 | Modelos ML y series de tiempo para el ciclo | 5 + 15 agregados 2026-10-22 |
 | G1-05 | Datasets y análisis estadístico del ciclo | 5 + 3 agregados 2026-10-22 |
 | G1-06 | Wearables y datos fisiológicos | 4 + 23 agregados 2026-10-22 |
 | G1-07 | Tracking de flujo menstrual (función 3) (nueva 2026-10-22) | 2 |
@@ -34,7 +34,7 @@
 | G1-15 | Reportes PDF para el médico (función 13) (nueva 2026-10-22) | 15 |
 | G1-16 | Predicción de síntomas e intensidad de dolor (función 14 y extras de dolor) (nueva 2026-10-22) | 4 |
 | G1-17 | Tracking de anticonceptivos y quiz de anticoncepción (función 18 y extra) (nueva 2026-10-22) | 2 |
-| G1-18 | Partner sharing con permiso, E2E (función 20 y extra partner mode / inner circle) (nueva 2026-10-22) | 7 |
+| G1-18 | Partner sharing con permiso, E2E (función 20 y extra partner mode / inner circle) (nueva 2026-10-22) | 9 |
 | G1-19 | Tests OPK/LH: registro, lector de tiras por foto y curva de LH (función 22 y extras) (nueva 2026-10-22) | 5 |
 | G1-20 | Modos por objetivo, personalización y guided journey / checklists (función 23 y extra) (nueva 2026-10-22) | 6 |
 | G1-21 | Backup y sync multi-dispositivo E2E, CRDT, local-first (función 24 y extra backup Drive/iCloud) (nueva 2026-10-22) | 24 |
@@ -45,17 +45,17 @@
 | G1-26 | Calendario, vista de ciclo y filtros por síntoma (extra) (nueva 2026-10-22) | 7 |
 | G1-27 | Registro de condiciones de salud y medicación (extra) (nueva 2026-10-22) | 6 |
 | G2-01 | Educación, contenido y CMS | 12 + 5 agregados 2026-10-22 |
-| G2-02 | Comunidad, foros y chat | 12 + 7 agregados 2026-10-22 |
+| G2-02 | Comunidad, foros y chat | 12 + 8 agregados 2026-10-22 |
 | G2-03 | Gamificación | 10 + 4 agregados 2026-10-22 |
 | G2-04 | Recordatorios y notificaciones | 17 + 12 agregados 2026-10-22 |
 | G2-05 | Ánimo, diario y síntomas emocionales | 9 + 6 agregados 2026-10-22 |
-| G2-06 | Datos de salud y FHIR | 7 + 3 agregados 2026-10-22 |
+| G2-06 | Datos de salud y FHIR | 7 + 5 agregados 2026-10-22 |
 | G2-07 | Backend y bases de datos | 3 |
 | G2-08 | Fases lunares, moon sign, astrología y tarot de ciclo (solo cálculo; el texto lo hace un LLM) (nueva 2026-10-22) | 4 |
 | G2-09 | Avatares y personalización de avatar (nueva 2026-10-22) | 3 |
 | G2-10 | Cycle syncing de productividad y rutinas por fase (nueva 2026-10-22) | 2 |
 | G2-11 | Videos cortos, GIFs, stories y daily decode (nueva 2026-10-22) | 5 |
-| G2-12 | Modo padre, parent linking y plan multi-hija (nueva 2026-10-22) | 4 |
+| G2-12 | Modo padre, parent linking y plan multi-hija (nueva 2026-10-22) | 6 |
 | G2-13 | PIN/passcode, decoy screen (pantalla falsa) y auto-borrado programado (nueva 2026-10-22) | 5 |
 | G2-14 | Comparación con otras usuarias: estadística agregada con privacidad (nueva 2026-10-22) | 6 |
 | G2-15 | Compartir en redes (tarjetas o imágenes) (nueva 2026-10-22) | 2 |
@@ -191,13 +191,14 @@ Reglas sintotérmicas, temperatura basal (BBT), coverline, moco cervical y chart
 | jorgt/tempchart | https://github.com/jorgt/tempchart | sin licencia | 0 | Charting de BBT con SQLite. | solo idea (sin licencia) | — |
 | keyneom/easy-bc | https://github.com/keyneom/easy-bc | NOASSERTION (no estándar) | 0 | Planner de riesgo de fertilidad on-device (combinación de métodos). | candidato (revisar licencia) | — |
 
-### G1-03 · Agregados 2026-10-22 — BBT, algoritmo días rojos/verdes y moco cervical (funciones 7, 8 y 21) (14)
+### G1-03 · Agregados 2026-10-22 — BBT, algoritmo días rojos/verdes y moco cervical (funciones 7, 8 y 21) (15)
 
 Cómo funciona: la BBT se registra cada mañana. Después de la ovulación la progesterona la sube 0,2–0,5 °C, y el algoritmo detecta ese shift con reglas fijas, como la regla 3 sobre 6 con coverline de Sensiplan o la del método sintotérmico. Se cruza con el moco cervical (pico de moco) y la posición cervical. Un algoritmo estilo Natural Cycles suma la estadística del ciclo y la incertidumbre para marcar días rojos (posible fertilidad) y verdes. Piezas: entrada de temperatura con corrección, detector de shift, reglas de moco, combinador sintotérmico y gráfico de temperatura.
 
 | Link | owner/nombre | MB | ⭐ | Lenguaje | Licencia | Último commit | Front/Back | Qué es | Pieza concreta que aporta a Lunilla (dónde/cuándo/cómo se ensambla) | Otras funciones | Origen |
 |---|---|---|---|---|---|---|---|---|---|---|---|
 | https://github.com/hildensia/bayesian_changepoint_detection | hildensia/bayesian_changepoint_detection | 2.7 | 779 | Python | MIT | 2026-09-24 | B | Detección bayesiana de puntos de cambio online (Adams & MacKay 2007) y offline (Fearnhead 2006) sobre tensores PyTorch, con probabilidades posteriores calibradas. | Detecta el salto térmico post-ovulación en la serie BBT y da la probabilidad del cambio en lugar de un umbral fijo. Se usa en la investigación del algoritmo y luego se porta a TS. | G1-04;G1-10 | Lunilla bot, 2026-10-22 |
+| https://github.com/rkillick/changepoint | rkillick/changepoint | 0.5 | 140 | R | sin licencia | 2026-08-26 | B | Versión de desarrollo del paquete de CRAN changepoint (R): detección de puntos de cambio en media y varianza con PELT, BinSeg y SegNeigh. Sin README. El DESCRIPTION declara licencia GPL. | Referencia estadística (PELT) para validar offline la detección del shift de BBT y los cambios de duración del ciclo (p. ej. inicio de la perimenopausia) antes de portar la regla a TS. No va dentro de la app, porque GPL y R no encajan en el bundle. | G1-12;G1-05 | Lunilla bot, 2026-10-22 |
 | https://github.com/ringleader/cyclist | ringleader/cyclist | 4.8 | 15 | Python | NOASSERTION (no estándar) | 2026-05-01 | B | Componente de Home Assistant que sigue el ciclo con datos de fertility awareness (BBT, moco y LH) según el objetivo (evitar o buscar embarazo). | Reglas de fertility awareness combinando BBT, moco y LH, y cambio de lógica según el objetivo. | G1-10, G1-19, G1-20 | Lunilla bot, 2026-10-22 |
 | https://github.com/acidg/rise | acidg/rise | 1.5 | 1 | Dart | GPL-3.0 | 2026-09-12 | B | Tracker sintotérmico privado construido alrededor del termómetro BBT Bluetooth Ovy OT35. | Lectura del termómetro BBT por BLE más el sintotérmico: modelo para importar temperaturas de termómetros. | G1-06 | Lunilla bot, 2026-10-22 |
 | https://github.com/Thometoto/cycleseed | Thometoto/cycleseed | 0.1 | 1 | Python | sin licencia | 2026-09-25 | B | Tracker sintotérmico experimental y privacy-first: registra observaciones diarias, entrena un clasificador liviano de ventana fértil y se adapta con cautela a los ciclos completos de la persona. | Combinación reglas fisiológicas + clasificador logístico liviano: se ensambla como capa de "ajuste personal" sobre las reglas fijas de ventana fértil. | G1-04, G1-02 | Lunilla bot, 2026-10-22 |
@@ -224,7 +225,7 @@ Modelos entrenados (LSTM, ARIMA, Prophet, boosting) para predecir longitud del c
 | 10anshika/RituCare | https://github.com/10anshika/RituCare | sin licencia | 0 | Full-stack con ARIMA, SARIMA, Prophet y ensemble para forecasting de ciclo + predicción de PCOS. | solo idea (sin licencia) | — |
 | gurveenkaur6/Menstrual_cycle_prediction_model | https://github.com/gurveenkaur6/Menstrual_cycle_prediction_model | sin licencia | 0 | Red neuronal (TensorFlow/Keras) para predecir longitud de ciclo. | solo idea (sin licencia) | — |
 
-### G1-04 · Agregados 2026-10-22 — Modelos ML y series de tiempo para predicción (13)
+### G1-04 · Agregados 2026-10-22 — Modelos ML y series de tiempo para predicción (15)
 
 Cómo funciona: los modelos aprenden de la secuencia de duraciones de ciclo (y opcionalmente de síntomas o datos de wearables) para predecir el próximo ciclo con su incertidumbre. En Lunilla tienen que correr en el dispositivo (JS/WASM/ONNX) o servir como referencia del algoritmo. Piezas: modelo entrenado o algoritmo, features y métrica de error.
 
@@ -238,8 +239,10 @@ Cómo funciona: los modelos aprenden de la secuencia de duraciones de ciclo (y o
 | https://github.com/unit8co/darts | unit8co/darts | 272.9 | 9561 | Python | Apache-2.0 | 2026-10-17 | B | Librería Python de pronóstico y detección de anomalías en series de tiempo. | Detección de anomalías (ciclo atípicamente largo o corto) para avisar "consultá con una médica". | G1-14 | Lunilla bot, 2026-10-22 |
 | https://github.com/facebookresearch/Kats | facebookresearch/Kats | 35.4 | 6501 | Python | MIT | 2026-10-19 | B | Toolkit de series de tiempo de Meta: detección (p. ej. CUSUM para change points), forecasting, extracción de features y análisis multivariado. | Banco de pruebas offline: CUSUMDetector para el cambio de fase BBT y forecasting para comparar contra el predictor de ciclo actual. | G1-03 | Lunilla bot, 2026-10-22 |
 | https://github.com/Nixtla/statsforecast | Nixtla/statsforecast | 263.8 | 4943 | Python | Apache-2.0 | 2026-10-22 | B | Pronóstico rápido con modelos estadísticos (AutoARIMA, ETS, Theta, etc.) en Python. | Comparar modelos estadísticos de duración de ciclo y elegir la heurística más precisa para portarla a TS. | G1-02 | Lunilla bot, 2026-10-22 |
+| https://github.com/hmmlearn/hmmlearn | hmmlearn/hmmlearn | 2.3 | 3439 | Python | BSD-3-Clause | 2024-10-31 | B | Modelos ocultos de Markov en Python con API estilo scikit-learn (Gaussian, GMM, Categorical, Poisson HMM), con fit y decodificación de Viterbi. BSD-3. | Modelo de fases como estados ocultos (menstrual, folicular, ovulatoria, lútea) a partir de BBT, síntomas y señales del wearable, entrenado offline. En la app solo viajan las matrices de transición y emisión para decodificar en el dispositivo. Vigencia: último push 2024-10, pero es la implementación HMM de referencia en PyPI, estable y sin reemplazo directo. | G1-03;G1-05 | Lunilla bot, 2026-10-22 |
 | https://github.com/pyro-ppl/numpyro | pyro-ppl/numpyro | 117.2 | 2770 | Python | Apache-2.0 | 2026-10-22 | B | Programación probabilística sobre JAX (NUTS/HMC y variacional) con backend estilo NumPy. | Ajustar un modelo bayesiano jerárquico de longitud de ciclo y día de ovulación (por usuaria y población) y exportar los priors a la heurística TS de la PWA. | G1-10;G1-05 | Lunilla bot, 2026-10-22 |
 | https://github.com/CamDavidsonPilon/lifelines | CamDavidsonPilon/lifelines | 44.4 | 2618 | Python | MIT | 2026-03-07 | B | Análisis de supervivencia en Python (Kaplan-Meier, Cox, modelos paramétricos). | Modelar "tiempo hasta el próximo periodo" y "tiempo hasta el embarazo" (TTC) como supervivencia, con datos censurados. | G1-10 | Lunilla bot, 2026-10-22 |
+| https://github.com/pykalman/pykalman | pykalman/pykalman | 0.6 | 1340 | Python | NOASSERTION (no estándar) | 2026-04-20 | B | Filtro y suavizador de Kalman, Kalman unscented y EM para aprender los parámetros, en Python. Versión 0.11.x. La API reporta licencia NOASSERTION (no verificado). | Suavizado de series ruidosas (BBT tomada a horas distintas, FC en reposo del wearable) antes de detectar el shift térmico o tendencias. También sirve para estimar la duración del ciclo como estado latente que evoluciona lentamente. | G1-03;G3-02 | Lunilla bot, 2026-10-22 |
 | https://github.com/mhoogen/ML4QS | mhoogen/ML4QS | 223.4 | 137 | Python | sin licencia | 2026-06-17 | B | Código del libro "Machine Learning for the Quantified Self" (Springer 2018) en R y Python. | Recetas de ML para datos de auto-seguimiento (limpieza, features temporales, predicción) aplicables a la predicción de síntomas. | G1-16, G1-09 | Lunilla bot, 2026-10-22 |
 | https://github.com/AndyYSWoo/pregnancy-prediction | AndyYSWoo/pregnancy-prediction | 0.1 | 6 | Jupyter Notebook | sin licencia | 2019-02-22 | B | Código del paper "Predicting pregnancy using large-scale data from a women's health tracking mobile application" (datos de app de tracking). Vigencia: último push 2019, se queda porque es el código de un paper con datos reales de una app de ciclo a gran escala. | Features y modelos de predicción de embarazo/fertilidad a partir de registros de app: referencia para el puntaje de fertilidad. | G1-10 fertility score | Lunilla bot, 2026-10-22 |
 | https://github.com/YifanWang-China/FemMHC | YifanWang-China/FemMHC | 3.1 | 2 | Python | sin licencia | 2026-08-08 | B | Código de investigación de FemWear, un modelo fundacional para series de wearables aplicado a salud menstrual (especializa el encoder OpenMHC). | Referencia de modelo para tareas menstruales a partir de wearables (fases y anomalías); para evaluar, no para correr en la PWA. | G1-06 | Lunilla bot, 2026-10-22 |
@@ -465,14 +468,16 @@ Cómo funciona: cada método tiene su propio calendario. La píldora es diaria, 
 | https://github.com/waseefakhtar/dose-android | waseefakhtar/dose-android | 14.8 | 636 | Kotlin | MIT | 2025-12-03 | F | App Android de recordatorio de medicamentos (Jetpack Compose, Material 3, Room). Vigencia: último push 2025-12; se queda como referencia de UX de medicación muy usada. | Flujo de alta de medicación (dosis, horario, duración) y pantalla "tomada / salteada", aplicable a anticonceptivos y analgésicos. | G1-08 | Lunilla bot, 2026-10-22 |
 | https://github.com/mariinkys/OpenPillReminder | mariinkys/OpenPillReminder | 4.6 | 11 | Kotlin | GPL-3.0 | 2026-10-11 | F | Tracker open source de pastilla anticonceptiva para Android (blíster con semana de descanso y recordatorio diario). | Modelo del blíster 21/7 o 28 días (posición en la tira, semana de placebo, "¿la tomaste hoy?") y su recordatorio diario. | G2-04 | Lunilla bot, 2026-10-22 |
 
-## G1-18 · Partner sharing con permiso, E2E (función 20 y extra partner mode / inner circle) (7)
+## G1-18 · Partner sharing con permiso, E2E (función 20 y extra partner mode / inner circle) (9)
 
 Cómo funciona: la usuaria elige qué compartir y el dato sale cifrado de punta a punta: se intercambian claves (QR o enlace), cada envío se cifra con la clave pública o una clave compartida, y el permiso se puede revocar rotando la clave. Piezas: librería de cripto (libsodium, age, MLS), intercambio de claves, transporte (relay o P2P) y permisos.
 
 | Link | owner/nombre | MB | ⭐ | Lenguaje | Licencia | Último commit | Front/Back | Qué es | Pieza concreta que aporta a Lunilla (dónde/cuándo/cómo se ensambla) | Otras funciones | Origen |
 |---|---|---|---|---|---|---|---|---|---|---|---|
+| https://github.com/signalapp/libsignal | signalapp/libsignal | 22.9 | 6085 | Rust | AGPL-3.0 | 2026-10-22 | B | APIs del protocolo Signal (Double Ratchet), primitivas criptográficas y zkgroup en Rust, expuestas a Java, Swift y TypeScript. AGPL-3.0. Su README avisa: «Use outside of Signal is unsupported». | Referencia de diseño para el partner sharing 1 a 1 (ratchet y verificación de clave por safety number). Por la AGPL y la falta de soporte externo, conviene usarla para estudiar el diseño y no como dependencia; para producción, OpenMLS. | G1-22 | Lunilla bot, 2026-10-22 |
 | https://github.com/openpgpjs/openpgpjs | openpgpjs/openpgpjs | 44.2 | 5976 | JavaScript | LGPL-3.0 | 2026-10-08 | B | Implementación de OpenPGP en JavaScript (claves, cifrado, firmas). | Alternativa estándar para compartir con terceros (por ejemplo una profesional) con claves públicas OpenPGP. | G1-15 | Lunilla bot, 2026-10-22 |
 | https://github.com/jedisct1/libsodium.js | jedisct1/libsodium.js | 178.8 | 1161 | HTML | NOASSERTION (no estándar) | 2026-10-22 | B | libsodium compilado a WebAssembly y JS puro, con wrappers. | Primitivas de sobres (crypto_box, sealed boxes) para invitaciones de pareja y padre/madre con intercambio de claves X25519. | G2-12 modo padres | Lunilla bot, 2026-10-22 |
+| https://github.com/openmls/openmls | openmls/openmls | 289.8 | 1051 | Rust | MIT | 2026-10-22 | B | Implementación en Rust del protocolo Messaging Layer Security (MLS, RFC 9420) para cifrado E2E de grupos. MIT. | Inner circle y partner sharing con varias personas: un grupo MLS por círculo, para que agregar o quitar a alguien rote las claves (forward secrecy). Se compila a WASM para la PWA. El servidor solo reenvía mensajes cifrados. | G1-21 | Lunilla bot, 2026-10-22 |
 | https://github.com/FiloSottile/typage | FiloSottile/typage | 1.5 | 491 | TypeScript | BSD-3-Clause | 2026-08-28 | B | age-encryption: implementación en TypeScript del formato de cifrado de archivos age, que depende sólo de las librerías noble; soporta passkeys. | Cifrar el "paquete compartido" para la pareja con la clave pública de ella (recipient age), y descifrarlo en su dispositivo: compartir E2E sin servidor que lea los datos. | G1-21 backup cifrado | Lunilla bot, 2026-10-22 |
 | https://github.com/osbytes/crypt.fyi | osbytes/crypt.fyi | 3.1 | 144 | TypeScript | Apache-2.0 | 2026-09-02 | B | Plataforma zero-knowledge para compartir secretos con cifrado E2E post-cuántico (ML-KEM) y CSP estricta. | Compartir un resumen puntual (por ejemplo, con una amiga o con la médica) con un enlace efímero cifrado en el cliente. | G1-15 | Lunilla bot, 2026-10-22 |
 | https://github.com/stophecom/scrt-link-v2 | stophecom/scrt-link-v2 | 17.0 | 79 | TypeScript | MIT | 2026-10-11 | B | Secretos cifrados en el cliente antes de llegar al servidor y borrados para siempre tras verse o expirar. | Enlace de un solo uso para mandar el PDF o el resumen del ciclo sin que quede guardado en ningún servidor. | G1-15 | Lunilla bot, 2026-10-22 |
@@ -676,12 +681,13 @@ Foros, Q&A, chat y redes federadas para una comunidad de usuarias.
 | leancodebox/GooseForum | https://github.com/leancodebox/GooseForum | MIT | 147 | Foro ligero (Go + Gin + PostgreSQL). | candidato | — |
 | code-xon/discuss-lite | https://github.com/code-xon/discuss-lite | MIT | 1 | Foro self-hosted ligero (FastAPI + Next.js + PostgreSQL). | candidato | — |
 
-### G2-02 · Agregados 2026-10-22 — Comunidad, foros anónimos, chat entre usuarias, polls y Q&A (7)
+### G2-02 · Agregados 2026-10-22 — Comunidad, foros anónimos, chat entre usuarias, polls y Q&A (8)
 
 Cómo funciona: esto necesita servidor (rompe el modelo sin servidor de Lunilla, así que sería un módulo aparte y opcional). Hay que resolver identidad anónima o seudónima, moderación (clasificadores de toxicidad y reportes), encuestas y mensajería. Piezas: motor de foro o chat, sistema de polls y moderación.
 
 | Link | owner/nombre | MB | ⭐ | Lenguaje | Licencia | Último commit | Front/Back | Qué es | Pieza concreta que aporta a Lunilla (dónde/cuándo/cómo se ensambla) | Otras funciones | Origen |
 |---|---|---|---|---|---|---|---|---|---|---|---|
+| https://github.com/flarum/flarum | flarum/flarum | 0.7 | 16428 | PHP | MIT | 2026-10-09 | B | Software de foro simple y rápido en PHP con interfaz en Mithril, extensible por extensiones. MIT. | Foro anónimo moderado de la comunidad (preguntas por edad y temas) self-hosted y aparte de los datos del ciclo. Las cuentas del foro no se vinculan a la cuenta de la app, para preservar el anonimato. | G2-01 | Lunilla bot, 2026-10-22 |
 | https://github.com/apache/answer | apache/answer | 15.8 | 15702 | Go | Apache-2.0 | 2026-10-21 | B | Plataforma Q&A de Apache (Go) para comunidades, centros de ayuda o bases de conocimiento; self-hosted con Docker. | Backend del espacio de "preguntas anónimas" de la comunidad: las usuarias preguntan con un alias, y moderadoras o educadoras responden y marcan la mejor respuesta. | G2-01 | Lunilla bot, 2026-10-22 |
 | https://github.com/NodeBB/NodeBB | NodeBB/NodeBB | 111.4 | 15240 | JavaScript | GPL-3.0 | 2026-10-22 | B | Software de foros en Node.js para la web moderna (plugins, tiempo real, API). | Alternativa de foro completo para la comunidad, si se prefiere hilos a Q&A. Se despliega fuera de la PWA y se enlaza con cuentas seudónimas. | G2-03 | Lunilla bot, 2026-10-22 |
 | https://github.com/element-hq/synapse | element-hq/synapse | 632.6 | 4725 | Python | AGPL-3.0 | 2026-10-22 | B | Synapse: homeserver de Matrix (Python/Twisted + Rust), chat federado con cifrado E2E. | Salas de comunidad o grupos de apoyo con cifrado E2E y cuentas anónimas, autoalojado. También sirve como canal cifrado pareja↔usuaria. | G1-18 | Lunilla bot, 2026-10-22 |
@@ -804,13 +810,15 @@ Estándares y servidores de datos clínicos (FHIR, EHR).
 | HL7/fhir | https://github.com/HL7/fhir | NOASSERTION (no estándar) | 761 | Especificación oficial FHIR. | candidato (revisar licencia) | — |
 | cerner/fhir.cerner.com | https://github.com/cerner/fhir.cerner.com | sin licencia | 147 | Ejemplos FHIR. Archivado. | solo idea (sin licencia) | — |
 
-### G2-06 · Agregados 2026-10-22 — Datos de salud y FHIR (interoperabilidad) (3)
+### G2-06 · Agregados 2026-10-22 — Datos de salud y FHIR (interoperabilidad) (5)
 
 Cómo funciona: para intercambiar con sistemas de salud se mapean los registros a recursos FHIR (Observation, Condition, QuestionnaireResponse), con perfiles y terminologías. Piezas: librerías o servidores FHIR y validadores.
 
 | Link | owner/nombre | MB | ⭐ | Lenguaje | Licencia | Último commit | Front/Back | Qué es | Pieza concreta que aporta a Lunilla (dónde/cuándo/cómo se ensambla) | Otras funciones | Origen |
 |---|---|---|---|---|---|---|---|---|---|---|---|
+| https://github.com/nazrulworld/fhir.resources | nazrulworld/fhir.resources | 14.1 | 543 | Python | NOASSERTION (no estándar) | 2026-09-14 | B | Modelos de recursos FHIR R5, R4B y STU3 en Python, con validación (pydantic). La API reporta licencia NOASSERTION (no verificado). | Validar y serializar los recursos FHIR que genera la exportación (Observation, Condition, MedicationStatement) en el pipeline de pruebas, para que el export de Lunilla cumpla el estándar. | G1-15;G1-27 | Lunilla bot, 2026-10-22 |
 | https://github.com/microsoft/FHIR-Converter | microsoft/FHIR-Converter | 103.8 | 532 | Liquid | MIT | 2026-09-23 | B | Convierte datos de salud de formatos legados a FHIR y viceversa (HL7v2, C-CDA, JSON, FHIR STU3↔R4) con plantillas Liquid sobre .NET. | Plantillas Liquid como referencia para mapear el JSON de ciclo de Lunilla a recursos FHIR (Observation) en un export interoperable. Se usa off-device, no en la PWA. | G1-25 | Lunilla bot, 2026-10-22 |
+| https://github.com/beda-software/fhir-py | beda-software/fhir-py | 1.4 | 218 | Python | MIT | 2026-10-22 | B | Cliente FHIR async/sync para Python 3: CRUD, búsquedas encadenadas, include, paginación y referencias. MIT. | Script o servicio opcional del lado servidor para empujar el reporte como recursos FHIR (Observation de sangrado y síntomas) al servidor de una clínica, cuando la usuaria lo pida. No toca los datos locales cifrados. | G1-15;G1-07 | Lunilla bot, 2026-10-22 |
 | https://github.com/HL7/fhirpath.js | HL7/fhirpath.js | 36.4 | 189 | JavaScript | NOASSERTION (no estándar) | 2026-10-06 | B | Implementación oficial de HL7 de FHIRPath en JavaScript, para Node y navegador. | Extraer y validar campos (p. ej. Observation.value) de bundles FHIR importados o exportados en el reporte médico, sin escribir parsers propios. | G1-15;G1-25 | Lunilla bot, 2026-10-22 |
 | https://github.com/Vermonster/fhir-kit-client | Vermonster/fhir-kit-client | 2.3 | 187 | TypeScript | MIT | 2026-10-22 | B | Cliente FHIR R4 para Node.js: TypeScript-first, ESM y fetch nativo (v2 requiere Node 18+). | Si el reporte médico (G1-15) se envía a una historia clínica FHIR, este cliente hace las llamadas desde un Worker o un backend opcional. | G1-15 | Lunilla bot, 2026-10-22 |
 
@@ -866,7 +874,7 @@ Cómo funciona: los formatos tipo stories reproducen tarjetas o videos cortos en
 | https://github.com/mattdesl/gifenc | mattdesl/gifenc | 1.9 | 342 | JavaScript | MIT | 2024-09-19 | F | Codificador GIF rápido y liviano en JS puro, para navegador y Node. Vigencia: último push 2024-09; es una librería pequeña y estable. | Generar GIFs cortos (por ejemplo, la animación "tu ciclo del mes") en el cliente para compartir. | G2-15 | Lunilla bot, 2026-10-22 |
 | https://github.com/KLIPY-com/Klipy-GIF-API | KLIPY-com/Klipy-GIF-API | 0.0 | 79 | — | sin licencia | 2026-03-18 | B | Documentación oficial de la API de KLIPY (GIFs, stickers, clips y memes, con localización por país); se ofrece como reemplazo directo de Tenor. Monetiza con anuncios entre el contenido. | Proveedor de GIFs para stories o reacciones si Tenor deja de estar disponible. Para una app de adolescentes hay que desactivar los anuncios y no mandar identificadores: pasar las llamadas por un proxy en el Worker. | G2-05 | Lunilla bot, 2026-10-22 |
 
-## G2-12 · Modo padre, parent linking y plan multi-hija (4)
+## G2-12 · Modo padre, parent linking y plan multi-hija (6)
 
 Cómo funciona: varios perfiles locales en el mismo dispositivo, o un vínculo padre–hija con permisos limitados (solo algunos datos y con consentimiento de la adolescente), con cifrado por perfil. Piezas: multi-perfil, permisos y control parental.
 
@@ -874,8 +882,10 @@ Cómo funciona: varios perfiles locales en el mismo dispositivo, o un vínculo p
 |---|---|---|---|---|---|---|---|---|---|---|---|
 | https://github.com/better-auth/better-auth | better-auth/better-auth | 163.3 | 30426 | TypeScript | MIT | 2026-10-22 | B | Framework de autenticación y autorización para TypeScript, agnóstico de framework, con plugins (organizaciones, passkeys, 2FA). | Cuentas opcionales para vincular padre/madre e hija, o pareja, con invitaciones y roles, sólo si se quiere sync o sharing (la app sigue funcionando sin cuenta). | G2-13 passkeys | Lunilla bot, 2026-10-22 |
 | https://github.com/apache/casbin | apache/casbin | 6.7 | 20463 | Go | Apache-2.0 | 2026-10-21 | B | Apache Casbin: librería de control de acceso (ACL, RBAC, ABAC) para muchos lenguajes. | Alternativa embebida y liviana (también en JS) para las reglas de permisos del modo padres y de la pareja en el Worker. | G1-18 | Lunilla bot, 2026-10-22 |
+| https://github.com/authzed/spicedb | authzed/spicedb | 35.6 | 7167 | Go | Apache-2.0 | 2026-10-22 | B | Base de datos de permisos open source inspirada en Google Zanzibar: relaciones del tipo «usuaria X es tutora de Y» y chequeos de permisos consistentes y escalables. Apache-2.0. | Modelo del parent linking y del plan multi-hija como relaciones explícitas (padre → hija, permiso por categoría de dato: solo fechas, sin síntomas). La hija otorga y revoca, y el backend consulta antes de entregar cualquier dato compartido. Es pesado: solo tiene sentido si el modo padre crece. | G1-18 | Lunilla bot, 2026-10-22 |
 | https://github.com/openfga/openfga | openfga/openfga | 59.7 | 6024 | Go | Apache-2.0 | 2026-10-22 | B | Motor de autorización y permisos de alto rendimiento inspirado en Google Zanzibar (relaciones). | Modelar "quién ve qué": la pareja ve fase y ánimo pero no las notas; madre/padre ve sólo recordatorios. Permisos revocables por relación. | G1-18 | Lunilla bot, 2026-10-22 |
 | https://github.com/Permify/permify | Permify/permify | 399.5 | 5967 | Go | AGPL-3.0 | 2026-10-22 | B | Autorización fine-grained open source inspirada en Google Zanzibar (adquirida por FusionAuth). | Alternativa a OpenFGA para las relaciones padre↔hija y pareja con permisos por tipo de dato. | G1-18 | Lunilla bot, 2026-10-22 |
+| https://github.com/apache/casbin-node-casbin | apache/casbin-node-casbin | 3.3 | 2923 | TypeScript | Apache-2.0 | 2026-10-20 | B | Librería de autorización para Node y TypeScript (paquete npm casbin) con modelos ACL, RBAC y ABAC definidos en archivos de política. Apache-2.0. Antes estaba en casbin/node-casbin. | Alternativa liviana a SpiceDB para el modo padre: las políticas «padre puede leer predicción de hija si consentimiento=activo» se evalúan en el Worker de Cloudflare sin otro servicio. La política va versionada en el repo. | G1-18 | Lunilla bot, 2026-10-22 |
 
 ## G2-13 · PIN/passcode, decoy screen (pantalla falsa) y auto-borrado programado (5)
 
