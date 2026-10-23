@@ -4,7 +4,7 @@ Registro menstrual local para jóvenes. Los datos del ciclo se quedan en el nave
 
 No es un dispositivo médico. No diagnostica y no sirve como anticoncepción.
 
-En este corte se puede: anotar el último período al empezar, ver Hoy con el día del ciclo, marcar el calendario, abrir un resumen (que dice cuando todavía es débil), corregir o borrar un período, y registrar el día con flujo, síntomas, ánimo, temperatura basal y flujo cervical. El modo discreto cambia el título y la pantalla de bloqueo a Notas. Sigue en español, con inglés en ajustes.
+En este corte se puede: anotar el último período al empezar, ver Hoy con el día del ciclo y tarjeta educativa por fase hormonal (menstrual, folicular, ovulatoria, lútea), marcar el calendario, abrir un resumen con gráfico Sparkline SVG de duraciones, tira anual de 12 meses (heatmap de intensidad de flujo) y patrones de síntomas por fase ($\ge 3$ ciclos), corregir o borrar un período, y registrar el día con flujo, síntomas, ánimo, temperatura basal y flujo cervical. Incluye aviso orientativo ACOG ante sangrados prolongados (>7 días), exportación a iCalendar (.ics) para calendarios nativos sin conexión y planilla tabular (.csv) con BOM UTF-8 para profesionales de salud. El modo discreto cambia el título y la pantalla de bloqueo a Notas. Disponible en español e inglés.
 
 Live: https://lunilla.pages.dev
 
