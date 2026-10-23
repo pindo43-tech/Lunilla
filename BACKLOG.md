@@ -24,7 +24,7 @@ Este backlog estructura las mejoras y ensamblajes de módulos desde `REPOS_A_ENS
   - Origen: `REPOS_A_ENSAMBLAR.md` (G1-26 / `nwcell/ics.js`).
   - Acción: Generador RFC 5545 iCalendar (`src/lib/ics.ts`) para exportar los próximos 3 períodos al calendario nativo de iOS/Android/Mac sin conexión, botón en `SettingsPage`/`SummaryPage`, y tests en `src/lib/ics.test.ts`.
 
-- [ ] **Tarea 5: Sparkline SVG de evolución de ciclos (fnando/sparkline MIT)**
+- [x] **Tarea 5: Sparkline SVG de evolución de ciclos (fnando/sparkline MIT)**
   - Origen: `REPOS_A_ENSAMBLAR.md` (G3-03 / `fnando/sparkline`).
   - Acción: Componente gráfico reactivo SVG (`src/components/Sparkline.tsx`) en `SummaryPage` para ver la curva de duración de ciclos con puntos y guía promedio, con tests en `src/lib/sparkline.test.ts`.
 

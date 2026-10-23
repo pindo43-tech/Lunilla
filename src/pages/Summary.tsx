@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+import { Sparkline } from '../components/Sparkline.tsx'
 import type { CycleEditError, LoggedPeriod } from '../lib/cycles.ts'
 import { applyPeriod, deletePeriod, listPeriods, summarize } from '../lib/cycles.ts'
 import { SYMPTOM_IDS } from '../lib/catalog.ts'
@@ -121,12 +122,15 @@ export function SummaryPage() {
         <h2 className="text-lg font-semibold">{t('sum.chart')}</h2>
         {summary.measured.length === 0 ? (
           <p className="leading-relaxed text-muted">{t('sum.chartEmpty')}</p>
+        ) : summary.measured.length >= 2 ? (
+          <Sparkline
+            values={summary.measured}
+            caption={t('sum.chartAvg', { length: days(summary.averageCycle ?? 0) })}
+          />
         ) : (
           <LengthChart
             lengths={summary.measured}
-            caption={summary.measured.length === 1
-              ? t('sum.chartOne')
-              : t('sum.chartAvg', { length: days(summary.averageCycle ?? 0) })}
+            caption={t('sum.chartOne')}
           />
         )}
         {summary.measured.length === 1 ? <p className="text-sm leading-relaxed text-muted">{t('sum.chartOne')}</p> : null}
