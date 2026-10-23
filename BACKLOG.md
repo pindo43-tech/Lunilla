@@ -28,7 +28,7 @@ Este backlog estructura las mejoras y ensamblajes de módulos desde `REPOS_A_ENS
   - Origen: `REPOS_A_ENSAMBLAR.md` (G3-03 / `fnando/sparkline`).
   - Acción: Componente gráfico reactivo SVG (`src/components/Sparkline.tsx`) en `SummaryPage` para ver la curva de duración de ciclos con puntos y guía promedio, con tests en `src/lib/sparkline.test.ts`.
 
-- [ ] **Tarea 6: Análisis de patrones Síntomas ↔ Fase (adulbrich/ephira & EmmaTellblom/Mensinator MIT)**
+- [x] **Tarea 6: Análisis de patrones Síntomas ↔ Fase (adulbrich/ephira & EmmaTellblom/Mensinator MIT)**
   - Origen: `LATER.md` (Punto 5: síntomas por fase con $\ge 3$ ciclos) y `REPOS_A_ENSAMBLAR.md` (G1-09).
   - Acción: Motor estadístico `src/lib/patterns.ts` que calcula la correlación de síntomas y estados de ánimo con cada fase cuando hay al menos 3 ciclos registrados, tarjeta en `SummaryPage`, y tests en `src/lib/patterns.test.ts`.
 

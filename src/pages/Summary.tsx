@@ -2,13 +2,21 @@ import { useEffect, useRef, useState } from 'react'
 import { Sparkline } from '../components/Sparkline.tsx'
 import type { CycleEditError, LoggedPeriod } from '../lib/cycles.ts'
 import { applyPeriod, deletePeriod, listPeriods, summarize } from '../lib/cycles.ts'
+import { analyzePhasePatterns } from '../lib/patterns.ts'
 import { SYMPTOM_IDS } from '../lib/catalog.ts'
 import { formatLong, formatShort, todayISO } from '../lib/dates.ts'
 import type { MessageKey } from '../lib/i18n.tsx'
 import { useI18n } from '../lib/i18n.tsx'
 import { useBrandTitle } from '../lib/useTitle.ts'
 import { useSession } from '../state/session.tsx'
-import type { CustomSymptom } from '../types.ts'
+import type { CustomSymptom, PhaseName } from '../types.ts'
+
+const PHASE_NAME: Record<PhaseName, MessageKey> = {
+  menstrual: 'phase.menstrual',
+  follicular: 'phase.follicular',
+  ovulatory: 'phase.ovulatory',
+  luteal: 'phase.luteal',
+}
 
 const SYMPTOM_KEY: Record<(typeof SYMPTOM_IDS)[number], MessageKey> = {
   cramps: 'sym.cramps',
@@ -52,7 +60,13 @@ export function SummaryPage() {
   const today = todayISO()
   const periods = listPeriods(vault.days, today)
   const summary = summarize(vault.days, vault.settings.historyLength, today)
+  const phasePatterns = analyzePhasePatterns(vault.days, today)
   const removingPeriod = periods.find((period) => period.start === removing) ?? null
+
+  function moodName(id: string): string {
+    const key = `mood.${id}` as MessageKey
+    return t(key)
+  }
 
   function openEdit(period: LoggedPeriod) {
     setRemoving(null)
@@ -152,6 +166,42 @@ export function SummaryPage() {
               </li>
             ))}
           </ol>
+        )}
+      </section>
+
+      <section className="space-y-3">
+        <h2 className="text-lg font-semibold">{t('sum.patternsTitle')}</h2>
+        {!phasePatterns.eligible ? (
+          <p className="rounded-2xl bg-paper/60 p-4 text-sm leading-relaxed text-muted">
+            {t('sum.patternsFew')}
+          </p>
+        ) : (
+          <div className="space-y-2">
+            {(['menstrual', 'follicular', 'ovulatory', 'luteal'] as const).map((phase) => {
+              const p = phasePatterns.patterns[phase]
+              return (
+                <div key={phase} className="rounded-2xl bg-white p-3.5 shadow-sm space-y-1">
+                  <p className="text-sm font-semibold text-rose">{t(PHASE_NAME[phase])}</p>
+                  {p.topSymptoms.length === 0 && p.topMoods.length === 0 ? (
+                    <p className="text-xs text-muted">{t('sum.patternsNoLogs')}</p>
+                  ) : (
+                    <div className="flex flex-wrap gap-1.5 pt-1">
+                      {p.topSymptoms.map((sym) => (
+                        <span key={sym.id} className="inline-flex items-center rounded-full bg-rose-soft px-2.5 py-0.5 text-xs text-ink font-medium">
+                          {symptomName(sym.id, vault.customSymptoms)} ({sym.count})
+                        </span>
+                      ))}
+                      {p.topMoods.map((mood) => (
+                        <span key={mood.id} className="inline-flex items-center rounded-full bg-lavender-soft px-2.5 py-0.5 text-xs text-ink font-medium">
+                          {moodName(mood.id)} ({mood.count})
+                        </span>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              )
+            })}
+          </div>
         )}
       </section>
 
